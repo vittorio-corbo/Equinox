@@ -5,19 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class goal : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public void NextLevel()
     {
-        //speed = speed * -1;
-        //SceneManager.LoadScene("SampleScene 2", LoadSceneMode.Additive);
 
-        //get number of scenes from scene managerrr (or make credits scenes)
+        //get number of scenes from scene manager (or make credits scenes)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //SceneManager.LoadScene("SampleScene 2");
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
-
     }
 }
 

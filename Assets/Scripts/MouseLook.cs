@@ -11,6 +11,7 @@ public class MouseLook : MonoBehaviour
 {
     //MOUSE INPUTS
     public float mouseSensitivity = 200f;
+    private Coroutine runningCoroutine;
     float xRotation = 0f;
     float yRotation = 0f;
     float zRotation = 0f;
@@ -217,7 +218,7 @@ public class MouseLook : MonoBehaviour
 
 
                     timer = 0.0f;
-                    ShowBars();
+                    //ShowBars();
 
                     Debug.Log("FIRE");
                     Debug.Log(hit.collider.name);
@@ -226,8 +227,11 @@ public class MouseLook : MonoBehaviour
                     //Wall BUFFER
                     if (hit.collider.name != "Goal")
                     {
-                        //newVector = newVector - newVector.normalized * 5f;
-                        newVector = newVector + hit.normal * 5f;
+                        if (runningCoroutine != null)
+                        {
+                            StopCoroutine(runningCoroutine);
+                        }
+                        runningCoroutine = StartCoroutine(movement(newVector, hit.point));
 
                         /*
                         Vector3 relativePos = transform.position - hit.transform.position;
@@ -245,12 +249,20 @@ public class MouseLook : MonoBehaviour
                         //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                         //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                     }
-                    else {//if we didn't hit the goal
-                          //try to play other song, maybe put it in the other object
+                    else {//if we hit the goal
 
+                        //try to play other song, maybe put it in the other object
+                        if (runningCoroutine != null)
+                        {
+                            StopCoroutine(runningCoroutine);
+                        }
+                        runningCoroutine = StartCoroutine(movementGoal(newVector, hit.point));
                     }
                     //controller.Move(newVector);
-                    transform.position += newVector;
+                    //transform.position += newVector;
+
+
+
 
                     //yield return new WaitForSeconds(0.6f);
                     //hand = GameObject.Find("CinematicBlackBarsContainer");
@@ -397,7 +409,39 @@ public class MouseLook : MonoBehaviour
                 }
             } 
         }
-        
+
+        IEnumerator movement(Vector3 move, Vector3 endpoint)
+        {
+            float rampingSpeed = .1f;
+            while ((transform.position - endpoint).magnitude > 4f) {
+                controller.Move(move.normalized * rampingSpeed);
+                if (rampingSpeed < 5f)
+                {
+                    rampingSpeed *= 1.15f;
+                }
+                yield return new WaitForSeconds(.025f);
+            }
+        }
+
+        IEnumerator movementGoal(Vector3 move, Vector3 endpoint)
+        {
+            float rampingSpeed = .1f;
+            while(true)
+            {
+                if ((transform.position - endpoint).magnitude <= 1f)
+                {
+                    goal.GetComponent<goal>().NextLevel();
+                    yield break;
+                }
+                controller.Move(move.normalized * rampingSpeed);
+                if (rampingSpeed < 5f)
+                {
+                    rampingSpeed *= 1.15f;
+                }
+                yield return new WaitForSeconds(.025f);
+            }
+        }
+
 
 
         //DRAW LINE
