@@ -9,6 +9,7 @@ TagManager:
   - CUBE
   - Goal
   - Glass
+  - MoveableObject
   layers:
   - Default
   - TransparentFX
