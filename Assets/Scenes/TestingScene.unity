@@ -1780,6 +1780,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2116207862308672104, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 2820498858905044376, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: cube
       value: 

@@ -105,6 +105,7 @@ public class MouseLook : MonoBehaviour
         GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "This is a box: "+ Mathf.Round(Time.timeSinceLevelLoad * 10)/10f);
     }*/
 
+    float prevMouseX = 1984f;
     // Update is called once per frame
     //MOVE DA CAMERA
     void Update()
@@ -128,11 +129,25 @@ public class MouseLook : MonoBehaviour
 
         //ROTATE CAMERA
         //BRACKEYS CODE
+
         xRotation -= mouseY;
-        yRotation += mouseX;
         if (Input.GetMouseButton(1))
         {
-            zRotation += .1f;
+            if (prevMouseX == 1984f)
+            {
+                prevMouseX = mouseX;
+            }
+            else
+            {
+                Debug.Log(mouseX - prevMouseX);
+                zRotation -= (mouseX - prevMouseX) * 100f;
+                prevMouseX = mouseX;
+            }
+        }
+        else
+        {
+            prevMouseX = 1984f;
+            yRotation += mouseX;
         }
         //clamp stuff
         //THIS IS OG
@@ -144,7 +159,7 @@ public class MouseLook : MonoBehaviour
         //transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
 
         //MOVE CAMERA
-        transform.parent.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
         //print(transform.localRotation);
         //transform.localRotation = Quaternion.Euler(90f, xRotation, 0f);
         //print(xRotation+"asfd"+yRotation);
