@@ -11,6 +11,7 @@ public class MouseLook : MonoBehaviour
 {
     //MOUSE INPUTS
     public float mouseSensitivity = 200f;
+    private Coroutine runningCoroutine;
     float xRotation = 0f;
     float yRotation = 0f;
     float zRotation = 0f;
@@ -19,7 +20,7 @@ public class MouseLook : MonoBehaviour
     //reference to player object
     public Transform playerBody;
     //MOVE PLAYER CONTROLLER (COLLIDER)
-    public CharacterController controller;
+    //public CharacterController controller;
     public LayerMask Pizza;
 
     //FOR ANIMATION (BLINKING)
@@ -28,6 +29,8 @@ public class MouseLook : MonoBehaviour
     //public GameObject hand;
     private GameObject hand;
     float timer = -1.0f;
+
+    [SerializeField] private Rigidbody rigidbody;
 
     //CROSSHAIR
     public GameObject cube;
@@ -39,6 +42,8 @@ public class MouseLook : MonoBehaviour
 
     //AUDIO
     private AudioSource source;
+
+    private Vector3 momentum;
 
     //GLASS MATERIAL
     //public Material glass;
@@ -137,7 +142,7 @@ public class MouseLook : MonoBehaviour
 
         //MOVE CAMERA
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-        print(transform.localRotation);
+        //print(transform.localRotation);
         //transform.localRotation = Quaternion.Euler(90f, xRotation, 0f);
         //print(xRotation+"asfd"+yRotation);
         //print(yRotation);
@@ -207,7 +212,7 @@ public class MouseLook : MonoBehaviour
 
 
             //if (Input.GetKey(KeyCode.Mouse0)){
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 //if (Input.GetButton(KeyCode.Mouse1)){
 
@@ -215,19 +220,18 @@ public class MouseLook : MonoBehaviour
                 if (!hit.collider.CompareTag("Stopper"))
                 {
 
-
                     timer = 0.0f;
-                    ShowBars();
+                    //ShowBars();
 
-                    Debug.Log("FIRE");
-                    Debug.Log(hit.collider.name);
+                    /*Debug.Log("FIRE");
+                    Debug.Log(hit.collider.name);*/
 
 
                     //Wall BUFFER
                     if (hit.collider.name != "Goal")
                     {
-                        //newVector = newVector - newVector.normalized * 5f;
-                        newVector = newVector + hit.normal * 5f;
+
+                        rigidbody.AddForce(newVector.normalized * 10f);
 
                         /*
                         Vector3 relativePos = transform.position - hit.transform.position;
@@ -245,12 +249,16 @@ public class MouseLook : MonoBehaviour
                         //transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
                         //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                     }
-                    else {//if we didn't hit the goal
-                          //try to play other song, maybe put it in the other object
+                    else {//if we hit the goal
 
+                        //try to play other song, maybe put it in the other object
+                        goal.GetComponent<goal>().NextLevel();
                     }
                     //controller.Move(newVector);
-                    transform.position += newVector;
+                    //transform.position += newVector;
+
+
+
 
                     //yield return new WaitForSeconds(0.6f);
                     //hand = GameObject.Find("CinematicBlackBarsContainer");
@@ -397,7 +405,8 @@ public class MouseLook : MonoBehaviour
                 }
             } 
         }
-        
+
+
 
 
         //DRAW LINE
