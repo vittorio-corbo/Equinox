@@ -216,8 +216,14 @@ public class MouseLook : MonoBehaviour
             {
                 //if (Input.GetButton(KeyCode.Mouse1)){
 
+
+                if (hit.collider.CompareTag("MoveableObject"))
+                {
+                    hit.collider.GetComponent<Rigidbody>().AddForce(newVector.normalized * -10f);
+                    rigidbody.AddForce(newVector.normalized * 10f);
+                }
                 //WE MOVING
-                if (!hit.collider.CompareTag("Stopper"))
+                else if (!hit.collider.CompareTag("Stopper"))
                 {
 
                     timer = 0.0f;
