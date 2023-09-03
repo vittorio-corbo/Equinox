@@ -130,9 +130,12 @@ public class MouseLook : MonoBehaviour
         //BRACKEYS CODE
         xRotation -= mouseY;
         yRotation += mouseX;
+        if (Input.GetMouseButton(1))
+        {
+            zRotation += .1f;
+        }
         //clamp stuff
         //THIS IS OG
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         //THIS IS TEXT EXPERIMENT
         //xRotation = Mathf.Clamp(xRotation, -180f, 0f);
 
@@ -141,7 +144,7 @@ public class MouseLook : MonoBehaviour
         //transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
 
         //MOVE CAMERA
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+        transform.parent.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
         //print(transform.localRotation);
         //transform.localRotation = Quaternion.Euler(90f, xRotation, 0f);
         //print(xRotation+"asfd"+yRotation);
