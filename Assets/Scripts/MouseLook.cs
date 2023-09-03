@@ -219,7 +219,7 @@ public class MouseLook : MonoBehaviour
 
                 if (hit.collider.CompareTag("MoveableObject"))
                 {
-                    hit.collider.GetComponent<Rigidbody>().AddForce(newVector.normalized * -10f);
+                    hit.collider.GetComponent<Rigidbody>().AddForceAtPosition(newVector.normalized * -10f, hit.point);
                     rigidbody.AddForce(newVector.normalized * 10f);
                 }
                 //WE MOVING
