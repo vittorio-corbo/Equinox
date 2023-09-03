@@ -16,6 +16,8 @@ public class MouseLook : MonoBehaviour
     float yRotation = 0f;
     float zRotation = 0f;
 
+    [SerializeField] private Transform zRotationObject;
+
     
     public Transform playerBody;
     public LayerMask Pizza;
@@ -114,15 +116,9 @@ public class MouseLook : MonoBehaviour
         }
 
         //MOVE CAMERA
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+        zRotationObject.localRotation = Quaternion.Euler(0, 0, zRotation);
 
-        
-
-
-
-
-
-        //RAYCAST/ TELEPORTATION
         RaycastHit hit;
         //used to be 100
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5000f)) //not check for layer anymore
@@ -140,8 +136,6 @@ public class MouseLook : MonoBehaviour
             }
             if (Input.GetMouseButton(0))
             {
-
-
                 if (hit.collider.CompareTag("MoveableObject"))
                 {
                     hit.collider.GetComponent<Rigidbody>().AddForceAtPosition(newVector.normalized * -5, hit.point);
@@ -150,12 +144,9 @@ public class MouseLook : MonoBehaviour
                 //WE MOVING
                 else if (!hit.collider.CompareTag("Stopper"))
                 {
-
-
                     //Wall BUFFER
                     if (hit.collider.name != "Goal")
                     {
-
                         rigidbody.AddForce(newVector.normalized * 10f);
 
                         //PLAY SOUND
@@ -168,7 +159,6 @@ public class MouseLook : MonoBehaviour
                 }
                 else
                 {
-
                     Debug.Log("Hit stopper");
                 }
             }
