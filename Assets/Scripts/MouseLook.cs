@@ -105,7 +105,6 @@ public class MouseLook : MonoBehaviour
         GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "This is a box: "+ Mathf.Round(Time.timeSinceLevelLoad * 10)/10f);
     }*/
 
-    float prevMouseX = 1984f;
     // Update is called once per frame
     //MOVE DA CAMERA
     void Update()
@@ -133,20 +132,10 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         if (Input.GetMouseButton(1))
         {
-            if (prevMouseX == 1984f)
-            {
-                prevMouseX = mouseX;
-            }
-            else
-            {
-                Debug.Log(mouseX - prevMouseX);
-                zRotation -= (mouseX - prevMouseX) * 100f;
-                prevMouseX = mouseX;
-            }
+            zRotation -= mouseX;
         }
         else
         {
-            prevMouseX = 1984f;
             yRotation += mouseX;
         }
         //clamp stuff
