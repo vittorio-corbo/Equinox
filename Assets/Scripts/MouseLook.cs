@@ -219,8 +219,8 @@ public class MouseLook : MonoBehaviour
 
                 if (hit.collider.CompareTag("MoveableObject"))
                 {
-                    hit.collider.GetComponent<Rigidbody>().AddForceAtPosition(newVector.normalized * -10f, hit.point);
-                    rigidbody.AddForce(newVector.normalized * 10f);
+                    hit.collider.GetComponent<Rigidbody>().AddForceAtPosition(newVector.normalized * -15, hit.point);
+                    rigidbody.AddForce(newVector.normalized * 15);
                 }
                 //WE MOVING
                 else if (!hit.collider.CompareTag("Stopper"))
@@ -237,7 +237,7 @@ public class MouseLook : MonoBehaviour
                     if (hit.collider.name != "Goal")
                     {
 
-                        rigidbody.AddForce(newVector.normalized * 10f);
+                        rigidbody.AddForce(newVector.normalized * 30f);
 
                         /*
                         Vector3 relativePos = transform.position - hit.transform.position;
