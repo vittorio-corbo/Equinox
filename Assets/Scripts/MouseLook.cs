@@ -20,7 +20,7 @@ public class MouseLook : MonoBehaviour
     //reference to player object
     public Transform playerBody;
     //MOVE PLAYER CONTROLLER (COLLIDER)
-    public CharacterController controller;
+    //public CharacterController controller;
     public LayerMask Pizza;
 
     //FOR ANIMATION (BLINKING)
@@ -29,6 +29,8 @@ public class MouseLook : MonoBehaviour
     //public GameObject hand;
     private GameObject hand;
     float timer = -1.0f;
+
+    [SerializeField] private Rigidbody rigidbody;
 
     //CROSSHAIR
     public GameObject cube;
@@ -40,6 +42,8 @@ public class MouseLook : MonoBehaviour
 
     //AUDIO
     private AudioSource source;
+
+    private Vector3 momentum;
 
     //GLASS MATERIAL
     //public Material glass;
@@ -138,7 +142,7 @@ public class MouseLook : MonoBehaviour
 
         //MOVE CAMERA
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-        print(transform.localRotation);
+        //print(transform.localRotation);
         //transform.localRotation = Quaternion.Euler(90f, xRotation, 0f);
         //print(xRotation+"asfd"+yRotation);
         //print(yRotation);
@@ -208,7 +212,7 @@ public class MouseLook : MonoBehaviour
 
 
             //if (Input.GetKey(KeyCode.Mouse0)){
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 //if (Input.GetButton(KeyCode.Mouse1)){
 
@@ -216,22 +220,18 @@ public class MouseLook : MonoBehaviour
                 if (!hit.collider.CompareTag("Stopper"))
                 {
 
-
                     timer = 0.0f;
                     //ShowBars();
 
-                    Debug.Log("FIRE");
-                    Debug.Log(hit.collider.name);
+                    /*Debug.Log("FIRE");
+                    Debug.Log(hit.collider.name);*/
 
 
                     //Wall BUFFER
                     if (hit.collider.name != "Goal")
                     {
-                        if (runningCoroutine != null)
-                        {
-                            StopCoroutine(runningCoroutine);
-                        }
-                        runningCoroutine = StartCoroutine(movement(newVector, hit.point));
+
+                        rigidbody.AddForce(newVector.normalized * 10f);
 
                         /*
                         Vector3 relativePos = transform.position - hit.transform.position;
@@ -252,11 +252,7 @@ public class MouseLook : MonoBehaviour
                     else {//if we hit the goal
 
                         //try to play other song, maybe put it in the other object
-                        if (runningCoroutine != null)
-                        {
-                            StopCoroutine(runningCoroutine);
-                        }
-                        runningCoroutine = StartCoroutine(movementGoal(newVector, hit.point));
+                        goal.GetComponent<goal>().NextLevel();
                     }
                     //controller.Move(newVector);
                     //transform.position += newVector;
@@ -410,37 +406,6 @@ public class MouseLook : MonoBehaviour
             } 
         }
 
-        IEnumerator movement(Vector3 move, Vector3 endpoint)
-        {
-            float rampingSpeed = .1f;
-            while ((transform.position - endpoint).magnitude > 4f) {
-                controller.Move(move.normalized * rampingSpeed);
-                if (rampingSpeed < 5f)
-                {
-                    rampingSpeed *= 1.15f;
-                }
-                yield return new WaitForSeconds(.025f);
-            }
-        }
-
-        IEnumerator movementGoal(Vector3 move, Vector3 endpoint)
-        {
-            float rampingSpeed = .1f;
-            while(true)
-            {
-                if ((transform.position - endpoint).magnitude <= 1f)
-                {
-                    goal.GetComponent<goal>().NextLevel();
-                    yield break;
-                }
-                controller.Move(move.normalized * rampingSpeed);
-                if (rampingSpeed < 5f)
-                {
-                    rampingSpeed *= 1.15f;
-                }
-                yield return new WaitForSeconds(.025f);
-            }
-        }
 
 
 
