@@ -11,6 +11,8 @@ public class PlayerGrapple : MonoBehaviour
 {
     public LayerMask Pizza;
 
+    private Coroutine grappleCoroutine;
+
     //FOR ANIMATION (BLINKING)
     [SerializeField] private GameObject cinematicBarsContainerGO;
     private GameObject hand;
@@ -18,6 +20,8 @@ public class PlayerGrapple : MonoBehaviour
 
     //Hiding the camera's rigidbody with the one we want
     [SerializeField] private new Rigidbody rigidbody;
+
+    public float MAXDISTANCE;
 
     //CROSSHAIR
     public GameObject cube;
@@ -29,6 +33,8 @@ public class PlayerGrapple : MonoBehaviour
 
     //AUDIO
     private AudioSource source;
+
+    private GrappleHead grappleHead;
 
     private Vector3 momentum;
 
@@ -63,6 +69,9 @@ public class PlayerGrapple : MonoBehaviour
         //GET AUDIO SOURCE
         source = GetComponent<AudioSource>();
 
+        //Use FindObjectsOfTypeAll so it finds inactive scripts too
+        grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
+        grappleHead.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -77,40 +86,17 @@ public class PlayerGrapple : MonoBehaviour
             Vector3 newVector = hit.point - transform.position;
 
             //CUBE CROSSHAIR
-            if (!hit.collider.CompareTag("CUBE")){//IGNORE SELF (cube)
+            if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
+            {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
                 cube.transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
                 cube.transform.localScale = newVector.magnitude * (Vector3.one)/16;
             }
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.CompareTag("MoveableObject"))
-                {
-                    hit.collider.GetComponent<Rigidbody>().AddForceAtPosition(newVector.normalized * -5, hit.point);
-                    rigidbody.AddForce(newVector.normalized * 5);
-                }
-                //WE MOVING
-                else if (!hit.collider.CompareTag("Stopper"))
-                {
-                    //Wall BUFFER
-                    if (hit.collider.name != "Goal")
-                    {
-                        rigidbody.AddForce(newVector.normalized * 10f);
-
-                        //PLAY SOUND
-                        source.Play();
-                    }
-                    else {
-                        goal.GetComponent<goal>().NextLevel();
-                    }
-
-                }
-                else
-                {
-                    Debug.Log("Hit stopper");
-                }
+                grappleHead.StartMovement(transform.position, transform.forward);
             }
             else {
 
@@ -163,6 +149,52 @@ public class PlayerGrapple : MonoBehaviour
                 hand.SetActive(false);
                 }
             } 
+        }
+    }
+
+    public void StartGrappling(Collider collider)
+    {
+        grappleCoroutine = StartCoroutine(Grappling(collider));
+    }
+
+    private IEnumerator Grappling(Collider collider)
+    {
+        while (true) {
+            Vector3 moveVector = grappleHead.transform.position - transform.position;
+            if (collider.CompareTag("MoveableObject"))
+            {
+                collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -5, grappleHead.transform.position);
+                rigidbody.AddForce(moveVector.normalized * 5);
+            }
+            //WE MOVING
+            else if (!collider.CompareTag("Stopper"))
+            {
+                //Wall BUFFER
+                if (collider.name != "Goal")
+                {
+                    rigidbody.AddForce(moveVector.normalized * 10f);
+
+                    //PLAY SOUND
+                    source.Play();
+                }
+                else
+                {
+                    goal.GetComponent<goal>().NextLevel();
+                }
+            }
+            else
+            {
+                grappleHead.StopGrappling();
+            }
+            yield return new WaitForSeconds(.02f);
+        }
+    }
+
+    public void StopGrappling()
+    {
+        if (grappleCoroutine != null)
+        {
+            StopCoroutine(grappleCoroutine);
         }
     }
 }
