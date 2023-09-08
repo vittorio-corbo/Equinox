@@ -6,34 +6,34 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/Scenes/GameScenes/Start.unity
     guid: 3de749ab061ba6a4790bc8a566ff82f1
   - enabled: 1
-    path: Assets/Scenes/Num_0.unity
+    path: Assets/Scenes/GameScenes/Num_0.unity
     guid: b2d81ca45e6bf394490f82d440eee5fc
   - enabled: 1
-    path: Assets/Scenes/Num_1.unity
+    path: Assets/Scenes/GameScenes/Num_1.unity
     guid: 5dc7cfef59083824982d57350b6ecdcf
   - enabled: 1
-    path: Assets/Scenes/Num_2_Glass 1.unity
+    path: Assets/Scenes/GameScenes/Num_2_Glass 1.unity
     guid: aa47624ccf970ce46a94bf302384e5ad
   - enabled: 1
-    path: Assets/Scenes/Num_3_stopper.unity
+    path: Assets/Scenes/GameScenes/Num_3_stopper.unity
     guid: 57d96b1a82106d54298eebda77782cca
   - enabled: 1
-    path: Assets/Scenes/Num_4.unity
+    path: Assets/Scenes/GameScenes/Num_4.unity
     guid: 7959995560ec85f458a7894282b98b90
   - enabled: 0
     path: Assets/Scenes/Num_5.unity
     guid: 06d7cd6193487ab448d6e5fbf0474e08
   - enabled: 1
-    path: Assets/Scenes/Num_7.unity
+    path: Assets/Scenes/GameScenes/Num_7.unity
     guid: 1e6ec0fd3f4c4454ca09e18965caa521
   - enabled: 1
-    path: Assets/Scenes/Num_10.unity
+    path: Assets/Scenes/GameScenes/Num_10.unity
     guid: ead9bf20d91108c45970a79633e0645b
   - enabled: 1
-    path: Assets/Scenes/End.unity
+    path: Assets/Scenes/GameScenes/End.unity
     guid: d6330626363d78644a8c87394a80276c
   - enabled: 0
     path: Assets/Scenes/nah.unity
