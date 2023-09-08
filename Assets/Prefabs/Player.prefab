@@ -260,8 +260,10 @@ MonoBehaviour:
     m_Bits: 256
   cinematicBarsContainerGO: {fileID: 0}
   rigidbody: {fileID: 2583534258027352862}
+  MAXDISTANCE: 50
   cube: {fileID: 0}
   goal: {fileID: 0}
+  grappleForce: 10
 --- !u!1 &7769617461335444141
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,8 @@ public class PlayerGrapple : MonoBehaviour
     public GameObject goal;
     private Renderer goalRenderer;
 
+    public float grappleForce;
+
     //AUDIO
     private AudioSource source;
 
@@ -163,8 +165,8 @@ public class PlayerGrapple : MonoBehaviour
             Vector3 moveVector = grappleHead.transform.position - transform.position;
             if (collider.CompareTag("MoveableObject"))
             {
-                collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -5, grappleHead.transform.position);
-                rigidbody.AddForce(moveVector.normalized * 5);
+                collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
+                rigidbody.AddForce(moveVector.normalized * (grappleForce / 2));
             }
             //WE MOVING
             else if (!collider.CompareTag("Stopper"))
@@ -172,7 +174,7 @@ public class PlayerGrapple : MonoBehaviour
                 //Wall BUFFER
                 if (collider.name != "Goal")
                 {
-                    rigidbody.AddForce(moveVector.normalized * 10f);
+                    rigidbody.AddForce(moveVector.normalized * grappleForce);
 
                     //PLAY SOUND
                     source.Play();
