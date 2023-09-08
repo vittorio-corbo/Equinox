@@ -32,8 +32,9 @@ public class PlayerCameraRotateController : MonoBehaviour
         {
             Vector3 cameraForward = transform.forward;
             //if right button pressed, then mouseX does rotation around the roll axis
-            player.Rotate(cameraForward, mouseX * mouseSensitivity, Space.World);
+            player.Rotate(cameraForward, -1*mouseX * mouseSensitivity, Space.World);
                           //roll axis,   angle,   WorldRotation insteaed of local
+                          //-1 to make player rotate clockwise when mouse moves right, and anticlockwise for left mouse movmeent
         }
         else
         {
