@@ -81,6 +81,12 @@ public class PlayerGrapple : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
+        if (Input.GetMouseButtonDown(0))
+        {
+            //PLAY SOUND
+            source.Play();
+            grappleHead.StartMovement(transform.position, transform.forward);
+        }
         //used to be 100
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5000f)) //not check for layer anymore
         {
@@ -95,10 +101,6 @@ public class PlayerGrapple : MonoBehaviour
 
                 //SET CUBE SCALE (based on distance)
                 cube.transform.localScale = newVector.magnitude * (Vector3.one)/16;
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                grappleHead.StartMovement(transform.position, transform.forward);
             }
             else {
 
@@ -175,9 +177,6 @@ public class PlayerGrapple : MonoBehaviour
                 if (collider.name != "Goal")
                 {
                     rigidbody.AddForce(moveVector.normalized * grappleForce);
-
-                    //PLAY SOUND
-                    source.Play();
                 }
                 else
                 {

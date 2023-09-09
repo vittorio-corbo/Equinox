@@ -9,6 +9,7 @@ public class GrappleHead : MonoBehaviour
     public float SPEED;
     private PlayerGrapple player;
     private Rigidbody rigidBody;
+    public bool retracting;
 
     void Awake()
     {
@@ -25,7 +26,15 @@ public class GrappleHead : MonoBehaviour
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
-        StopGrappling();
+        if (retracting)
+        {
+            return;
+        }
+        if (gameObject.activeSelf)
+        {
+            StopGrappling();
+            return;
+        }
         gameObject.SetActive(true);
         transform.position = startPosition + direction.normalized * 1f;
         rigidBody.AddForce(direction * SPEED);
@@ -49,11 +58,23 @@ public class GrappleHead : MonoBehaviour
     public void StopGrappling()
     {
         insideSomething = false;
-        rigidBody.isKinematic = false; //enables physics
-        transform.parent = null;
-        GetComponent<Collider>().enabled = true;
-        rigidBody.velocity = Vector3.zero;
         player.StopGrappling();
+        transform.parent = null;
+        rigidBody.velocity = Vector3.zero;
+        StartCoroutine(Retract());
+    }
+
+    public IEnumerator Retract()
+    {
+        retracting = true;
+        while ((transform.position - player.transform.position).magnitude > 1f)
+        {
+            transform.position -= (transform.position - player.transform.position).normalized;
+            yield return new WaitForSeconds(.02f);
+        }
+        rigidBody.isKinematic = false; //enables physics
+        GetComponent<Collider>().enabled = true;
         gameObject.SetActive(false);
+        retracting = false;
     }
 }
