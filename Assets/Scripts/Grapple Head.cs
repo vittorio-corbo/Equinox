@@ -10,15 +10,28 @@ public class GrappleHead : MonoBehaviour
     private PlayerGrapple player;
     private Rigidbody rigidBody;
     public bool retracting;
+    private LineRenderer grapplingHookLine;
 
     void Awake()
     {
         player = FindObjectOfType<PlayerGrapple>();
         rigidBody = GetComponent<Rigidbody>();
+        grapplingHookLine = transform.GetChild(0).GetComponent<LineRenderer>();
     }
 
     private void Update()
     {
+        if (gameObject.activeSelf)
+        {
+            grapplingHookLine.SetPosition(0, player.transform.position);
+            grapplingHookLine.SetPosition(1, transform.position);
+            grapplingHookLine.startWidth = .25f;
+            grapplingHookLine.endWidth = .25f;
+        }
+        else
+        {
+            grapplingHookLine.gameObject.SetActive(false);
+        }
         if (player.MAXDISTANCE < (player.transform.position - transform.position).magnitude)
         {
             StopGrappling();
@@ -69,7 +82,7 @@ public class GrappleHead : MonoBehaviour
         retracting = true;
         while ((transform.position - player.transform.position).magnitude > 1f)
         {
-            transform.position -= (transform.position - player.transform.position).normalized;
+            transform.position -= (transform.position - player.transform.position).normalized * (25 / SPEED);
             yield return new WaitForSeconds(.02f);
         }
         rigidBody.isKinematic = false; //enables physics
