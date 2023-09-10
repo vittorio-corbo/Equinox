@@ -22,6 +22,7 @@ public class PlayerGrapple : MonoBehaviour
     [SerializeField] private new Rigidbody rigidbody;
 
     public float MAXDISTANCE;
+    public float MAXCUBEDIST;
 
     //CROSSHAIR
     public GameObject cube;
@@ -44,7 +45,9 @@ public class PlayerGrapple : MonoBehaviour
     //public Material glass;
 
     //GRAVITY/CAMERA EXPERIMENT
-    
+
+    //Experimenting with cube rendering
+
 
     public void ShowBars() {
         cinematicBarsContainerGO.SetActive(true);
@@ -88,10 +91,12 @@ public class PlayerGrapple : MonoBehaviour
             grappleHead.StartMovement(transform.position, transform.forward);
         }
         //used to be 100
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 5000f)) //not check for layer anymore
+        if (Physics.Raycast(transform.position, transform.forward, out hit, MAXDISTANCE)) //not check for layer anymore
         {
             //HOLDS THE DISTANCE
             Vector3 newVector = hit.point - transform.position;
+            cubeRenderer.enabled = true;
+            cubeRenderer.material.SetColor("_Color", new Color(1f, 0f, 0f));
 
             //CUBE CROSSHAIR
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
@@ -102,7 +107,7 @@ public class PlayerGrapple : MonoBehaviour
                 //SET CUBE SCALE (based on distance)
                 cube.transform.localScale = newVector.magnitude * (Vector3.one)/16;
             }
-            else {
+            else { // I think this may be a glitch, as these if statements are unreachable. Can someone back this up?
 
                 if (hit.collider.CompareTag("Stopper"))
                 {
@@ -141,6 +146,35 @@ public class PlayerGrapple : MonoBehaviour
                 }
             }
         }
+        //If the object is too far to grapple, turn the crosshair cube gray but keep tracking it
+        else if (Physics.Raycast(transform.position, transform.forward, out hit, MAXCUBEDIST))
+        {
+            //HOLDS THE DISTANCE
+            Vector3 newVector = hit.point - transform.position;
+            cubeRenderer.enabled = true;
+            cubeRenderer.material.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
+
+            //CUBE CROSSHAIR
+            if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
+            {//IGNORE SELF AND GRAPPLE HEAD
+                //SET CUBE POSITION
+                cube.transform.position = hit.point;
+
+                //SET CUBE SCALE (based on distance)
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+            }
+
+        }
+        //If the raycast doesn't work (Returns false, meaning no hit), then stop showing the cube yo
+        //A software tester walks into a bar, runs into a bar, crawls into a bar, attempts to noclip through a bar, and teleports to a bar
+        //He then orders one beer, two beers, 0 beers, -5 beers, 999999999 beers, and a water.
+        //A real customer enters the bar and asks where the bathroom is.
+        //The bar catches fire.
+        else
+        {
+            cubeRenderer.enabled = false;
+        }
+
         if (timer != -1.0f) { 
             timer += Time.deltaTime;
             // int seconds = timer % 60;
