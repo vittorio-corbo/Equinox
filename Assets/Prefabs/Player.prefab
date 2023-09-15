@@ -264,6 +264,8 @@ MonoBehaviour:
   cube: {fileID: 0}
   goal: {fileID: 0}
   grappleForce: 10
+  dampingAngle: 30
+  dampingSpeed: 0.005
 --- !u!1 &7769617461335444141
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,9 @@ public class PlayerGrapple : MonoBehaviour
 
     private Vector3 momentum;
 
+    [SerializeField] float dampingAngle;
+    [SerializeField] float dampingSpeed;
+
     //GLASS MATERIAL
     //public Material glass;
 
@@ -201,6 +204,12 @@ public class PlayerGrapple : MonoBehaviour
             Vector3 moveVector = grappleHead.transform.position - transform.position;
             if (collider.CompareTag("MoveableObject"))
             {
+                if(Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
+                {
+                    Debug.Log(rigidbody.velocity);
+                    rigidbody.velocity = rigidbody.velocity * (1-dampingSpeed);
+                    Debug.Log(rigidbody.velocity);
+                }
                 collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
                 rigidbody.AddForce(moveVector.normalized * (grappleForce / 2));
             }
@@ -210,6 +219,10 @@ public class PlayerGrapple : MonoBehaviour
                 //Wall BUFFER
                 if (collider.name != "Goal")
                 {
+                    if (Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
+                    {
+                        rigidbody.velocity = rigidbody.velocity * (1 - dampingSpeed);
+                    }
                     rigidbody.AddForce(moveVector.normalized * grappleForce);
                 }
                 else
