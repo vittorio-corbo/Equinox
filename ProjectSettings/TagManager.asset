@@ -10,6 +10,7 @@ TagManager:
   - Goal
   - Glass
   - MoveableObject
+  - Grapple
   layers:
   - Default
   - TransparentFX

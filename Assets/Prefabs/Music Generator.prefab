@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3444291475278691953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6743450423763298579}
+  - component: {fileID: 1799402924053540071}
+  m_Layer: 0
+  m_Name: Music Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6743450423763298579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444291475278691953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.019136, y: 283.50278, z: -117.92462}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1799402924053540071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444291475278691953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fe6dfcf4c90a146b0879f5cf3c59b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0.8
+  doppler: 0
+  lvl1: {fileID: 8300000, guid: 65f7e64bfc617134c811a29c147a1144, type: 3}
+  lvl2: {fileID: 0}
+  lvl3: {fileID: 0}
+  lvl4: {fileID: 0}
+  lvl5: {fileID: 0}
+  lvl6: {fileID: 0}
+  lvl7: {fileID: 0}
+  lvl8: {fileID: 0}
+  lvl9: {fileID: 0}
+  lvl10: {fileID: 0}
+  title: {fileID: 0}
+  end: {fileID: 0}
+  def: {fileID: 8300000, guid: e507897220ff4ac4d92f41315ee5ab0f, type: 3}
