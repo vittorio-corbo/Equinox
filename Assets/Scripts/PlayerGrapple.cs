@@ -98,19 +98,17 @@ public class PlayerGrapple : MonoBehaviour
         {
             //HOLDS THE DISTANCE
             Vector3 newVector = hit.point - transform.position;
-            cubeRenderer.enabled = true;
-            cubeRenderer.material.SetColor("_Color", new Color(1f, 0f, 0f));
+
 
             //CUBE CROSSHAIR
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
                 cube.transform.position = hit.point;
-
+                
                 //SET CUBE SCALE (based on distance)
                 cube.transform.localScale = newVector.magnitude * (Vector3.one)/16;
-            }
-            else { // I think this may be a glitch, as these if statements are unreachable. Can someone back this up?
+
 
                 if (hit.collider.CompareTag("Stopper"))
                 {
@@ -118,34 +116,33 @@ public class PlayerGrapple : MonoBehaviour
                     cubeRenderer.material.SetColor("_Color", new Color(0f, 0f, 0f));
                     cubeRenderer.enabled = true;
                 }
-                else if (hit.collider.name == "Goal")//HIT THE GOAL
-                {
-                    //SET CUBE INVISBLE
-                    cubeRenderer.enabled = false;
 
-                    //SET THE GOAL TO BLUE
-                    goalRenderer.material.SetColor("_Color", new Color(0f, 0f, 1f));
-                }
-                else if (hit.collider.CompareTag("Glass")) { //IT IS GLASS
+                else if (hit.collider.CompareTag("Glass"))
+                { //IT IS GLASS
                     //CHANGE COLOR
                     cubeRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f));
                     cubeRenderer.enabled = true;
                 }
-                else { //NO IMPORTANT COLLISIONS HAPPENING
+                else
+                { //NO IMPORTANT COLLISIONS HAPPENING
                     //SET CUBE TO RED
                     cubeRenderer.material.SetColor("_Color", new Color(1f, 0f, 0f));
                     cubeRenderer.enabled = true;
 
                     //SET GOAL TO ORANGE
-                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
+
 
                 }
+
+                //Sets goal to teal when looking at it
                 if (hit.collider.name == "Goal")
                 {
                     cubeRenderer.enabled = false;
-                    Renderer goal_mesh = hit.collider.gameObject.GetComponent<Renderer>();
-                    goal_mesh.material.SetColor("_Color", new Color(0f, 0.5f, 0.5f));
-
+                    goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
+                }
+                else
+                {
+                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
                 }
             }
         }
@@ -176,6 +173,7 @@ public class PlayerGrapple : MonoBehaviour
         else
         {
             cubeRenderer.enabled = false;
+            goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
         }
 
         if (timer != -1.0f) { 
