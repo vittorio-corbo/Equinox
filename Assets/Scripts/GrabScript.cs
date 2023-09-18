@@ -6,6 +6,7 @@ public class GrabScript : MonoBehaviour
 {
     public GameObject player;
     public Transform posHold;
+    public GameObject pickUpText;
     private GameObject lookObject;
     private GameObject grabbedObject;
     private Rigidbody grabRigid;
@@ -14,18 +15,21 @@ public class GrabScript : MonoBehaviour
     void Update() {
         
         // Checks to see if object is in grabbable range.
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f)) {
-            if (hit.transform.gameObject.tag == "Grabbable") {
-                // I think it would be good if a message appeared on screen if the object is grabbable.
-                // Activating the message could be done here.
-                lookObject = hit.transform.gameObject;
-                currLook = true;
+        if (grabbedObject == null) {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f)) {
+                if (hit.transform.gameObject.tag == "Grabbable") {
+                    lookObject = hit.transform.gameObject;
+                    currLook = true;
+                    pickUpText.SetActive(true);
+                }
+            } else {
+                lookObject = null;
+                currLook = false;
+                pickUpText.SetActive(false);
             }
-        } else {
-            lookObject = null;
-            currLook = false;
         }
+        
         
         // If looking at object and key pressed is E then pick up the object.
         if (currLook && grabbedObject == null && Input.GetKeyDown(KeyCode.E)) {
@@ -48,6 +52,7 @@ public class GrabScript : MonoBehaviour
         grabRigid.transform.parent = posHold.transform;
         grabbedObject.transform.rotation = posHold.rotation;
         Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        pickUpText.SetActive(false);
     }
 
     // Drops Object
