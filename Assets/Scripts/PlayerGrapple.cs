@@ -131,6 +131,12 @@ public class PlayerGrapple : MonoBehaviour
                     cubeRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f));
                     cubeRenderer.enabled = true;
                 }
+                else if (hit.collider.CompareTag("Grabbable")) { // Grabbable Object
+                    // Blue because I'm bad at color theory. Sue me
+                    // This is not legal advice. I am not a practicing lawyer in the state of Georgia.
+                    cubeRenderer.material.color = Color.blue;
+                    cubeRenderer.enabled = true;
+                }
                 else { //NO IMPORTANT COLLISIONS HAPPENING
                     //SET CUBE TO RED
                     cubeRenderer.material.SetColor("_Color", new Color(1f, 0f, 0f));

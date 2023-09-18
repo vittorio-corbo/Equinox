@@ -17,7 +17,7 @@ public class GrabScript : MonoBehaviour
         // Checks to see if object is in grabbable range.
         if (grabbedObject == null) {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f)) {
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1f)) {
                 if (hit.transform.gameObject.tag == "Grabbable") {
                     lookObject = hit.transform.gameObject;
                     currLook = true;
@@ -45,7 +45,7 @@ public class GrabScript : MonoBehaviour
 
     }
 
-    void grabObject(GameObject grabObj) {
+    public void grabObject(GameObject grabObj) {
         grabbedObject = grabObj;
         grabRigid = grabbedObject.GetComponent<Rigidbody>();
         grabRigid.isKinematic = true;
