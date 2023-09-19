@@ -1,4 +1,5 @@
 # Equinox
+### Work on the Feature-Grappling Branch. That has all of the changes.
 This is John's Fork of Equinox. It exists as the *current* place as of 9/18/2023 to work on grappling.
 ### Enjoy
 
