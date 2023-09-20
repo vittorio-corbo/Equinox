@@ -11,10 +11,14 @@ public class GrappleHead : MonoBehaviour
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
+    private GameObject grabbedObj;
+    private Rigidbody grabRig;
+    private GrabScript grab;
 
     void Awake()
     {
         player = FindObjectOfType<PlayerGrapple>();
+        grab = FindObjectOfType<GrabScript>();
         rigidBody = GetComponent<Rigidbody>();
         grapplingHookLine = transform.GetChild(0).GetComponent<LineRenderer>();
     }
@@ -53,18 +57,54 @@ public class GrappleHead : MonoBehaviour
         rigidBody.AddForce(direction * SPEED);
     }
 
+    // In this method you see the ramblings of a madman trying to figure out why I was being flung out into space.
+    // This code is bad. I will refactor, I was just trying to get it to work ish.
+    // Also slightly broken since I'm not sure why the grapple zooms so fast on a grappable item.
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<PlayerGrapple>() == null)
         {
-            if (!insideSomething)
-            {
+
+            if (!insideSomething) {
+                if (collision.gameObject.CompareTag("Grabbable")) {
+                    grabbedObj = collision.gameObject;
+                    grabRig = grabbedObj.GetComponent<Rigidbody>();
+                    grabRig.isKinematic = true;
+                    grabRig.transform.parent = rigidBody.transform;
+                }
                 rigidBody.isKinematic = true; //Disables Physics on this object
                 GetComponent<Collider>().enabled = false;
                 transform.parent = collision.transform;
                 insideSomething = true;
                 player.StartGrappling(collision.collider);
+                if (collision.gameObject.CompareTag("Grabbable")) {
+                    StopGrappling();
+                }
             }
+
+            // if (!insideSomething && collision.gameObject.CompareTag("Grabbable")) { // Code for if the object was grabbable
+            //     grabbedObj = collision.gameObject;
+            //     grabRig = grabbedObj.GetComponent<Rigidbody>();
+            //     grabRig.isKinematic = true;
+            //     grabRig.transform.parent = rigidBody.transform;
+            //     // grabRig.transform.parent = rigidBody.transform;
+
+            //     rigidBody.isKinematic = true; //Disables Physics on this object
+            //     GetComponent<Collider>().enabled = false;
+            //     transform.parent = collision.transform;
+            //     insideSomething = true;
+            //     player.StartGrappling(collision.collider);
+
+            //     StopGrappling();
+            // }
+            // else if (!insideSomething)
+            // {
+            //     rigidBody.isKinematic = true; //Disables Physics on this object
+            //     GetComponent<Collider>().enabled = false;
+            //     transform.parent = collision.transform;
+            //     insideSomething = true;
+            //     player.StartGrappling(collision.collider);
+            // }
         }
     }
 
@@ -84,6 +124,11 @@ public class GrappleHead : MonoBehaviour
         {
             transform.position -= (transform.position - player.transform.position).normalized * (25 / SPEED);
             yield return new WaitForSeconds(.02f);
+        }
+        if (grabbedObj != null) { // Only when object is grabbable
+            grab.grabObject(grabbedObj);
+            grabRig = null;
+            grabbedObj = null;
         }
         rigidBody.isKinematic = false; //enables physics
         GetComponent<Collider>().enabled = true;
