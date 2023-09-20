@@ -64,29 +64,47 @@ public class GrappleHead : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerGrapple>() == null)
         {
-            if (!insideSomething && collision.gameObject.CompareTag("Grabbable")) { // Code for if the object was grabbable
-                grabbedObj = collision.gameObject;
-                grabRig = grabbedObj.GetComponent<Rigidbody>();
-                grabRig.isKinematic = true;
-                grabRig.transform.parent = rigidBody.transform;
-                // grabRig.transform.parent = rigidBody.transform;
 
+            if (!insideSomething) {
+                if (collision.gameObject.CompareTag("Grabbable")) {
+                    grabbedObj = collision.gameObject;
+                    grabRig = grabbedObj.GetComponent<Rigidbody>();
+                    grabRig.isKinematic = true;
+                    grabRig.transform.parent = rigidBody.transform;
+                }
                 rigidBody.isKinematic = true; //Disables Physics on this object
                 GetComponent<Collider>().enabled = false;
                 transform.parent = collision.transform;
                 insideSomething = true;
                 player.StartGrappling(collision.collider);
+                if (collision.gameObject.CompareTag("Grabbable")) {
+                    StopGrappling();
+                }
+            }
 
-                StopGrappling();
-            }
-            else if (!insideSomething)
-            {
-                rigidBody.isKinematic = true; //Disables Physics on this object
-                GetComponent<Collider>().enabled = false;
-                transform.parent = collision.transform;
-                insideSomething = true;
-                player.StartGrappling(collision.collider);
-            }
+            // if (!insideSomething && collision.gameObject.CompareTag("Grabbable")) { // Code for if the object was grabbable
+            //     grabbedObj = collision.gameObject;
+            //     grabRig = grabbedObj.GetComponent<Rigidbody>();
+            //     grabRig.isKinematic = true;
+            //     grabRig.transform.parent = rigidBody.transform;
+            //     // grabRig.transform.parent = rigidBody.transform;
+
+            //     rigidBody.isKinematic = true; //Disables Physics on this object
+            //     GetComponent<Collider>().enabled = false;
+            //     transform.parent = collision.transform;
+            //     insideSomething = true;
+            //     player.StartGrappling(collision.collider);
+
+            //     StopGrappling();
+            // }
+            // else if (!insideSomething)
+            // {
+            //     rigidBody.isKinematic = true; //Disables Physics on this object
+            //     GetComponent<Collider>().enabled = false;
+            //     transform.parent = collision.transform;
+            //     insideSomething = true;
+            //     player.StartGrappling(collision.collider);
+            // }
         }
     }
 
