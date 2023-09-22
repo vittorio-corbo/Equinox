@@ -41,6 +41,10 @@ public class PlayerGrapple : MonoBehaviour
 
     private Vector3 momentum;
 
+    private Rigidbody holdRigid;
+    private bool holding;
+    private bool prevHolding;
+
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
 
@@ -80,19 +84,70 @@ public class PlayerGrapple : MonoBehaviour
         //Use FindObjectsOfTypeAll so it finds inactive scripts too
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
         grappleHead.gameObject.SetActive(false);
+        holding = Input.GetKeyDown(KeyCode.F);
+        prevHolding = holding;
     }
 
     // Update is called once per frame
     //MOVE DA CAMERA
     void Update()
     {
-        RaycastHit hit;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F)) {
+            holding = true;
+        }
+        if (Input.GetKeyUp(KeyCode.F)) {
+            holding = false;
+        }
+        Debug.Log(holding);
+
+        if (holding) {
+            if (holding != prevHolding) {
+                HoldSurface();
+            }
+            if (holdRigid != null) {
+                rigidbody.velocity = holdRigid.velocity;
+            }
+           
+        } else {
+            holdRigid = null;
+        }
+
+        if (Input.GetMouseButtonDown(0) && !holding)
         {
             //PLAY SOUND
             source.Play();
             grappleHead.StartMovement(transform.position, transform.forward);
         }
+
+        ChangeCube();        
+
+        if (timer != -1.0f) { 
+            timer += Time.deltaTime;
+            // int seconds = timer % 60;
+            //print(timer);
+            if (timer >= 0.20f)
+            {
+                hand = GameObject.Find("CinematicBlackBarsContainer");
+                //print(hand);
+                if (hand != null) { 
+                hand.SetActive(false);
+                }
+            } 
+        }
+
+        prevHolding = holding;
+    }
+
+    private void HoldSurface() {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) //not check for layer anymore
+        {
+            holdRigid = hit.transform.GetComponent<Rigidbody>();
+        }
+    }
+
+    private void ChangeCube() {
+        RaycastHit hit;
         //used to be 100
         if (Physics.Raycast(transform.position, transform.forward, out hit, MAXDISTANCE)) //not check for layer anymore
         {
@@ -180,20 +235,6 @@ public class PlayerGrapple : MonoBehaviour
         {
             cubeRenderer.enabled = false;
             goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
-        }
-
-        if (timer != -1.0f) { 
-            timer += Time.deltaTime;
-            // int seconds = timer % 60;
-            //print(timer);
-            if (timer >= 0.20f)
-            {
-                hand = GameObject.Find("CinematicBlackBarsContainer");
-                //print(hand);
-                if (hand != null) { 
-                hand.SetActive(false);
-                }
-            } 
         }
     }
 
