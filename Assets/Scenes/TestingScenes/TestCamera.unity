@@ -757,6 +757,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3693561969249265832, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 93aa940e530db084e92ec284922a8077, type: 3}
     - target: {fileID: 6403545265453732062, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -769,6 +773,14 @@ PrefabInstance:
       propertyPath: goal
       value: 
       objectReference: {fileID: 102118944}
+    - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      propertyPath: alphaMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 53d95f797a6773942b0e7b3d6bb6ddf8, type: 2}
+    - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      propertyPath: cubeAlpha
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: MAXCUBEDIST
       value: 5000
@@ -1974,6 +1986,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 55e9b9c3c19c772479f63a0ed1835a89, type: 3}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: SPEED
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: shoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 93aa940e530db084e92ec284922a8077, type: 3}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: hitObject
+      value: 
+      objectReference: {fileID: 8300000, guid: 55e9b9c3c19c772479f63a0ed1835a89, type: 3}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: shootGrapple
+      value: 
+      objectReference: {fileID: 8300000, guid: 93aa940e530db084e92ec284922a8077, type: 3}
+    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
+      propertyPath: doneRetracting
+      value: 
+      objectReference: {fileID: 8300000, guid: 776b968472035304dafbd7822e62cc4c, type: 3}
     - target: {fileID: 7054827177133817321, guid: a340d245ce603664794cf66055ccdca7, type: 3}
       propertyPath: m_Name
       value: Grapple Head
