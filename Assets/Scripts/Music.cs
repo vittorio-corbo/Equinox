@@ -27,6 +27,7 @@ public class Music : MonoBehaviour
     public float volume;
     public float doppler;
     AudioSource audio;
+    public bool BeatzAreDroppin = true;
 
 
     public AudioClip clipToUse;
@@ -34,9 +35,12 @@ public class Music : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-        sceneName = SceneManager.GetActiveScene().name;
-        BeatDrop(audio, clipToUse, volume, doppler);
+        if (BeatzAreDroppin)
+        {
+            audio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+            sceneName = SceneManager.GetActiveScene().name;
+            BeatDrop(audio, clipToUse, volume, doppler);
+        }
     }
 
     // Update is called once per frame

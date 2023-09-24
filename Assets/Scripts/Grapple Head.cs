@@ -7,10 +7,17 @@ public class GrappleHead : MonoBehaviour
 {
     public bool insideSomething;
     public float SPEED;
+
+    //Handles sounds that will play when the grappling hook does things
+    public AudioClip hit;
+    public AudioClip shoot;
+    public AudioClip doneRetracting;
+
     private PlayerGrapple player;
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
+    private AudioSource playerAudio;
     private GameObject grabbedObj;
     private Rigidbody grabRig;
     private GrabScript grab;
@@ -18,6 +25,7 @@ public class GrappleHead : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<PlayerGrapple>();
+        playerAudio = player.GetComponent<AudioSource>();
         grab = FindObjectOfType<GrabScript>();
         rigidBody = GetComponent<Rigidbody>();
         grapplingHookLine = transform.GetChild(0).GetComponent<LineRenderer>();
@@ -43,6 +51,7 @@ public class GrappleHead : MonoBehaviour
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
+        player.outOfRange = true;
         if (retracting)
         {
             return;
@@ -53,6 +62,7 @@ public class GrappleHead : MonoBehaviour
             return;
         }
         gameObject.SetActive(true);
+        PlaySFX(shoot);
         transform.position = startPosition + direction.normalized * 1f;
         rigidBody.AddForce(direction * SPEED);
     }
@@ -77,6 +87,7 @@ public class GrappleHead : MonoBehaviour
                 transform.parent = collision.transform;
                 insideSomething = true;
                 player.StartGrappling(collision.collider);
+                PlaySFX(hit);
                 if (collision.gameObject.CompareTag("Grabbable")) {
                     StopGrappling();
                 }
@@ -134,5 +145,21 @@ public class GrappleHead : MonoBehaviour
         GetComponent<Collider>().enabled = true;
         gameObject.SetActive(false);
         retracting = false;
+        PlaySFX(doneRetracting);
+        player.outOfRange = false;
+    }
+
+    //Plays the sound, prints stack trace to console if it cannot find the file
+    private void PlaySFX(AudioClip clip)
+    {
+        try
+        {
+            playerAudio.clip = clip;
+            playerAudio.Play();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 }
