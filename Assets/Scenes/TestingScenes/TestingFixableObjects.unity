@@ -387,8 +387,16 @@ PrefabInstance:
       value: Moveable Object (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.x
@@ -613,8 +621,16 @@ PrefabInstance:
       value: Moveable Object (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.y
@@ -686,8 +702,16 @@ PrefabInstance:
       value: Moveable Object (6)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4713425849991517377, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mesh
@@ -1246,7 +1270,7 @@ GameObject:
   - component: {fileID: 774796953}
   m_Layer: 0
   m_Name: NeedBattery
-  m_TagString: Untagged
+  m_TagString: MoveableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2215,8 +2239,16 @@ PrefabInstance:
       value: Moveable Object (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.y
@@ -2570,8 +2602,16 @@ PrefabInstance:
       value: Moveable Object (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.x
@@ -3027,11 +3067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Drag
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalPosition.x

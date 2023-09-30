@@ -105,12 +105,7 @@ public class PlayerGrapple : MonoBehaviour
             CrosshairAlpha(1.0f);
         }
         if (Input.GetKeyDown(KeyCode.F)) {
-            Debug.Log("Pressing");
-            HoldSurface();
-        }
-        if (Input.GetKeyUp(KeyCode.F)) {
-            Debug.Log("No Longer Pressing");
-            StopHolding();
+            ToggleHold();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -140,6 +135,18 @@ public class PlayerGrapple : MonoBehaviour
         prevHolding = holding;
     }
 
+    private void ToggleHold()
+    {
+        if (GetComponent<HingeJoint>() == null)
+        {
+            HoldSurface();
+        }
+        else
+        {
+            StopHolding();
+        }
+    }
+
     private void HoldSurface() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) //not check for layer anymore
@@ -155,10 +162,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void StopHolding()
     {
-        if (GetComponent<HingeJoint>() != null)
-        {
-            Destroy(GetComponent<HingeJoint>());
-        }
+        Destroy(GetComponent<HingeJoint>());
     }
 
     private void ChangeCube() {
