@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &930362547243115352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3524438547438419538}
+  m_Layer: 8
+  m_Name: HoldTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3524438547438419538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930362547243115352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.76, y: 0, z: 0.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1553643018557935149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2945877172666008631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8160138132377030021}
+  m_Layer: 8
+  m_Name: grabbedObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8160138132377030021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945877172666008631}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.413, y: -0.231, z: 0.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6446061168560974835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6403545265453732062
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +78,7 @@ GameObject:
   - component: {fileID: 3601599568045394829}
   - component: {fileID: 3693561969249265832}
   - component: {fileID: 7135133530751734024}
+  - component: {fileID: 9211640960753821600}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -37,6 +100,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6446061168560974835}
+  - {fileID: 3524438547438419538}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2291174812501205177
@@ -157,7 +221,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 147644826f9d50a40bfdc6c49f9b3d85, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 93aa940e530db084e92ec284922a8077, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -260,13 +324,31 @@ MonoBehaviour:
     m_Bits: 256
   cinematicBarsContainerGO: {fileID: 0}
   rigidbody: {fileID: 2583534258027352862}
-  MAXDISTANCE: 50
-  MAXCUBEDIST: 0
+  MAXDISTANCE: 70
+  MAXCUBEDIST: 5000
   cube: {fileID: 0}
+  cubeAlpha: 0.5
+  alphaMat: {fileID: 2100000, guid: 53d95f797a6773942b0e7b3d6bb6ddf8, type: 2}
+  outOfRange: 0
   goal: {fileID: 0}
-  grappleForce: 10
+  grappleForce: 30
   dampingAngle: 30
   dampingSpeed: 0.005
+--- !u!114 &9211640960753821600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403545265453732062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fb94811acb2574c9263ea2c7e5c635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6403545265453732062}
+  posHold: {fileID: 3524438547438419538}
+  pickUpText: {fileID: 0}
 --- !u!1 &7769617461335444141
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +380,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.537, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8160138132377030021}
   m_Father: {fileID: 1553643018557935149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2098283102706859728
@@ -378,5 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fb94811acb2574c9263ea2c7e5c635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  posHold: {fileID: 0}
+  player: {fileID: 6403545265453732062}
+  posHold: {fileID: 8160138132377030021}
+  pickUpText: {fileID: 0}

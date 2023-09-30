@@ -113,7 +113,6 @@ public class PlayerGrapple : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F)) {
             holding = false;
         }
-        Debug.Log(holding);
 
         if (holding) {
             if (holding != prevHolding) {
