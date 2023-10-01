@@ -94,7 +94,7 @@ public class NeedExternalObject : Reporter
             {
                 checkBool = checkBool && check.isFixed;
             }
-            if (checkBool && !isFixed)
+            if (checkBool && !this.isFixed)
             {
                 Fix();
                 fixedText.SetActive(true);
@@ -113,9 +113,6 @@ public class NeedExternalObject : Reporter
         return this.isFixed;
     }
 
-    public string getMechanism()
-    {
-        return mechanism;
-    }
+
 }
 

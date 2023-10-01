@@ -7,12 +7,22 @@ public class Reporter : MonoBehaviour
     List<Reportee> reportees = new List<Reportee>();
     Reporter selfReportee;
     public bool isFixed = false;
-    protected void Fix()
+    public  void Fix()
     {
         isFixed = true;
         foreach (Reportee reportee in reportees)
         {
-            reportee.Report();
+            reportee.GatherReport();
         }
+    }
+
+    public void AddReportee(Reportee rep) 
+    {
+        reportees.Add(rep);
+    }
+
+    public bool GetFixed()
+    {
+        return isFixed;
     }
 }
