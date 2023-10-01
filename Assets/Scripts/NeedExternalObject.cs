@@ -72,6 +72,36 @@ public class NeedExternalObject : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.GetComponent<FixingObject>() != null)
+        {
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type)
+                {
+                    check.isFixed = true;
+                    FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
+                    joint.connectedBody = GetComponent<Rigidbody>();
+                    collision.gameObject.tag = "MoveableObject";
+                    break;
+                }
+            }
+            bool checkBool = true;
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                checkBool = checkBool && check.isFixed;
+            }
+            if (checkBool)
+            {
+                isFixed = true;
+                fixedText.SetActive(true);
+            }
+        }
+    }
+
     private IEnumerator HideTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
