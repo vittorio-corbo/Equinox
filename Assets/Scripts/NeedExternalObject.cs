@@ -10,6 +10,7 @@ public class NeedExternalObject : MonoBehaviour
     public float detectionRadius = 20f;
     private Boolean isFixed = false;
     private GrabbableDisenable grabbedObject = null;
+    public string mechanism;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,16 @@ public class NeedExternalObject : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         fixedText.SetActive(false);
+    }
+
+    public bool getFixed()
+    {
+        return this.isFixed;
+    }
+
+    public string getMechanism()
+    {
+        return mechanism;
     }
 }
 
