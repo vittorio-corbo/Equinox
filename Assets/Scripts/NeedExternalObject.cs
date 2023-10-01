@@ -2,32 +2,42 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static FixingObject;
 
 public class NeedExternalObject : MonoBehaviour
 {
     public GameObject fixedText;
     public Transform slot; // specific slot for grabbable object
     public float detectionRadius = 20f;
-    private Boolean isFixed = false;
-    private GrabbableDisenable grabbedObject = null;
-    public string mechanism;
+    private bool isFixed = false;
+
+    [SerializeField] private List<FixingObjectType> fixingTypes;
+    private List<FixableObjectCheck> fixableObjectChecks = new List<FixableObjectCheck>();
+    private class FixableObjectCheck
+    {
+        public FixingObjectType type;
+        public bool isFixed;
+
+        public FixableObjectCheck(FixingObjectType type)
+        {
+            this.type = type;
+            isFixed = false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         fixedText.SetActive(false);
+        foreach (FixingObjectType type in fixingTypes)
+        {
+            fixableObjectChecks.Add(new FixableObjectCheck(type));
+        }
 
     }
     // Update is called once per frame
     void Update()
     {
-        // if grappable object is collided in the correct slot, isFixed is true, and grabbable object is inserted to the needExternalObject
-        // if isFixed, hint the player
-
-        if (grabbedObject != null)
-        {
-            grabbedObject.Sticks(transform);
-        }
-
         // Check if the text is active and hide it after 2 seconds
         if (fixedText.activeSelf)
         {
@@ -36,13 +46,62 @@ public class NeedExternalObject : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Grabbable"))
-        { 
-            isFixed = true;
-            grabbedObject = collision.gameObject.GetComponent<GrabbableDisenable>();
-            fixedText.SetActive(true);
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.GetComponent<FixingObject>() != null)
+        {
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type)
+                {
+                    check.isFixed = true;
+                    FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
+                    joint.connectedBody = GetComponent<Rigidbody>();
+                    collision.gameObject.tag = "MoveableObject";
+                    break;
+                }
+            }
+            bool checkBool = true;
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                checkBool = checkBool && check.isFixed;
+            }
+            if (checkBool)
+            {
+                isFixed = true;
+                fixedText.SetActive(true);
+            }
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.GetComponent<FixingObject>() != null)
+        {
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type)
+                {
+                    check.isFixed = true;
+                    FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
+                    joint.connectedBody = GetComponent<Rigidbody>();
+                    collision.gameObject.tag = "MoveableObject";
+                    break;
+                }
+            }
+            bool checkBool = true;
+            foreach (FixableObjectCheck check in fixableObjectChecks)
+            {
+                checkBool = checkBool && check.isFixed;
+            }
+            if (checkBool)
+            {
+                isFixed = true;
+                fixedText.SetActive(true);
+            }
+        }
+    }
+
     private IEnumerator HideTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
