@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using static FixingObject;
 
-public class NeedExternalObject : MonoBehaviour
+public class NeedExternalObject : Reporter
 {
     public GameObject fixedText;
     public Transform slot; // specific slot for grabbable object
     public float detectionRadius = 20f;
-    private bool isFixed = false;
 
     [SerializeField] private List<FixingObjectType> fixingTypes;
     private List<FixableObjectCheck> fixableObjectChecks = new List<FixableObjectCheck>();
@@ -65,9 +64,9 @@ public class NeedExternalObject : MonoBehaviour
             {
                 checkBool = checkBool && check.isFixed;
             }
-            if (checkBool)
+            if (checkBool && !isFixed)
             {
-                isFixed = true;
+                Fix();
                 fixedText.SetActive(true);
             }
         }
@@ -86,6 +85,7 @@ public class NeedExternalObject : MonoBehaviour
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
                     collision.gameObject.tag = "MoveableObject";
+                    collision.GetComponent<Collider>().isTrigger = true;
                     break;
                 }
             }
@@ -94,9 +94,9 @@ public class NeedExternalObject : MonoBehaviour
             {
                 checkBool = checkBool && check.isFixed;
             }
-            if (checkBool)
+            if (checkBool && !this.isFixed)
             {
-                isFixed = true;
+                Fix();
                 fixedText.SetActive(true);
             }
         }
@@ -107,5 +107,12 @@ public class NeedExternalObject : MonoBehaviour
         yield return new WaitForSeconds(delay);
         fixedText.SetActive(false);
     }
+
+    public bool getFixed()
+    {
+        return this.isFixed;
+    }
+
+
 }
 
