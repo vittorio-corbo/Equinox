@@ -133,8 +133,9 @@ public class GrappleHead : MonoBehaviour
         retracting = true;
         while ((transform.position - player.transform.position).magnitude > 1f)
         {
-            transform.position -= (transform.position - player.transform.position).normalized * (25 / SPEED);
+            transform.position -= (transform.position - player.transform.position).normalized * (SPEED / 25);
             //transform.position -= (transform.position - player.transform.position).normalized * (SPEED);
+
             yield return new WaitForSeconds(.02f);
         }
         if (grabbedObj != null) { // Only when object is grabbable

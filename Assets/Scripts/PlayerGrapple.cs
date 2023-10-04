@@ -46,7 +46,6 @@ public class PlayerGrapple : MonoBehaviour
 
     private Vector3 momentum;
 
-    private Rigidbody holdRigid;
     private bool holding;
     private bool prevHolding;
 
@@ -105,29 +104,11 @@ public class PlayerGrapple : MonoBehaviour
         {
             CrosshairAlpha(1.0f);
         }
-        RaycastHit hit;
-        if (Input.GetMouseButtonDown(0))
         if (Input.GetKeyDown(KeyCode.F)) {
-            holding = true;
-        }
-        if (Input.GetKeyUp(KeyCode.F)) {
-            holding = false;
-        }
-        Debug.Log(holding);
-
-        if (holding) {
-            if (holding != prevHolding) {
-                HoldSurface();
-            }
-            if (holdRigid != null) {
-                rigidbody.velocity = holdRigid.velocity;
-            }
-           
-        } else {
-            holdRigid = null;
+            ToggleHold();
         }
 
-        if (Input.GetMouseButtonDown(0) && !holding)
+        if (Input.GetMouseButtonDown(0))
         {
             //PLAY SOUND
             //source.Play();
@@ -146,7 +127,7 @@ public class PlayerGrapple : MonoBehaviour
                 hand = GameObject.Find("CinematicBlackBarsContainer");
                 //print(hand);
                 if (hand != null) { 
-                hand.SetActive(false);
+                    hand.SetActive(false);
                 }
             } 
         }
@@ -154,12 +135,34 @@ public class PlayerGrapple : MonoBehaviour
         prevHolding = holding;
     }
 
+    private void ToggleHold()
+    {
+        if (GetComponent<HingeJoint>() == null)
+        {
+            HoldSurface();
+        }
+        else
+        {
+            StopHolding();
+        }
+    }
+
     private void HoldSurface() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) //not check for layer anymore
         {
-            holdRigid = hit.transform.GetComponent<Rigidbody>();
+            if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                Debug.Log(hit.transform.gameObject);
+                HingeJoint joint = gameObject.AddComponent<HingeJoint>();
+                joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+            }
         }
+    }
+
+    private void StopHolding()
+    {
+        Destroy(GetComponent<HingeJoint>());
     }
 
     private void ChangeCube() {

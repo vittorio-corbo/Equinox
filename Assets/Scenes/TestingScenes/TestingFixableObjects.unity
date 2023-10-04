@@ -387,9 +387,23 @@ PrefabInstance:
       value: Moveable Object (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mass
       value: 3
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.x
       value: -2.09556
@@ -613,9 +627,23 @@ PrefabInstance:
       value: Moveable Object (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mass
       value: 20
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.y
       value: 27.828
@@ -686,9 +714,23 @@ PrefabInstance:
       value: Moveable Object (6)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mass
       value: 30
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Mass
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4713425849991517377, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1246,7 +1288,11 @@ GameObject:
   - component: {fileID: 774796953}
   m_Layer: 0
   m_Name: NeedBattery
+<<<<<<< HEAD
   m_TagString: Untagged
+=======
+  m_TagString: MoveableObject
+>>>>>>> master
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1266,7 +1312,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+<<<<<<< HEAD
   m_IsTrigger: 0
+=======
+  m_IsTrigger: 1
+>>>>>>> master
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1352,6 +1402,10 @@ MonoBehaviour:
   fixedText: {fileID: 917170207}
   slot: {fileID: 0}
   detectionRadius: 20
+<<<<<<< HEAD
+=======
+  fixingTypes: 0000000000000000
+>>>>>>> master
 --- !u!54 &774796953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2214,9 +2268,23 @@ PrefabInstance:
       value: Moveable Object (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mass
       value: 6
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Mass
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.y
       value: -0.46075276
@@ -2569,9 +2637,23 @@ PrefabInstance:
       value: Moveable Object (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mass
       value: 6
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_Mass
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.32927
@@ -3026,12 +3108,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Drag
+<<<<<<< HEAD
       value: 0.2
+=======
+      value: 0
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_Mass
       value: 5
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 3175633078288224177, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     - target: {fileID: 4865943961132617016, guid: 87017a8d426e0e443b8732597cb2b69d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
