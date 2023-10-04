@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.02978895, g: 0.017727647, b: 0.01999595, a: 1}
+  m_IndirectSpecularColor: {r: 0.029643869, g: 0.017717203, b: 0.019852372, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1226,7 +1226,6 @@ MonoBehaviour:
   fixedText: {fileID: 917170207}
   slot: {fileID: 0}
   detectionRadius: 20
-  fixingTypes: 
 --- !u!1 &775271134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,8 +2792,8 @@ SceneRoots:
   - {fileID: 1494384352}
   - {fileID: 1053871363}
   - {fileID: 418310622}
-  - {fileID: 637273724}
   - {fileID: 9074081388130719481}
+  - {fileID: 637273724}
   - {fileID: 808275923}
   - {fileID: 774796951}
   - {fileID: 221347966}
