@@ -3736,10 +3736,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2583534258027352862, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3693561969249265832, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: MaxDistance
       value: 1841.537
@@ -3757,20 +3753,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 102118944}
     - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
-      propertyPath: MAXCUBEDIST
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
-      propertyPath: MAXDISTANCE
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: renderitpls
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7135133530751734024, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
-      propertyPath: grappleForce
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11543,10 +11527,6 @@ PrefabInstance:
     - target: {fileID: 4974491726026761853, guid: a340d245ce603664794cf66055ccdca7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6782534782827188804, guid: a340d245ce603664794cf66055ccdca7, type: 3}
-      propertyPath: SPEED
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7054827177133817321, guid: a340d245ce603664794cf66055ccdca7, type: 3}
       propertyPath: m_Name
