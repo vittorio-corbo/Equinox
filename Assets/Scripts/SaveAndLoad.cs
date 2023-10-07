@@ -10,7 +10,7 @@ public class SaveAndLoad : MonoBehaviour
     private Vector3 velocity;
     private Vector3 angularVelocity;
 
-    public void Save()
+    public virtual void Save()
     {
         position = transform.position;
         rotation = transform.rotation;
@@ -19,7 +19,7 @@ public class SaveAndLoad : MonoBehaviour
         Debug.Log("Saved " + gameObject.name);
     }
 
-    public void Load()
+    public virtual void Load()
     {
         transform.position = position;
         transform.rotation = rotation;

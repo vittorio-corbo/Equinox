@@ -16,4 +16,6 @@ public class FixingObject : MonoBehaviour
     }
 
     public FixingObjectType type;
+
+    public bool isGrabbable;
 }
