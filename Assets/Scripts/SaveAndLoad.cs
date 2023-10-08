@@ -12,8 +12,8 @@ public class SaveAndLoad : MonoBehaviour
 
     public virtual void Save()
     {
-        position = transform.position;
-        rotation = transform.rotation;
+        position = transform.localPosition;
+        rotation = transform.localRotation;
         velocity = GetComponent<Rigidbody>().velocity;
         angularVelocity = GetComponent<Rigidbody>().angularVelocity;
         Debug.Log("Saved " + gameObject.name);
@@ -21,9 +21,10 @@ public class SaveAndLoad : MonoBehaviour
 
     public virtual void Load()
     {
-        transform.position = position;
-        transform.rotation = rotation;
+        transform.localPosition = position;
+        transform.localRotation = rotation;
         GetComponent<Rigidbody>().velocity = velocity;
         GetComponent<Rigidbody>().angularVelocity = angularVelocity;
+        Debug.Log(gameObject.name + position);
     }
 }

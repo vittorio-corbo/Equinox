@@ -46,10 +46,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private GrappleHead grappleHead;
 
-    private Vector3 momentum;
-
     private bool holding;
-    private bool prevHolding;
 
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
@@ -91,7 +88,6 @@ public class PlayerGrapple : MonoBehaviour
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
         grappleHead.gameObject.SetActive(false);
         holding = Input.GetKeyDown(KeyCode.F);
-        prevHolding = holding;
     }
 
     // Update is called once per frame
@@ -149,8 +145,6 @@ public class PlayerGrapple : MonoBehaviour
                 }
             } 
         }
-
-        prevHolding = holding;
     }
 
     private void ToggleHold()

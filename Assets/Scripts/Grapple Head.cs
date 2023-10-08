@@ -128,6 +128,12 @@ public class GrappleHead : MonoBehaviour
         StartCoroutine(Retract());
     }
 
+    public void StopGrapplingNoRetract()
+    {
+        insideSomething = false;
+        player.StopGrappling();
+    }
+
     public IEnumerator Retract()
     {
         retracting = true;
