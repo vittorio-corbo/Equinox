@@ -6,13 +6,18 @@ public class GrabScript : MonoBehaviour
 {
     public GameObject player;
     public Transform posHold;
-    public GameObject pickUpText;
+    private GameObject pickUpText;
     private GameObject lookObject;
     private GameObject grabbedObject;
     private Rigidbody grabRigid;
     private bool currLook = false;
     private Vector3 turnVector = new Vector3(1, 1, 1);
     private float chuckSpeed = 300f;
+
+    private void Start()
+    {
+        pickUpText = GameObject.Find("PickUp"); //this will later be in the canvas' code instead of in grab script
+    }
 
     void Update() {
         
