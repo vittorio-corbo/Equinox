@@ -8,8 +8,8 @@ public class GrappleSave : SaveAndLoad
     private Transform parent;
     private bool isActive;
     private bool retracting;
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void Awake()
     {
         script = GetComponent<GrappleHead>();
         if (script == null)

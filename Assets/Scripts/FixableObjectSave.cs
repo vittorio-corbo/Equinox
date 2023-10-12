@@ -9,7 +9,7 @@ public class FixableObjectSave : SaveAndLoad
 
     private List<NeedExternalObject.FixableObjectCheck> checks;
 
-    private void Awake()
+    protected override void Awake()
     {
         script = GetComponent<NeedExternalObject>();
         if (script == null)

@@ -10,6 +10,24 @@ public class SaveAndLoad : MonoBehaviour
     private Vector3 velocity;
     private Vector3 angularVelocity;
 
+
+    protected virtual void Awake()
+    {
+        if (GetComponent<Rigidbody>() == null)
+        {
+            Destroy(this);
+        }
+        if (GetComponent<NeedExternalObject>() != null)
+        {
+            gameObject.AddComponent<FixableObjectSave>();
+            Destroy(this);
+        }
+        if (GetComponent<GrappleHead>() != null)
+        {
+            gameObject.AddComponent<GrappleSave>();
+            Destroy(this);
+        }
+    }
     public virtual void Save()
     {
         position = transform.localPosition;
