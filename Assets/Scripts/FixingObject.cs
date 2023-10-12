@@ -13,6 +13,7 @@ public class FixingObject : MonoBehaviour
         Motor,
         Antenna,
         Gear,
+        Rock,
     }
 
     public FixingObjectType type;
