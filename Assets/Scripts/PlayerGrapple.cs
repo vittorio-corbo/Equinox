@@ -160,6 +160,7 @@ public class PlayerGrapple : MonoBehaviour
                 Debug.Log(hit.transform.gameObject);
                 HingeJoint joint = gameObject.AddComponent<HingeJoint>();
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                crc.MAXDISTANCE = 100f;
             }
         }
     }
@@ -167,6 +168,7 @@ public class PlayerGrapple : MonoBehaviour
     private void StopHolding()
     {
         Destroy(GetComponent<HingeJoint>());
+        crc.MAXDISTANCE = 50f;
     }
 
     
@@ -177,6 +179,7 @@ public class PlayerGrapple : MonoBehaviour
         {
             StopCoroutine(grappleCoroutine);
         }
+        StopHolding();
         grappleCoroutine = StartCoroutine(Grappling(collider));
     }
 

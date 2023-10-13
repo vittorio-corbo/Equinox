@@ -3,7 +3,11 @@ guid: 784f1eb9c3699dd428f634662f6333da
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hit: {instanceID: 0}
+  - shoot: {instanceID: 0}
+  - doneRetracting: {fileID: 8300000, guid: 5737d817052cd6c4a9a4335e849ae999, type: 3}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

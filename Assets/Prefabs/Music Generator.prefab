@@ -46,16 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: 0.8
   doppler: 0
-  lvl1: {fileID: 8300000, guid: 65f7e64bfc617134c811a29c147a1144, type: 3}
-  lvl2: {fileID: 0}
-  lvl3: {fileID: 0}
-  lvl4: {fileID: 0}
-  lvl5: {fileID: 0}
-  lvl6: {fileID: 0}
-  lvl7: {fileID: 0}
-  lvl8: {fileID: 0}
-  lvl9: {fileID: 0}
-  lvl10: {fileID: 0}
-  title: {fileID: 0}
-  end: {fileID: 0}
-  def: {fileID: 8300000, guid: e507897220ff4ac4d92f41315ee5ab0f, type: 3}
+  BeatzAreDroppin: 1
+  clipToUse: {fileID: 8300000, guid: 5737d817052cd6c4a9a4335e849ae999, type: 3}
