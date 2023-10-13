@@ -20,6 +20,8 @@ public class PlayerGrapple : MonoBehaviour
     private GameObject hand;
     float timer = -1.0f;
 
+    public GameObject grappleGun;
+
     //Hiding the camera's rigidbody with the one we want
     [SerializeField] private new Rigidbody rigidbody;
 
@@ -27,7 +29,7 @@ public class PlayerGrapple : MonoBehaviour
     //public float MAXCUBEDIST;
 
     
-    private CrosshairCubeRayCast crc;
+    public CrosshairCubeRayCast crc;
     //Note: This is used both when the point you are looking at is out of range and when you are already grappling
     
 
@@ -72,8 +74,6 @@ public class PlayerGrapple : MonoBehaviour
 
         //GET GOAL Renderer
         goalRenderer = goal.GetComponent<Renderer>();
-        //GET SPHERE RENDERER (cube crosshair)
-        cubeRenderer = cube.GetComponent<Renderer>();
 
         //GET AUDIO SOURCE
         source = GetComponent<AudioSource>();
@@ -104,14 +104,6 @@ public class PlayerGrapple : MonoBehaviour
                 go.Load();
             }
         }
-        if (outOfRange)
-        {
-            CrosshairAlpha(0.5f);
-        }
-        else
-        {
-            CrosshairAlpha(1.0f);
-        }
         if (Input.GetKeyDown(KeyCode.F)) {
             ToggleHold();
         }
@@ -124,10 +116,10 @@ public class PlayerGrapple : MonoBehaviour
             crc.outOfRange = true;
             if (crc.hitSomething)
             {
-                grappleHead.StartMovement(transform.position, (crc.hit.point - transform.position).normalized);
+                grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
             } else
             {
-                grappleHead.StartMovement(transform.position, transform.forward);
+                grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
             }
         }
      

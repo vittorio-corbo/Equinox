@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
         RaycastHit hit;
         lineRenderer.SetPosition(0, origin);
         //used to be 100
-        if (Physics.Raycast(playerCameraOrigin, direction, out hit, playerGrapple.MAXDISTANCE)) 
+        if (Physics.Raycast(playerCameraOrigin, direction, out hit, playerGrapple.crc.MAXDISTANCE)) 
         {
 
         }
