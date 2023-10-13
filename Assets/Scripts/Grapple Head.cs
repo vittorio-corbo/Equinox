@@ -13,7 +13,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip shoot;
     public AudioClip doneRetracting;
 
-    private PlayerGrapple player;
+    public PlayerGrapple player;
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
@@ -124,9 +124,14 @@ public class GrappleHead : MonoBehaviour
         insideSomething = false;
         player.StopGrappling();
         transform.parent = null;
-        rigidBody.isKinematic = false; //enables physics
         rigidBody.velocity = Vector3.zero;
         StartCoroutine(Retract());
+    }
+
+    public void StopGrapplingNoRetract()
+    {
+        insideSomething = false;
+        player.StopGrappling();
     }
 
     public IEnumerator Retract()
@@ -144,6 +149,7 @@ public class GrappleHead : MonoBehaviour
             grabRig = null;
             grabbedObj = null;
         }
+        rigidBody.isKinematic = false; //enables physics
         GetComponent<Collider>().enabled = true;
         gameObject.SetActive(false);
         retracting = false;
