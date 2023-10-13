@@ -13,7 +13,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip shoot;
     public AudioClip doneRetracting;
 
-    private PlayerGrapple player;
+    public PlayerGrapple player;
     private CrosshairCubeRayCast crc;
     private Rigidbody rigidBody;
     public bool retracting;
@@ -37,7 +37,7 @@ public class GrappleHead : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            grapplingHookLine.SetPosition(0, player.transform.position);
+            grapplingHookLine.SetPosition(0, player.grappleGun.transform.position);
             grapplingHookLine.SetPosition(1, transform.position);
             grapplingHookLine.startWidth = .25f;
             grapplingHookLine.endWidth = .25f;
@@ -128,6 +128,13 @@ public class GrappleHead : MonoBehaviour
         transform.parent = null;
         rigidBody.velocity = Vector3.zero;
         StartCoroutine(Retract());
+    }
+
+    public void StopGrapplingNoRetract()
+    {
+        insideSomething = false;
+        player.StopGrappling();
+        transform.parent = null;
     }
 
     public IEnumerator Retract()

@@ -7,7 +7,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
 
     public float MAXDISTANCE;
     public float MAXCUBEDIST;
-    public GameObject cube;
     private Renderer cubeRenderer;
     private Material defaultCubeMat;
     public float cubeAlpha;
@@ -27,7 +26,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cubeRenderer = cube.GetComponent<Renderer>();
+        cubeRenderer = gameObject.GetComponent<Renderer>();
         goalRenderer = goal.GetComponent<Renderer>();
     }
 
@@ -59,6 +58,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
         }
         else
         {
+            Debug.Log(cubeRenderer);
             Color c = cubeRenderer.material.color;
             cubeRenderer.material = defaultCubeMat;
             cubeRenderer.material.SetColor("_Color", c);
@@ -82,10 +82,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
-                cube.transform.position = hit.point;
+                transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                transform.localScale = newVector.magnitude * (Vector3.one) / 16;
 
 
                 if (hit.collider.CompareTag("Stopper"))
@@ -144,10 +144,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
-                cube.transform.position = hit.point;
+                transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                transform.localScale = newVector.magnitude * (Vector3.one) / 16;
             }
 
         }
@@ -160,7 +160,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
         {
             hitSomething = false;
             cubeRenderer.enabled = false;
-            goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
         }
         return hitSomething;
     }
