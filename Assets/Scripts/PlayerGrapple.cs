@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 using static UnityEngine.GraphicsBuffer;
 
@@ -40,10 +42,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private GrappleHead grappleHead;
 
-    private Vector3 momentum;
-
     private bool holding;
-    private bool prevHolding;
 
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
@@ -55,10 +54,8 @@ public class PlayerGrapple : MonoBehaviour
 
     //Experimenting with cube rendering
 
-
     public void ShowBars() {
         cinematicBarsContainerGO.SetActive(true);
-        Debug.Log("asdf");
     }
 
     // Start is called before the first frame update
@@ -75,6 +72,8 @@ public class PlayerGrapple : MonoBehaviour
 
         //GET GOAL Renderer
         goalRenderer = goal.GetComponent<Renderer>();
+        //GET SPHERE RENDERER (cube crosshair)
+        cubeRenderer = cube.GetComponent<Renderer>();
 
         //GET AUDIO SOURCE
         source = GetComponent<AudioSource>();
@@ -83,13 +82,39 @@ public class PlayerGrapple : MonoBehaviour
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
         grappleHead.gameObject.SetActive(false);
         holding = Input.GetKeyDown(KeyCode.F);
-        prevHolding = holding;
     }
 
     // Update is called once per frame
     //MOVE DA CAMERA
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("saving");
+            foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+            {
+                go.Save();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("loading");
+            foreach(SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+            {
+                go.Load();
+            }
+        }
+        if (outOfRange)
+        {
+            CrosshairAlpha(0.5f);
+        }
+        else
+        {
+            CrosshairAlpha(1.0f);
+        }
+        if (Input.GetKeyDown(KeyCode.F)) {
+            ToggleHold();
+        }
 
         
         if (Input.GetMouseButtonDown(0))
@@ -120,8 +145,6 @@ public class PlayerGrapple : MonoBehaviour
                 }
             } 
         }
-
-        prevHolding = holding;
     }
 
     private void ToggleHold()
@@ -158,6 +181,10 @@ public class PlayerGrapple : MonoBehaviour
 
     public void StartGrappling(Collider collider)
     {
+        if (grappleCoroutine != null)
+        {
+            StopCoroutine(grappleCoroutine);
+        }
         grappleCoroutine = StartCoroutine(Grappling(collider));
     }
 
