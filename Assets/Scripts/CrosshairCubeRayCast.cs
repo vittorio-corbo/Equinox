@@ -58,7 +58,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
         }
         else
         {
-            Debug.Log(cubeRenderer);
             Color c = cubeRenderer.material.color;
             cubeRenderer.material = defaultCubeMat;
             cubeRenderer.material.SetColor("_Color", c);

@@ -56,6 +56,5 @@ public class GrappleSave : SaveAndLoad
             script.StopGrappling();
         }
         base.Load();
-        Debug.Log(GetComponent<Rigidbody>().velocity);
     }
 }
