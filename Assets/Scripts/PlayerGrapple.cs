@@ -23,17 +23,13 @@ public class PlayerGrapple : MonoBehaviour
     //Hiding the camera's rigidbody with the one we want
     [SerializeField] private new Rigidbody rigidbody;
 
-    public float MAXDISTANCE;
-    public float MAXCUBEDIST;
+    //public float MAXDISTANCE;
+    //public float MAXCUBEDIST;
 
-    //CROSSHAIR
-    public GameObject cube;
-    private Renderer cubeRenderer;
-    private Material defaultCubeMat;
-    public float cubeAlpha;
-    public Material alphaMat;
+    
+    private CrosshairCubeRayCast crc;
     //Note: This is used both when the point you are looking at is out of range and when you are already grappling
-    public bool outOfRange = false;
+    
 
     //GOAL REFERENCE
     public GameObject goal;
@@ -65,7 +61,7 @@ public class PlayerGrapple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        crc = FindObjectOfType<CrosshairCubeRayCast>();
         //KILL BLINK IF IT PLAYS AT THE START
         hand = GameObject.Find("CinematicBlackBarsContainer");
         //print(hand);
@@ -73,6 +69,9 @@ public class PlayerGrapple : MonoBehaviour
             hand.SetActive(false);
         }
 
+
+        //GET GOAL Renderer
+        goalRenderer = goal.GetComponent<Renderer>();
         //GET SPHERE RENDERER (cube crosshair)
         cubeRenderer = cube.GetComponent<Renderer>();
 
@@ -117,15 +116,21 @@ public class PlayerGrapple : MonoBehaviour
             ToggleHold();
         }
 
+        
         if (Input.GetMouseButtonDown(0))
         {
             //PLAY SOUND
             //source.Play();
-            outOfRange = true;
-            grappleHead.StartMovement(transform.position, transform.forward);
+            crc.outOfRange = true;
+            if (crc.hitSomething)
+            {
+                grappleHead.StartMovement(transform.position, (crc.hit.point - transform.position).normalized);
+            } else
+            {
+                grappleHead.StartMovement(transform.position, transform.forward);
+            }
         }
-
-        ChangeCube();        
+     
 
         if (timer != -1.0f) { 
             timer += Time.deltaTime;
@@ -172,86 +177,7 @@ public class PlayerGrapple : MonoBehaviour
         Destroy(GetComponent<HingeJoint>());
     }
 
-    private void ChangeCube() {
-        RaycastHit hit;
-        //used to be 100
-        if (Physics.Raycast(transform.position, transform.forward, out hit, MAXDISTANCE)) //not check for layer anymore
-        {
-            //HOLDS THE DISTANCE
-            Vector3 newVector = hit.point - transform.position;
-
-
-            //CUBE CROSSHAIR
-            if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
-            {//IGNORE SELF AND GRAPPLE HEAD
-                //SET CUBE POSITION
-                cube.transform.position = hit.point;
-                
-                //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one)/16;
-
-
-                if (hit.collider.CompareTag("Stopper"))
-                {
-                    //SET TO BLACK
-                    cubeRenderer.material.SetColor("_Color", new Color(0f, 0f, 0f, cubeAlpha));
-                    cubeRenderer.enabled = true;
-                }
-
-                else if (hit.collider.CompareTag("Glass"))
-                { //IT IS GLASS
-                    //CHANGE COLOR
-                    cubeRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, cubeAlpha));
-                    cubeRenderer.enabled = true;
-                }
-                else if (hit.collider.CompareTag("Grabbable")) { // Grabbable Object
-                    // Blue because I'm bad at color theory. Sue me
-                    // This is not legal advice. I am not a practicing lawyer in the state of Georgia.
-                    cubeRenderer.material.color = Color.blue;
-                    cubeRenderer.enabled = true;
-                }
-                else
-                { //NO IMPORTANT COLLISIONS HAPPENING
-                    //SET CUBE TO RED
-                    cubeRenderer.material.SetColor("_Color", new Color(1f, 0f, 0f,cubeAlpha));
-                    cubeRenderer.enabled = true;
-
-                    //SET GOAL TO ORANGE
-
-
-                }
-                
-            }
-        }
-        //If the object is too far to grapple, turn the crosshair cube gray but keep tracking it
-        else if (Physics.Raycast(transform.position, transform.forward, out hit, MAXCUBEDIST))
-        {
-            //HOLDS THE DISTANCE
-            Vector3 newVector = hit.point - transform.position;
-            cubeRenderer.enabled = true;
-            cubeRenderer.material.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f, cubeAlpha));
-
-            //CUBE CROSSHAIR
-            if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
-            {//IGNORE SELF AND GRAPPLE HEAD
-                //SET CUBE POSITION
-                cube.transform.position = hit.point;
-
-                //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
-            }
-
-        }
-        //If the raycast doesn't work (Returns false, meaning no hit), then stop showing the cube yo
-        //A software tester walks into a bar, runs into a bar, crawls into a bar, attempts to noclip through a bar, and teleports to a bar
-        //He then orders one beer, two beers, 0 beers, -5 beers, 999999999 beers, and a water.
-        //A real customer enters the bar and asks where the bathroom is.
-        //The bar catches fire.
-        else
-        {
-            cubeRenderer.enabled = false;
-        }
-    }
+    
 
     public void StartGrappling(Collider collider)
     {
@@ -310,23 +236,5 @@ public class PlayerGrapple : MonoBehaviour
         }
     }
 
-    //Sets the transparency of the crosshair to the desired value. 
-    //Changes material of crosshair to match what is needed
-    public void CrosshairAlpha(float alpha)
-    {
-
-        if (alpha < 1)
-        {
-            Color c = cubeRenderer.material.color;
-            cubeRenderer.material = alphaMat;
-            cubeRenderer.material.SetColor("_Color", c);
-        }
-        else
-        {
-            Color c = cubeRenderer.material.color;
-            cubeRenderer.material = defaultCubeMat;
-            cubeRenderer.material.SetColor("_Color", c);
-        }
-        cubeAlpha = alpha;
-    }
+ 
 }
