@@ -1626,7 +1626,6 @@ GameObject:
   - component: {fileID: 935092267}
   - component: {fileID: 935092266}
   - component: {fileID: 935092265}
-  - component: {fileID: 935092268}
   m_Layer: 2
   m_Name: CrosshairCube
   m_TagString: CUBE
@@ -1641,7 +1640,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935092263}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1699,26 +1698,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &935092268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935092263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3809f2a2035447bbf50bf4502a37bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MAXDISTANCE: 500
-  MAXCUBEDIST: 500
-  cubeAlpha: 0
-  alphaMat: {fileID: 0}
-  outOfRange: 0
-  hitSomething: 0
-  hitPoint: {x: 0, y: 0, z: 0}
-  goal: {fileID: 102118944}
 --- !u!1 &991955023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2019,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082502229}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1227940657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7769617461335444141, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+  m_PrefabInstance: {fileID: 8682546443789362598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1227940661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227940657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3809f2a2035447bbf50bf4502a37bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAXDISTANCE: 500
+  MAXCUBEDIST: 500
+  cube: {fileID: 935092263}
+  cubeAlpha: 0
+  alphaMat: {fileID: 0}
+  outOfRange: 0
+  hitSomething: 0
+  hitPoint: {x: 0, y: 0, z: 0}
+  goal: {fileID: 0}
 --- !u!1 &1453473580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2709,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7769617461335444141, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1227940661}
   m_SourcePrefab: {fileID: 100100000, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
 --- !u!1001 &9074081388130719481
 PrefabInstance:

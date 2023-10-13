@@ -7,6 +7,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
 
     public float MAXDISTANCE;
     public float MAXCUBEDIST;
+    [SerializeField] private GameObject cube;
     private Renderer cubeRenderer;
     private Material defaultCubeMat;
     public float cubeAlpha;
@@ -26,7 +27,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cubeRenderer = gameObject.GetComponent<Renderer>();
+        cubeRenderer = cube.GetComponent<Renderer>();
         goalRenderer = goal.GetComponent<Renderer>();
     }
 
@@ -81,10 +82,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
-                transform.position = hit.point;
+                cube.transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
 
 
                 if (hit.collider.CompareTag("Stopper"))
@@ -143,10 +144,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
                 //SET CUBE POSITION
-                transform.position = hit.point;
+                cube.transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
             }
 
         }
