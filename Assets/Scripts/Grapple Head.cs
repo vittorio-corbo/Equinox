@@ -14,6 +14,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip doneRetracting;
 
     private PlayerGrapple player;
+    private CrosshairCubeRayCast crc;
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
@@ -24,6 +25,7 @@ public class GrappleHead : MonoBehaviour
 
     void Awake()
     {
+        crc = FindObjectOfType<CrosshairCubeRayCast>();
         player = FindObjectOfType<PlayerGrapple>();
         playerAudio = player.GetComponent<AudioSource>();
         grab = FindObjectOfType<GrabScript>();
@@ -44,14 +46,14 @@ public class GrappleHead : MonoBehaviour
         {
             grapplingHookLine.gameObject.SetActive(false);
         }
-        if (player.MAXDISTANCE < (player.transform.position - transform.position).magnitude)
+        if (crc.MAXDISTANCE < (player.transform.position - transform.position).magnitude)
         {
             StopGrappling();
         }
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
-        player.outOfRange = true;
+        crc.outOfRange = true;
         if (retracting)
         {
             return;
@@ -148,7 +150,7 @@ public class GrappleHead : MonoBehaviour
         gameObject.SetActive(false);
         retracting = false;
         PlaySFX(doneRetracting);
-        player.outOfRange = false;
+        crc.outOfRange = false;
     }
 
     //Plays the sound, prints stack trace to console if it cannot find the file
