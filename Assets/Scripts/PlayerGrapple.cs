@@ -60,7 +60,6 @@ public class PlayerGrapple : MonoBehaviour
 
     public void ShowBars() {
         cinematicBarsContainerGO.SetActive(true);
-        Debug.Log("asdf");
     }
 
     // Start is called before the first frame update
@@ -76,10 +75,6 @@ public class PlayerGrapple : MonoBehaviour
 
         //GET SPHERE RENDERER (cube crosshair)
         cubeRenderer = cube.GetComponent<Renderer>();
-        
-
-        //GET GOAL Renderer
-        goalRenderer = goal.GetComponent<Renderer>();
 
         //GET AUDIO SOURCE
         source = GetComponent<AudioSource>();
@@ -225,17 +220,7 @@ public class PlayerGrapple : MonoBehaviour
 
 
                 }
-
-                //Sets goal to teal when looking at it
-                if (hit.collider.name == "Goal")
-                {
-                    cubeRenderer.enabled = false;
-                    goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
-                }
-                else
-                {
-                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
-                }
+                
             }
         }
         //If the object is too far to grapple, turn the crosshair cube gray but keep tracking it
@@ -265,7 +250,6 @@ public class PlayerGrapple : MonoBehaviour
         else
         {
             cubeRenderer.enabled = false;
-            goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
         }
     }
 
