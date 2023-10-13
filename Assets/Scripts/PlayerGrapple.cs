@@ -271,6 +271,10 @@ public class PlayerGrapple : MonoBehaviour
 
     public void StartGrappling(Collider collider)
     {
+        if (grappleCoroutine != null)
+        {
+            StopCoroutine(grappleCoroutine);
+        }
         grappleCoroutine = StartCoroutine(Grappling(collider));
     }
 

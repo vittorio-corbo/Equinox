@@ -14,6 +14,7 @@ public class FixableObjectSave : SaveAndLoad
         script = GetComponent<NeedExternalObject>();
         if (script == null)
         {
+            gameObject.AddComponent<SaveAndLoad>();
             GameObject.Destroy(this);
         }
     }

@@ -13,7 +13,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip shoot;
     public AudioClip doneRetracting;
 
-    private PlayerGrapple player;
+    public PlayerGrapple player;
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
