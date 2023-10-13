@@ -6,7 +6,7 @@ public class Reportee : MonoBehaviour
 {
     public List<Reporter> minions;
     Reporter myReporter;
-    protected bool allFixed;
+    public bool allFixed;
     public string fixedString;
     // Start is called before the first frame update
     protected void Start()
