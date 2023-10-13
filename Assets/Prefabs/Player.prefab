@@ -97,7 +97,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -43.4, y: 34.1, z: -39.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.58468, y: 0.58468, z: 0.58468}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6446061168560974835}
@@ -234,7 +234,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1841.537
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   cinematicBarsContainerGO: {fileID: 0}
   grappleGun: {fileID: 6945076566986892568}
   rigidbody: {fileID: 2583534258027352862}
-  crc: {fileID: 0}
+  crc: {fileID: 2614897911811143987}
   goal: {fileID: 0}
   grappleForce: 30
   dampingAngle: 30
@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 6446061168560974835}
   - component: {fileID: 2098283102706859728}
   - component: {fileID: 2778368968494269705}
+  - component: {fileID: 2614897911811143987}
   m_Layer: 8
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -795,3 +796,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1553643018557935149}
   mouseSensitivity: 1
+--- !u!114 &2614897911811143987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769617461335444141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3809f2a2035447bbf50bf4502a37bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAXDISTANCE: 500
+  MAXCUBEDIST: 500
+  cube: {fileID: 0}
+  cubeAlpha: 0
+  alphaMat: {fileID: 0}
+  outOfRange: 0
+  hitSomething: 0
+  hitPoint: {x: 0, y: 0, z: 0}
+  goal: {fileID: 0}

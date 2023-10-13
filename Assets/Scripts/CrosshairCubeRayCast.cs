@@ -44,7 +44,8 @@ public class CrosshairCubeRayCast : MonoBehaviour
         }
 
         hitSomething = ChangeCube();
-        cubeRenderer.enabled = false;
+        //cubeRenderer.enabled = false;
+
     }
 
     //Sets the transparency of the crosshair to the desired value. 
