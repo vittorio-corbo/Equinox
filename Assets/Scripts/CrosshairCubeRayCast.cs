@@ -7,7 +7,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
 
     public float MAXDISTANCE;
     public float MAXCUBEDIST;
-    public GameObject cube;
+    [SerializeField] private GameObject cube;
     private Renderer cubeRenderer;
     private Material defaultCubeMat;
     public float cubeAlpha;
@@ -44,6 +44,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
         }
 
         hitSomething = ChangeCube();
+        cubeRenderer.enabled = false;
     }
 
     //Sets the transparency of the crosshair to the desired value. 
@@ -160,7 +161,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
         {
             hitSomething = false;
             cubeRenderer.enabled = false;
-            goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
         }
         return hitSomething;
     }

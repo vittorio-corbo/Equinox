@@ -27,6 +27,11 @@ public class SaveAndLoad : MonoBehaviour
             gameObject.AddComponent<GrappleSave>();
             Destroy(this);
         }
+        if (GetComponent<Reportee>() != null)
+        {
+            gameObject.AddComponent<ReporteeSave>();
+            Destroy(this);
+        }
     }
     public virtual void Save()
     {
