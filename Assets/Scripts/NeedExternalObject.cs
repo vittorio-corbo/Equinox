@@ -11,8 +11,10 @@ public class NeedExternalObject : Reporter
     public float detectionRadius = 20f;
 
     [SerializeField] private List<FixingObjectType> fixingTypes;
-    private List<FixableObjectCheck> fixableObjectChecks = new List<FixableObjectCheck>();
-    private class FixableObjectCheck
+    public List<FixableObjectCheck> fixableObjectChecks = new List<FixableObjectCheck>();
+
+    public List<GameObject> connectedObjects = new List<GameObject>();
+    public class FixableObjectCheck
     {
         public FixingObjectType type;
         public bool isFixed;
@@ -21,6 +23,12 @@ public class NeedExternalObject : Reporter
         {
             this.type = type;
             isFixed = false;
+        }
+
+        public FixableObjectCheck(FixableObjectCheck check)
+        {
+            this.type = check.type;
+            this.isFixed = check.isFixed;
         }
     }
 
@@ -56,6 +64,7 @@ public class NeedExternalObject : Reporter
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
                     collision.gameObject.tag = "MoveableObject";
+                    connectedObjects.Add(collision.gameObject);
                     break;
                 }
             }
