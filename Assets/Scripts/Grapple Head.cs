@@ -12,6 +12,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip hit;
     public AudioClip shoot;
     public AudioClip doneRetracting;
+    public AudioClip retractingNow;
 
     public PlayerGrapple player;
     private CrosshairCubeRayCast crc;
@@ -64,7 +65,7 @@ public class GrappleHead : MonoBehaviour
             return;
         }
         gameObject.SetActive(true);
-        PlaySFX(shoot);
+        PlaySFX(shoot, false);
         transform.position = startPosition + direction.normalized * 1f;
         rigidBody.AddForce(direction * SPEED);
     }
@@ -78,19 +79,28 @@ public class GrappleHead : MonoBehaviour
         {
 
             if (!insideSomething) {
-                if (collision.gameObject.CompareTag("Grabbable")) {
+                if (collision.gameObject.CompareTag("Grabbable")
+                    && grab.getObjectGrabbed() == false)
+                {
                     grabbedObj = collision.gameObject;
                     grabRig = grabbedObj.GetComponent<Rigidbody>();
                     grabRig.isKinematic = true;
                     grabRig.transform.parent = rigidBody.transform;
+                }
+                if (collision.gameObject.CompareTag("Grabbable")
+                    && grab.getObjectGrabbed() == true)
+                {
+                    StopGrappling();
+                    return;
                 }
                 rigidBody.isKinematic = true; //Disables Physics on this object
                 GetComponent<Collider>().enabled = false;
                 transform.parent = collision.transform;
                 insideSomething = true;
                 player.StartGrappling(collision.collider);
-                PlaySFX(hit);
-                if (collision.gameObject.CompareTag("Grabbable")) {
+                PlaySFX(hit, false);
+                if (collision.gameObject.CompareTag("Grabbable")
+                    && grab.getObjectGrabbed() == false) {
                     StopGrappling();
                 }
             }
@@ -139,6 +149,7 @@ public class GrappleHead : MonoBehaviour
 
     public IEnumerator Retract()
     {
+        PlaySFX(retractingNow, true);
         retracting = true;
         while ((transform.position - player.transform.position).magnitude > 1f)
         {
@@ -156,21 +167,34 @@ public class GrappleHead : MonoBehaviour
         GetComponent<Collider>().enabled = true;
         gameObject.SetActive(false);
         retracting = false;
-        PlaySFX(doneRetracting);
+        PlaySFX(doneRetracting, false);
         crc.outOfRange = false;
     }
 
     //Plays the sound, prints stack trace to console if it cannot find the file
-    private void PlaySFX(AudioClip clip)
+    private void PlaySFX(AudioClip clip, bool loop)
     {
         try
         {
             playerAudio.clip = clip;
+            if (loop)
+            {
+                playerAudio.loop = true;
+            }
+            else
+            {
+                playerAudio.loop = false;
+            }
             playerAudio.Play();
         }
         catch (System.Exception e)
         {
             Debug.LogException(e);
         }
+    }
+    
+    private void StopSFX()
+    {
+        playerAudio.Stop();
     }
 }

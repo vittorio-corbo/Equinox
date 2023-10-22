@@ -812,8 +812,7 @@ MonoBehaviour:
   MAXCUBEDIST: 500
   cube: {fileID: 0}
   cubeAlpha: 0
-  alphaMat: {fileID: 0}
+  alphaMat: {fileID: 2100000, guid: 53d95f797a6773942b0e7b3d6bb6ddf8, type: 2}
   outOfRange: 0
   hitSomething: 0
   hitPoint: {x: 0, y: 0, z: 0}
-  goal: {fileID: 0}

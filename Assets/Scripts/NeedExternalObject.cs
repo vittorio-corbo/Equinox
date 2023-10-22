@@ -58,7 +58,9 @@ public class NeedExternalObject : Reporter
         {
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
-                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type)
+                if (!check.isFixed
+                    && collision.gameObject.transform.parent == null
+                    && collision.gameObject.GetComponent<FixingObject>().type == check.type)
                 {
                     check.isFixed = true;
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();

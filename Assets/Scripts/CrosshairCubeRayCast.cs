@@ -21,14 +21,14 @@ public class CrosshairCubeRayCast : MonoBehaviour
     public Vector3 hitPoint;
 
     //GOAL REFERENCE
-    public GameObject goal;
-    private Renderer goalRenderer;
+    //public GameObject goal;
+    //private Renderer goalRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         cubeRenderer = cube.GetComponent<Renderer>();
-        goalRenderer = goal.GetComponent<Renderer>();
+        //goalRenderer = goal.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -125,11 +125,11 @@ public class CrosshairCubeRayCast : MonoBehaviour
                 if (hit.collider.name == "Goal")
                 {
                     cubeRenderer.enabled = false;
-                    goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
+                    //goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
                 }
                 else
                 {
-                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
+                    //goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
                 }
             }
         }
