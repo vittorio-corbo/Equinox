@@ -20,15 +20,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
     public bool hitSomething;
     public Vector3 hitPoint;
 
-    //GOAL REFERENCE
-    public GameObject goal;
-    private Renderer goalRenderer;
-
     // Start is called before the first frame update
     void Start()
     {
         cubeRenderer = cube.GetComponent<Renderer>();
-        goalRenderer = goal.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -75,7 +70,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, MAXDISTANCE)) //not check for layer anymore
         {
             hitSomething = true;
-            Debug.Log(hit);
             //HOLDS THE DISTANCE
             Vector3 newVector = hit.point - transform.position;
 
@@ -119,17 +113,6 @@ public class CrosshairCubeRayCast : MonoBehaviour
                     //SET GOAL TO ORANGE
 
 
-                }
-
-                //Sets goal to teal when looking at it
-                if (hit.collider.name == "Goal")
-                {
-                    cubeRenderer.enabled = false;
-                    goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
-                }
-                else
-                {
-                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
                 }
             }
         }

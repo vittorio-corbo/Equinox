@@ -126,6 +126,7 @@ public class GrappleHead : MonoBehaviour
         insideSomething = false;
         player.StopGrappling();
         transform.parent = null;
+        rigidBody.isKinematic = false;
         rigidBody.velocity = Vector3.zero;
         StartCoroutine(Retract());
     }
@@ -152,7 +153,6 @@ public class GrappleHead : MonoBehaviour
             grabRig = null;
             grabbedObj = null;
         }
-        rigidBody.isKinematic = false; //enables physics
         GetComponent<Collider>().enabled = true;
         gameObject.SetActive(false);
         retracting = false;
