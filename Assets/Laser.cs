@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using static CrossHair;
 
 public class Laser : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class Laser : MonoBehaviour
 
     public float MAXDISTANCE;
     RaycastHit hit;
-     
+
+    public delegate void SwitchCrossHair(CrossHairStates state);
+    public static event SwitchCrossHair switchCrossHair;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -37,7 +40,13 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(0, origin);
         lineRenderer.SetPosition(1, endPoint);
 
-        if (Physics.Raycast(playerCameraOrigin, direction, out hit, MAXDISTANCE)) 
+        laserRaycast(playerCameraOrigin, direction);
+
+    }
+
+    private void laserRaycast(Vector3 origin, Vector3 direction)
+    {
+        if (Physics.Raycast(origin, direction, out hit, MAXDISTANCE))
         {
             Vector3 referenceScaleVector = hit.point - transform.position;
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
@@ -49,32 +58,32 @@ public class Laser : MonoBehaviour
                 if (hit.collider.CompareTag("Stopper"))
                 {
                     //SET TO BLACK
-                    laserDotLight.color = Color.black;
+                    laserDotLight.color = new Color(0, 0, 0, 0.5f);
+                    switchCrossHair?.Invoke(CrossHairStates.Stopper);
                 }
 
                 else if (hit.collider.CompareTag("Glass"))
                 { //IT IS GLASS
-                    //CHANGE COLOR
                     laserDotLight.color = Color.white;
+                    switchCrossHair?.Invoke(CrossHairStates.Glass);
                 }
                 else if (hit.collider.CompareTag("Grabbable"))
                 { // Grabbable Object
-                    // Blue because I'm bad at color theory. Sue me
-                    // This is not legal advice. I am not a practicing lawyer in the state of Georgia.
                     laserDotLight.color = Color.blue;
+                    switchCrossHair?.Invoke(CrossHairStates.Grabbable);
                 }
                 else
                 { //NO IMPORTANT COLLISIONS HAPPENING
-                    //SET CUBE TO RED
                     laserDotLight.color = Color.red;
+                    switchCrossHair?.Invoke(CrossHairStates.DefaultObject);
                 }
                 laserDot.SetActive(true);
             }
-        } else
+        }
+        else
         {
             laserDot.SetActive(false);
+            switchCrossHair?.Invoke(CrossHairStates.NoObject);
         }
-        
-
     }
 }
