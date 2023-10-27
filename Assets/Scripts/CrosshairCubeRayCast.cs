@@ -53,6 +53,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
     public void CrosshairAlpha(float alpha)
     {
 
+
         if (alpha < 1)
         {
             Color c = cubeRenderer.material.color;
@@ -150,6 +151,13 @@ public class CrosshairCubeRayCast : MonoBehaviour
 
                 //SET CUBE SCALE (based on distance)
                 cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+
+                cube.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal) * transform.rotation;
+                //cube.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+                //Debug.Log(hit.normal);
+                //cube.transform.rotation = Quaternion.FromToRotation(Vector3.left, hit.normal);
+                //myTargetReticle.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                //transform.rotation = Quaternion.FromToRotation(Vector3.forward, normal);
             }
 
         }
