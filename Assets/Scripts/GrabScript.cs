@@ -53,13 +53,13 @@ public class GrabScript : MonoBehaviour
     }
 
     public void grabObject(GameObject grabObj) {
-        grabbedObject = grabObj;
-        grabRigid = grabbedObject.GetComponent<Rigidbody>();
-        grabRigid.isKinematic = true;
-        grabRigid.transform.parent = posHold.transform;
-        grabbedObject.transform.rotation = posHold.rotation;
-        Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
-        pickUpText.SetActive(false);
+            grabbedObject = grabObj;
+            grabRigid = grabbedObject.GetComponent<Rigidbody>();
+            grabRigid.isKinematic = true;
+            grabRigid.transform.parent = posHold.transform;
+            grabbedObject.transform.rotation = posHold.rotation;
+            Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            pickUpText.SetActive(false);
     }
 
     // Drops Object
@@ -78,6 +78,11 @@ public class GrabScript : MonoBehaviour
 
     void moveObject() {
         grabbedObject.transform.position = posHold.transform.position;
+    }
+
+    public bool getObjectGrabbed()
+    {
+        return (grabbedObject != null);
     }
 
 }
