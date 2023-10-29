@@ -54,7 +54,7 @@ public class GrappleHead : MonoBehaviour
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
-        crc.outOfRange = true;
+        crc.shooting = true;
         if (retracting)
         {
             return;
@@ -168,7 +168,7 @@ public class GrappleHead : MonoBehaviour
         gameObject.SetActive(false);
         retracting = false;
         PlaySFX(doneRetracting, false);
-        crc.outOfRange = false;
+        crc.shooting = false;
     }
 
     //Plays the sound, prints stack trace to console if it cannot find the file
