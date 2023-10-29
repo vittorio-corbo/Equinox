@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.02978895, g: 0.017727647, b: 0.01999595, a: 1}
+  m_IndirectSpecularColor: {r: 0.029643869, g: 0.017717203, b: 0.019852372, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1121,6 +1121,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2614897911811143987, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 935092263}
     - target: {fileID: 6403545265453732062, guid: a061f3fce3c6bf840b07d6815200209f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3680,6 +3684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ec6a5fb9c429d4e87c42970aa841ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlImage: {fileID: 0}
 --- !u!4 &1852987124
 Transform:
   m_ObjectHideFlags: 0
