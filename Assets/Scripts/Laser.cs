@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.NetworkInformation;
 using UnityEngine;
-using static CrossHair;
 
 public class Laser : MonoBehaviour
 {
@@ -12,22 +11,27 @@ public class Laser : MonoBehaviour
     private GameObject playerCamera;
 
     public GameObject laserDot;
+    public GameObject laserPlane;
     private Light laserDotLight;
+
+    private Color transRed = new Color(1f, 0, 0, 0);
+    private Color transBlue = new Color(0, 0, 1f, 0);
+    private Color transWhite = new Color(1f, 1f, 1f, 0);
+    private Color transBlack = new Color(0, 0, 0, 0);
+
 
     public float MAXDISTANCE;
     RaycastHit hit;
 
-    public delegate void SwitchCrossHair(CrossHairStates state);
-    public static event SwitchCrossHair switchCrossHair;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         playerGrapple = GetComponentInParent<PlayerGrapple>();
         playerCamera = playerGrapple.transform.GetChild(0).gameObject;
-        lineRenderer.startWidth = .02f;
+        lineRenderer.startWidth = .01f;
         lineRenderer.endWidth = 0f;
         lineRenderer.positionCount = 2;
-        laserDotLight = laserDot.GetComponent<Light>();
+        laserDotLight = laserDot.GetComponent<Light>(); 
     }
 
     void Update()
@@ -48,42 +52,56 @@ public class Laser : MonoBehaviour
     {
         if (Physics.Raycast(origin, direction, out hit, MAXDISTANCE))
         {
-            Vector3 referenceScaleVector = hit.point - transform.position;
+            Vector3 referenceScaleVector = hit.point - origin;
+
+            
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
-                laserDot.transform.position = hit.point;
-                laserDotLight.range = referenceScaleVector.magnitude / 32;
+
+                laserPlane.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                laserPlane.transform.position = hit.point - referenceScaleVector.normalized * 0.6f;
+                laserPlane.transform.localScale = referenceScaleVector.magnitude * (Vector3.one) / 10;
+
+                laserDot.transform.position = hit.point - referenceScaleVector.normalized * 0.5f;
+                laserDotLight.range = referenceScaleVector.magnitude / 26;
 
 
                 if (hit.collider.CompareTag("Stopper"))
                 {
                     //SET TO BLACK
-                    laserDotLight.color = new Color(0, 0, 0, 0.5f);
-                    switchCrossHair?.Invoke(CrossHairStates.Stopper);
+                    lineRenderer.startColor = Color.black;
+                    lineRenderer.endColor = transBlack;
+                    laserDotLight.color = Color.black;
                 }
 
                 else if (hit.collider.CompareTag("Glass"))
                 { //IT IS GLASS
+                    lineRenderer.startColor = Color.white;
+                    lineRenderer.endColor = transWhite;
                     laserDotLight.color = Color.white;
-                    switchCrossHair?.Invoke(CrossHairStates.Glass);
                 }
                 else if (hit.collider.CompareTag("Grabbable"))
                 { // Grabbable Object
+                    lineRenderer.startColor = Color.blue;
+                    lineRenderer.endColor = transBlue;
                     laserDotLight.color = Color.blue;
-                    switchCrossHair?.Invoke(CrossHairStates.Grabbable);
                 }
                 else
                 { //NO IMPORTANT COLLISIONS HAPPENING
+                    lineRenderer.startColor = Color.red;
+                    lineRenderer.endColor = transRed;
                     laserDotLight.color = Color.red;
-                    switchCrossHair?.Invoke(CrossHairStates.DefaultObject);
                 }
                 laserDot.SetActive(true);
+                laserPlane.SetActive(true);
             }
         }
         else
         {
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = transRed;
             laserDot.SetActive(false);
-            switchCrossHair?.Invoke(CrossHairStates.NoObject);
+            laserPlane.SetActive(false);
         }
     }
 }

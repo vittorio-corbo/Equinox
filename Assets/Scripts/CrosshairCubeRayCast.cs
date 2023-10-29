@@ -81,7 +81,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
                 cube.transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 32;
 
 
                 if (hit.collider.CompareTag("Stopper"))
