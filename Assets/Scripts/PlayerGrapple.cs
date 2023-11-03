@@ -160,7 +160,7 @@ public class PlayerGrapple : MonoBehaviour
                 Debug.Log(hit.transform.gameObject);
                 HingeJoint joint = gameObject.AddComponent<HingeJoint>();
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-                crc.MAXDISTANCE = 100f;
+                crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
             }
         }
     }
