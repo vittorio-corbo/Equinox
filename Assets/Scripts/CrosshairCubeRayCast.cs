@@ -5,36 +5,36 @@ using UnityEngine;
 public class CrosshairCubeRayCast : MonoBehaviour
 {
 
-    public float MAXDISTANCE;
-    public float MAXCUBEDIST;
+    public float MAXDISTANCE = 70;
+    public float MAXCUBEDIST = 5000;
     [SerializeField] private GameObject cube;
     private Renderer cubeRenderer;
     private Material defaultCubeMat;
-    public float cubeAlpha;
+    private GameObject player;
+    public static float cubeAlpha = 0.5f;
     public Material alphaMat;
 
-    //outOfRange actually means that you are currently grappled and can't shoot right now
+    //outOfRange: You cannot grapple to this
     public bool outOfRange = false;
+    //shooting: The grapple is already shooting
+    public bool shooting = false;
 
     public RaycastHit hit;
     public bool hitSomething;
     public Vector3 hitPoint;
 
-    //GOAL REFERENCE
-    public GameObject goal;
-    private Renderer goalRenderer;
-
     // Start is called before the first frame update
     void Start()
     {
+        player = transform.parent.gameObject;
+        cube = Instantiate(cube, new Vector3(0,0,0), Quaternion.identity);
         cubeRenderer = cube.GetComponent<Renderer>();
-        goalRenderer = goal.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (outOfRange)
+        if (outOfRange || shooting)
         {
             CrosshairAlpha(0.5f);
         }
@@ -72,11 +72,37 @@ public class CrosshairCubeRayCast : MonoBehaviour
     public bool ChangeCube()
     {
         bool hitSomething = false;
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            hitSomething = true;
+            Vector3 newVector = hit.point - transform.position;
+            if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
+            {
+                cube.transform.position = hit.point;
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                if (hit.distance > MAXDISTANCE)
+                {
+                    outOfRange = true;
+                }
+                else
+                {
+                    outOfRange = false;
+                }
+                setColor();
+
+                cubeRenderer.enabled = true;
+            }
+        }
+        else
+        {
+            hitSomething = false;
+            cubeRenderer.enabled = false;
+        }
+        /*
         //used to be 100
         if (Physics.Raycast(transform.position, transform.forward, out hit, MAXDISTANCE)) //not check for layer anymore
         {
             hitSomething = true;
-            Debug.Log(hit);
             //HOLDS THE DISTANCE
             Vector3 newVector = hit.point - transform.position;
 
@@ -88,7 +114,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
                 cube.transform.position = hit.point;
 
                 //SET CUBE SCALE (based on distance)
-                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 16;
+                cube.transform.localScale = newVector.magnitude * (Vector3.one) / 32;
 
 
                 if (hit.collider.CompareTag("Stopper"))
@@ -121,21 +147,10 @@ public class CrosshairCubeRayCast : MonoBehaviour
 
 
                 }
-
-                //Sets goal to teal when looking at it
-                if (hit.collider.name == "Goal")
-                {
-                    cubeRenderer.enabled = false;
-                    goalRenderer.material.SetColor("_Color", new Color(0f, 1f, 1f));
-                }
-                else
-                {
-                    goalRenderer.material.SetColor("_Color", new Color(1f, 0.318f, 0f));
-                }
             }
         }
         //If the object is too far to grapple, turn the crosshair cube gray but keep tracking it
-        else if (Physics.Raycast(transform.position, transform.forward, out hit, MAXCUBEDIST))
+        else if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             hitSomething = true;
             //HOLDS THE DISTANCE
@@ -171,6 +186,51 @@ public class CrosshairCubeRayCast : MonoBehaviour
             hitSomething = false;
             cubeRenderer.enabled = false;
         }
+        */
         return hitSomething;
     }
+
+    //Sets the color of the crosshair cube based on the object tag and mass passed in
+    //returns nothing
+    private void setColor()
+    {
+        if (hit.collider.CompareTag("Stopper"))
+        {
+            cubeRenderer.material.SetColor("_Color", colors["RED"]);
+        }
+        else if (hit.collider.CompareTag("MoveableObject"))
+        {
+            if (hit.rigidbody.mass >= player.GetComponent<Rigidbody>().mass * 1.5)
+            {
+                cubeRenderer.material.SetColor("_Color", colors["ORANGE"]);
+            }
+            else if (hit.rigidbody.mass <= player.GetComponent<Rigidbody>().mass / 1.5)
+            {
+                cubeRenderer.material.SetColor("_Color", colors["GREEN"]);
+            }
+            else
+            {
+                cubeRenderer.material.SetColor("_Color", colors["YELLOW"]);
+            }
+        }
+        else if (hit.collider.CompareTag("Grabbable"))
+        {
+            cubeRenderer.material.SetColor("_Color", colors["BLUE"]);
+        }
+        else
+        {
+            cubeRenderer.material.SetColor("_Color", colors["CYAN"]);
+        }
+
+    }
+
+    Dictionary<string, Color> colors = new Dictionary<string, Color>()
+    {
+        {"RED", new Color(1.0f, 0.0f, 0.0f, cubeAlpha) },
+        {"BLUE", new Color(0.0f, 0.0f, 1.0f, cubeAlpha) },
+        {"GREEN", new Color(0.0f, 1.0f, 0.0f, cubeAlpha) },
+        {"ORANGE", new Color(1.0f, .5f, 0.0f, cubeAlpha) },
+        {"YELLOW", new Color(1.0f, 1.0f, 0.0f, cubeAlpha) },
+        {"CYAN", new Color(0.0f, 1.0f, 1.0f, cubeAlpha) }
+    };
 }
