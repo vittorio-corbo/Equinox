@@ -17,21 +17,23 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        //Quit Game
-        if (Input.GetKey("escape"))
+        if (!(PauseScript.isPaused))
         {
-            Application.Quit();
+            //Quit Game
+            if (Input.GetKey("escape"))
+            {
+                Application.Quit();
+            }
+            //RESET ROOM
+            if (Input.GetKey(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                controlImage.gameObject.SetActive(!controlImage.gameObject.activeSelf);
+            }
         }
-        //RESET ROOM
-        if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            controlImage.gameObject.SetActive(!controlImage.gameObject.activeSelf);
-        }
-
 
     }
 }
