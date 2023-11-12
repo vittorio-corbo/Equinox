@@ -13,4 +13,12 @@ public class AreaTrigger : MonoBehaviour
         //PlayMusic(AreaNumber);
         FindObjectOfType<PlayerSave>().SetArea(position, rotation);
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerSave>() != null)
+        {
+            EnterCheckpoint();
+        }
+    }
 }
