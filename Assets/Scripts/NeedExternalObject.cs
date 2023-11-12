@@ -77,6 +77,11 @@ public class NeedExternalObject : Reporter
             }
             if (checkBool && !isFixed)
             {
+                GetComponent<SaveAndLoad>().Save();
+                foreach (GameObject go in connectedObjects)
+                {
+                    go.GetComponent<SaveAndLoad>().Save();
+                }
                 Fix();
                 fixedText.SetActive(true);
             }
@@ -90,8 +95,9 @@ public class NeedExternalObject : Reporter
         {
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
-                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type)
+                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type && collision.gameObject.transform.parent == null)
                 {
+                    connectedObjects.Add(collision.gameObject);
                     check.isFixed = true;
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
@@ -107,6 +113,11 @@ public class NeedExternalObject : Reporter
             }
             if (checkBool && !this.isFixed)
             {
+                GetComponent<SaveAndLoad>().Save();
+                foreach (GameObject go in connectedObjects)
+                {
+                    go.GetComponent<SaveAndLoad>().Save();
+                }
                 Fix();
                 fixedText.SetActive(true);
             }

@@ -82,6 +82,10 @@ public class PlayerGrapple : MonoBehaviour
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
         grappleHead.gameObject.SetActive(false);
         holding = Input.GetKeyDown(KeyCode.F);
+        foreach (SaveAndLoad save in Resources.FindObjectsOfTypeAll<SaveAndLoad>())
+        {
+            save.Save();
+        }
     }
 
     // Update is called once per frame
@@ -90,14 +94,6 @@ public class PlayerGrapple : MonoBehaviour
     {
         if (!(PauseScript.isPaused))
         {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Debug.Log("saving");
-                foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
-                {
-                    go.Save();
-                }
-            }
             if (Input.GetKeyDown(KeyCode.L))
             {
                 Debug.Log("loading");
