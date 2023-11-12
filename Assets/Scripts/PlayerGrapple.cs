@@ -144,7 +144,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void ToggleHold()
     {
-        if (GetComponent<HingeJoint>() == null)
+        if (GetComponent<CharacterJoint>() == null)
         {
             HoldSurface();
         }
@@ -161,7 +161,7 @@ public class PlayerGrapple : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
                 Debug.Log(hit.transform.gameObject);
-                HingeJoint joint = gameObject.AddComponent<HingeJoint>();
+                CharacterJoint joint = gameObject.AddComponent<CharacterJoint>();
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
             }
@@ -170,7 +170,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void StopHolding()
     {
-        Destroy(GetComponent<HingeJoint>());
+        Destroy(GetComponent<CharacterJoint>());
         crc.MAXDISTANCE = 50f;
     }
 
