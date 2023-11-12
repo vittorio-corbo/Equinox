@@ -162,6 +162,7 @@ public class PlayerGrapple : MonoBehaviour
             {
                 Debug.Log(hit.transform.gameObject);
                 CharacterJoint joint = gameObject.AddComponent<CharacterJoint>();
+                joint.breakTorque = 0.005f;
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                 crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
             }
@@ -234,5 +235,8 @@ public class PlayerGrapple : MonoBehaviour
         }
     }
 
- 
+    private void OnJointBreak(float breakForce)
+    {
+        StopHolding();
+    }
 }
