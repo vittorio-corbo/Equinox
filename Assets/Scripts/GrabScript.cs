@@ -20,33 +20,46 @@ public class GrabScript : MonoBehaviour
     }
 
     void Update() {
-        
-        // Checks to see if object is in grabbable range.
-        if (grabbedObject == null) {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1f)) {
-                if (hit.transform.gameObject.tag == "Grabbable") {
-                    lookObject = hit.transform.gameObject;
-                    currLook = true;
-                    pickUpText.SetActive(true);
+        if (!(PauseScript.isPaused))
+        {
+            // Checks to see if object is in grabbable range.
+            if (grabbedObject == null)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1f))
+                {
+                    if (hit.transform.gameObject.tag == "Grabbable")
+                    {
+                        lookObject = hit.transform.gameObject;
+                        currLook = true;
+                        pickUpText.SetActive(true);
+                    }
                 }
-            } else {
-                lookObject = null;
-                currLook = false;
-                pickUpText.SetActive(false);
+                else
+                {
+                    lookObject = null;
+                    currLook = false;
+                    pickUpText.SetActive(false);
+                }
             }
-        }
-        
-        
-        // If looking at object and key pressed is E then pick up the object.
-        if (currLook && grabbedObject == null && Input.GetKeyDown(KeyCode.E)) {
-            grabObject(lookObject);
-        } else if (grabbedObject != null) {
-            moveObject();
-            if (Input.GetKeyDown(KeyCode.E)) {
-                dropObject(false);
-            } else if (Input.GetKeyDown(KeyCode.Q)) {
-                dropObject(true);
+
+
+            // If looking at object and key pressed is E then pick up the object.
+            if (currLook && grabbedObject == null && Input.GetKeyDown(KeyCode.E))
+            {
+                grabObject(lookObject);
+            }
+            else if (grabbedObject != null)
+            {
+                moveObject();
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    dropObject(false);
+                }
+                else if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    dropObject(true);
+                }
             }
         }
 

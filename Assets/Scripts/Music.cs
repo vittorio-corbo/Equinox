@@ -29,7 +29,7 @@ public class Music : MonoBehaviour
     AudioSource audio;
     public bool BeatzAreDroppin = true;
 
-
+    private bool paused;
     public AudioClip clipToUse;
 
     // Start is called before the first frame update
@@ -37,6 +37,7 @@ public class Music : MonoBehaviour
     {
         if (BeatzAreDroppin)
         {
+            volume = MenuActions.musicVolume;
             audio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
             sceneName = SceneManager.GetActiveScene().name;
             BeatDrop(audio, clipToUse, volume, doppler);
@@ -46,7 +47,10 @@ public class Music : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        audio.volume = MenuActions.musicVolume;
+        if (!paused && PauseScript.isPaused || paused && !(PauseScript.isPaused)) {
+            pause();
+        }
     }
 
     //Initiates a new music clip
@@ -69,5 +73,18 @@ public class Music : MonoBehaviour
             Debug.LogException(e);
             return success;
         }
+    }
+
+    void pause()
+    {
+        if (BeatzAreDroppin && !(PauseScript.isPaused))
+        {
+            audio.UnPause();
+        }
+        else
+        {
+            audio.Pause();
+        }
+        paused = !paused;
     }
 }

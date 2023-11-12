@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject options;
+    public GameObject main;
+    public string StartButtonScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,11 @@ public class MainMenu : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //TODO: Switch to SceneManager.GetActiveScene().buildIndex + 1 for build
+        SceneManager.LoadScene(StartButtonScene);
+        SceneManager.UnloadScene("Start");
+        PauseScript.isPaused = false;
+        PauseScript.pauseHelper(PauseScript.isPaused);
     }
     //public void OpenOptions() { }
     //public void CloseOptions() { }
@@ -26,5 +33,17 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         //print("game quat");
         print("game quat");
+    }
+
+    public void openOptions()
+    {
+        options.SetActive(true);
+        main.SetActive(false);
+    }
+
+    public void closeOptions()
+    {
+        options.SetActive(false);
+        main.SetActive(true);
     }
 }

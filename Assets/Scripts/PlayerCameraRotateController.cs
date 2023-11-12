@@ -20,14 +20,16 @@ public class PlayerCameraRotateController : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        if (!(PauseScript.isPaused))
+        {
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
-        // Debug.Log(player.rotation);
-        // Debug.Log(player.rotation.x);
+            // Debug.Log(player.rotation);
+            // Debug.Log(player.rotation.x);
 
-        InSpaceRotationCalculation(mouseX, mouseY);
-
+            InSpaceRotationCalculation(mouseX, mouseY);
+        }
     }
 
     private void InSpaceRotationCalculation(float mouseX, float mouseY)

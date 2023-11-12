@@ -88,54 +88,61 @@ public class PlayerGrapple : MonoBehaviour
     //MOVE DA CAMERA
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!(PauseScript.isPaused))
         {
-            Debug.Log("saving");
-            foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                go.Save();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("loading");
-            foreach(SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
-            {
-                go.Load();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.F)) {
-            ToggleHold();
-        }
-
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            //PLAY SOUND
-            //source.Play();
-            crc.outOfRange = true;
-            if (crc.hitSomething)
-            {
-                grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
-            } else
-            {
-                grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
-            }
-        }
-     
-
-        if (timer != -1.0f) { 
-            timer += Time.deltaTime;
-            // int seconds = timer % 60;
-            //print(timer);
-            if (timer >= 0.20f)
-            {
-                hand = GameObject.Find("CinematicBlackBarsContainer");
-                //print(hand);
-                if (hand != null) { 
-                    hand.SetActive(false);
+                Debug.Log("saving");
+                foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+                {
+                    go.Save();
                 }
-            } 
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Debug.Log("loading");
+                foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+                {
+                    go.Load();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                ToggleHold();
+            }
+
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                //PLAY SOUND
+                //source.Play();
+                crc.outOfRange = true;
+                if (crc.hitSomething)
+                {
+                    grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                }
+                else
+                {
+                    grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                }
+            }
+
+
+            if (timer != -1.0f)
+            {
+                timer += Time.deltaTime;
+                // int seconds = timer % 60;
+                //print(timer);
+                if (timer >= 0.20f)
+                {
+                    hand = GameObject.Find("CinematicBlackBarsContainer");
+                    //print(hand);
+                    if (hand != null)
+                    {
+                        hand.SetActive(false);
+                    }
+                }
+            }
         }
     }
 

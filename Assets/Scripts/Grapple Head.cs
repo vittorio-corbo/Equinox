@@ -24,6 +24,8 @@ public class GrappleHead : MonoBehaviour
     private Rigidbody grabRig;
     private GrabScript grab;
 
+    private bool musicPlaying;
+
     void Awake()
     {
         crc = FindObjectOfType<CrosshairCubeRayCast>();
@@ -36,6 +38,10 @@ public class GrappleHead : MonoBehaviour
 
     private void Update()
     {
+        if (musicPlaying && PauseScript.isPaused || (!musicPlaying) && !(PauseScript.isPaused))
+        {
+            PauseUnpauseSFX();
+        }
         if (gameObject.activeSelf)
         {
             grapplingHookLine.SetPosition(0, player.grappleGun.transform.position);
@@ -185,7 +191,9 @@ public class GrappleHead : MonoBehaviour
             {
                 playerAudio.loop = false;
             }
+            playerAudio.volume = MenuActions.effectsVolume;
             playerAudio.Play();
+            musicPlaying = true;
         }
         catch (System.Exception e)
         {
@@ -195,6 +203,20 @@ public class GrappleHead : MonoBehaviour
     
     private void StopSFX()
     {
+        musicPlaying =  false;
         playerAudio.Stop();
+    }
+
+    private void PauseUnpauseSFX()
+    {
+        if (musicPlaying)
+        {
+            playerAudio.Pause();
+        }
+        else
+        {
+            playerAudio.UnPause();
+        }
+        musicPlaying = !musicPlaying;
     }
 }
