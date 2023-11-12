@@ -25,6 +25,11 @@ public class Reportee : MonoBehaviour
         {
             allFixed = true;
             Debug.Log(fixedString);
+            foreach (Reporter rep in minions)
+            {
+                rep.GetComponent<SaveAndLoad>().Save();
+            }
+            GetComponent<SaveAndLoad>().Save();
             if(myReporter != null)
             {
                 myReporter.Fix();

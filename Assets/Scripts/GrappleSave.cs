@@ -23,38 +23,15 @@ public class GrappleSave : SaveAndLoad
 
     public override void Save()
     {
-        isActive = gameObject.activeSelf;
-        parent = transform.parent;
-        retracting = script.retracting;
-        transform.parent = parent;
-        insideSomething = script.insideSomething;
-        colliding = GetComponent<Collider>().enabled;
-        base.Save();
+
     }
 
     public override void Load()
     {
-        gameObject.SetActive(isActive);
-        transform.parent = parent;
-        script.insideSomething = insideSomething;
-        GetComponent<Collider>().enabled = colliding;
-        if (parent == null)
-        {
-            GetComponent<Rigidbody>().isKinematic = false;
-            script.StopGrapplingNoRetract();
-        }
-        else
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
-        if (insideSomething)
-        {
-            script.player.StartGrappling(parent.GetComponent<Collider>());
-        }
-        if (retracting)
-        {
-            script.StopGrappling();
-        }
-        base.Load();
+        gameObject.SetActive(false);
+        transform.parent = null;
+        script.insideSomething = false;
+        GetComponent<Collider>().enabled = true;
+        script.StopGrappling();
     }
 }
