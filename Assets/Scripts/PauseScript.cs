@@ -18,7 +18,7 @@ public class PauseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && canPause)
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             if (isPaused)
             {
@@ -35,14 +35,18 @@ public class PauseScript : MonoBehaviour
     {
         isPaused = false;
         pauseMenu.SetActive(false);
-        pauseHelper(isPaused);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void Pause()
     {
         isPaused = true;
         pauseMenu.SetActive(true);
-        pauseHelper(isPaused);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void Options()
@@ -70,15 +74,11 @@ public class PauseScript : MonoBehaviour
     {
         if (isPaused)
         {
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+
         }
         else
         {
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+
         }
     }
 }

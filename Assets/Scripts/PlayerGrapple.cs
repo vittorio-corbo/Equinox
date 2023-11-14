@@ -107,19 +107,48 @@ public class PlayerGrapple : MonoBehaviour
                 ToggleHold();
             }
 
-
-            if (Input.GetMouseButtonDown(0))
+            //If not holding to grapple, treat as a toggle
+            if (!MenuActions.holdToGrapple)
             {
-                //PLAY SOUND
-                //source.Play();
-                crc.outOfRange = true;
-                if (crc.hitSomething)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                    //PLAY SOUND
+                    //source.Play();
+                    crc.outOfRange = true;
+                    if (crc.hitSomething)
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                    }
+                    else
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                    }
                 }
-                else
+            } else
+            {
+                if (Input.GetMouseButtonDown(0) && crc.shooting == false)
                 {
-                    grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                    crc.outOfRange = true;
+                    if (crc.hitSomething)
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                    }
+                    else
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                    }
+                }
+                if (Input.GetMouseButtonUp(0) && crc.shooting == true)
+                {
+                    crc.outOfRange = true;
+                    if (crc.hitSomething)
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                    }
+                    else
+                    {
+                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                    }
                 }
             }
 
