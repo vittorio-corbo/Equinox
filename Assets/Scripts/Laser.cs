@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Laser : MonoBehaviour
 {
