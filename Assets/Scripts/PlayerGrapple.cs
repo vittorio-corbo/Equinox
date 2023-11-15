@@ -71,7 +71,6 @@ public class PlayerGrapple : MonoBehaviour
             hand.SetActive(false);
         }
 
-
         //GET GOAL Renderer
         goalRenderer = goal.GetComponent<Renderer>();
 
@@ -144,7 +143,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void ToggleHold()
     {
-        if (GetComponent<CharacterJoint>() == null)
+        if (GetComponent<ConfigurableJoint>() == null)
         {
             HoldSurface();
         }
@@ -161,9 +160,11 @@ public class PlayerGrapple : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
                 Debug.Log(hit.transform.gameObject);
-                CharacterJoint joint = gameObject.AddComponent<CharacterJoint>();
-                joint.breakTorque = 0.005f;
+                ConfigurableJoint joint = gameObject.AddComponent<ConfigurableJoint>();
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                joint.xMotion = ConfigurableJointMotion.Locked;
+                joint.yMotion = ConfigurableJointMotion.Locked;
+                joint.zMotion = ConfigurableJointMotion.Locked;
                 crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
             }
         }
@@ -171,7 +172,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void StopHolding()
     {
-        Destroy(GetComponent<CharacterJoint>());
+        Destroy(GetComponent<ConfigurableJoint>());
         crc.MAXDISTANCE = 50f;
     }
 
@@ -183,7 +184,6 @@ public class PlayerGrapple : MonoBehaviour
         {
             StopCoroutine(grappleCoroutine);
         }
-        StopHolding();
         grappleCoroutine = StartCoroutine(Grappling(collider));
     }
 
