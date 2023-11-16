@@ -29,7 +29,7 @@ public class PlayerGrapple : MonoBehaviour
     //public float MAXCUBEDIST;
 
     
-    public CrosshairCubeRayCast crc;
+    public Laser crc;
     //Note: This is used both when the point you are looking at is out of range and when you are already grappling
     
 
@@ -43,6 +43,8 @@ public class PlayerGrapple : MonoBehaviour
     private AudioSource source;
 
     private GrappleHead grappleHead;
+
+    private float normalGrappleDist;
 
     private bool holding;
 
@@ -63,14 +65,13 @@ public class PlayerGrapple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        crc = FindObjectOfType<CrosshairCubeRayCast>();
+        normalGrappleDist = crc.MAXDISTANCE;
         //KILL BLINK IF IT PLAYS AT THE START
         hand = GameObject.Find("CinematicBlackBarsContainer");
         //print(hand);
         if (hand != null){
             hand.SetActive(false);
         }
-
 
         //GET GOAL Renderer
         goalRenderer = goal.GetComponent<Renderer>();
@@ -173,7 +174,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void ToggleHold()
     {
-        if (GetComponent<HingeJoint>() == null)
+        if (GetComponent<ConfigurableJoint>() == null)
         {
             HoldSurface();
         }
@@ -190,17 +191,27 @@ public class PlayerGrapple : MonoBehaviour
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
                 Debug.Log(hit.transform.gameObject);
-                HingeJoint joint = gameObject.AddComponent<HingeJoint>();
+                ConfigurableJoint joint = gameObject.AddComponent<ConfigurableJoint>();
                 joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-                crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
+                joint.xMotion = ConfigurableJointMotion.Locked;
+                joint.yMotion = ConfigurableJointMotion.Locked;
+                joint.zMotion = ConfigurableJointMotion.Locked;
+                if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<GrappleExtend>().ExtendGrapple();
+                }
+                if (hit.transform.gameObject.GetComponent<Rocket>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
+                }
             }
         }
     }
 
-    private void StopHolding()
+    public void StopHolding()
     {
-        Destroy(GetComponent<HingeJoint>());
-        crc.MAXDISTANCE = 50f;
+        Destroy(GetComponent<ConfigurableJoint>());
+        crc.MAXDISTANCE = normalGrappleDist;
     }
 
     
@@ -211,7 +222,6 @@ public class PlayerGrapple : MonoBehaviour
         {
             StopCoroutine(grappleCoroutine);
         }
-        StopHolding();
         grappleCoroutine = StartCoroutine(Grappling(collider));
     }
 
@@ -223,9 +233,7 @@ public class PlayerGrapple : MonoBehaviour
             {
                 if(Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
                 {
-                    Debug.Log(rigidbody.velocity);
                     rigidbody.velocity = rigidbody.velocity * (1-dampingSpeed);
-                    Debug.Log(rigidbody.velocity);
                 }
                 collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
                 rigidbody.AddForce(moveVector.normalized * (grappleForce / 2));
@@ -263,5 +271,8 @@ public class PlayerGrapple : MonoBehaviour
         }
     }
 
- 
+    private void OnJointBreak(float breakForce)
+    {
+        StopHolding();
+    }
 }
