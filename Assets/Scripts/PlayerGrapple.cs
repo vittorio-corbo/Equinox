@@ -29,7 +29,7 @@ public class PlayerGrapple : MonoBehaviour
     //public float MAXCUBEDIST;
 
     
-    public CrosshairCubeRayCast crc;
+    public Laser crc;
     //Note: This is used both when the point you are looking at is out of range and when you are already grappling
     
 
@@ -65,7 +65,6 @@ public class PlayerGrapple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        crc = FindObjectOfType<CrosshairCubeRayCast>();
         normalGrappleDist = crc.MAXDISTANCE;
         //KILL BLINK IF IT PLAYS AT THE START
         hand = GameObject.Find("CinematicBlackBarsContainer");
