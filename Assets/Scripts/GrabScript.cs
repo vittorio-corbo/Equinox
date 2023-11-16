@@ -66,20 +66,21 @@ public class GrabScript : MonoBehaviour
     }
 
     public void grabObject(GameObject grabObj) {
-            grabbedObject = grabObj;
-            grabRigid = grabbedObject.GetComponent<Rigidbody>();
-            grabRigid.isKinematic = true;
-            grabRigid.transform.parent = posHold.transform;
-            grabbedObject.transform.rotation = posHold.rotation;
-            Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
-            pickUpText.SetActive(false);
+        grabbedObject = grabObj;
+        grabRigid = grabbedObject.GetComponent<Rigidbody>();
+        grabRigid.isKinematic = true;
+        grabRigid.transform.parent = posHold.transform;
+        grabbedObject.transform.rotation = posHold.rotation;
+        grabbedObject.GetComponent<Collider>().enabled = false;
+        pickUpText.SetActive(false);
+        
     }
 
     // Drops Object
     // I was trying to get it to drop directly in front of the camera, but I was busy.
     // Can finish later, unless someone else wants to take care of it.
     void dropObject(bool chuck) {
-        Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        grabbedObject.GetComponent<Collider>().enabled = true;
         grabRigid.isKinematic = false;
         grabbedObject.transform.parent = null;
         if (chuck) {
