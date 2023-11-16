@@ -1406,71 +1406,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 1
   m_ShadowAngle: 0
---- !u!1001 &930855850
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: clipToUse
-      value: 
-      objectReference: {fileID: 8300000, guid: 5737d817052cd6c4a9a4335e849ae999, type: 3}
-    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: BeatzAreDroppin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3444291475278691953, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_Name
-      value: Music Generator
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -17.019136
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 283.50278
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -117.92462
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743450423763298579, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
 --- !u!1 &935092263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,7 +2071,6 @@ GameObject:
   - component: {fileID: 1769475564}
   - component: {fileID: 1769475567}
   - component: {fileID: 1769475566}
-  - component: {fileID: 1769475565}
   m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
@@ -2159,28 +2093,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4929830807956035176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1769475565
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769475563}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1769475566
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2833,7 +2745,7 @@ MonoBehaviour:
   grappleGun: {fileID: 3062714613828041138}
   rigidbody: {fileID: 7582832903940165556}
   crc: {fileID: 7973859717423523225}
-  goal: {fileID: 0}
+  goal: {fileID: 102118944}
   grappleForce: 30
   dampingAngle: 30
   dampingSpeed: 0.005
@@ -3450,8 +3362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAXDISTANCE: 500
-  MAXCUBEDIST: 500
-  cube: {fileID: 0}
+  cube: {fileID: 220076110261478376, guid: 569e100370e5f7745a1b2670650afc54, type: 3}
   alphaMat: {fileID: 2100000, guid: 53d95f797a6773942b0e7b3d6bb6ddf8, type: 2}
   outOfRange: 0
   shooting: 0
@@ -3850,5 +3761,4 @@ SceneRoots:
   - {fileID: 1198970347815533414}
   - {fileID: 774796951}
   - {fileID: 221347966}
-  - {fileID: 930855850}
   - {fileID: 6876586485380010631}

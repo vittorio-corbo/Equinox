@@ -1,25 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class Laser : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-    private PlayerGrapple playerGrapple;
+    private GameObject player;
     private GameObject playerCamera;
 
     public GameObject laserDot;
     public GameObject laserPlane;
     private Light laserDotLight;
+    private Renderer planeRenderer;
 
-    private Color transRed = new Color(1f, 0, 0, 0);
-    private Color transBlue = new Color(0, 0, 1f, 0);
-    private Color transWhite = new Color(1f, 1f, 1f, 0);
-    private Color transBlack = new Color(0, 0, 0, 0);
-
+    public bool outOfRange = false;
 
     public float MAXDISTANCE;
     RaycastHit hit;
@@ -27,12 +22,13 @@ public class Laser : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        playerGrapple = GetComponentInParent<PlayerGrapple>();
-        playerCamera = playerGrapple.transform.GetChild(0).gameObject;
+        planeRenderer = laserPlane.GetComponent<Renderer>();
+        player = GetComponentInParent<PlayerGrapple>().gameObject;
+        playerCamera = player.transform.GetChild(0).gameObject;
         lineRenderer.startWidth = .01f;
         lineRenderer.endWidth = 0f;
         lineRenderer.positionCount = 2;
-        laserDotLight = laserDot.GetComponent<Light>(); 
+        laserDotLight = laserDot.GetComponent<Light>();
     }
 
     void Update()
@@ -46,19 +42,17 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(1, endPoint);
 
         laserRaycast(playerCameraOrigin, direction);
-
     }
 
     private void laserRaycast(Vector3 origin, Vector3 direction)
     {
-        if (Physics.Raycast(origin, direction, out hit, MAXDISTANCE))
+        if (Physics.Raycast(origin, direction, out hit))
         {
             Vector3 referenceScaleVector = hit.point - origin;
 
             
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
-
                 laserPlane.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 laserPlane.transform.position = hit.point - referenceScaleVector.normalized * 0.6f;
                 laserPlane.transform.localScale = referenceScaleVector.magnitude * (Vector3.one) / 10;
@@ -66,43 +60,108 @@ public class Laser : MonoBehaviour
                 laserDot.transform.position = hit.point - referenceScaleVector.normalized * 0.5f;
                 laserDotLight.range = referenceScaleVector.magnitude / 26;
 
-
-                if (hit.collider.CompareTag("Stopper"))
+                if (hit.distance > MAXDISTANCE)
                 {
-                    //SET TO BLACK
-                    lineRenderer.startColor = Color.black;
-                    lineRenderer.endColor = transBlack;
-                    laserDotLight.color = Color.black;
-                }
-
-                else if (hit.collider.CompareTag("Glass"))
-                { //IT IS GLASS
-                    lineRenderer.startColor = Color.white;
-                    lineRenderer.endColor = transWhite;
-                    laserDotLight.color = Color.white;
-                }
-                else if (hit.collider.CompareTag("Grabbable"))
-                { // Grabbable Object
-                    lineRenderer.startColor = Color.blue;
-                    lineRenderer.endColor = transBlue;
-                    laserDotLight.color = Color.blue;
+                    outOfRange = true;
                 }
                 else
-                { //NO IMPORTANT COLLISIONS HAPPENING
-                    lineRenderer.startColor = Color.red;
-                    lineRenderer.endColor = transRed;
-                    laserDotLight.color = Color.red;
+                {
+                    outOfRange = false;
                 }
+
+                setColor(hit);
+                
                 laserDot.SetActive(true);
                 laserPlane.SetActive(true);
             }
         }
         else
         {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = transRed;
+            lineRenderer.startColor = colors["RED"];
+            lineRenderer.endColor = transparentColors["RED"];
             laserDot.SetActive(false);
             laserPlane.SetActive(false);
+        }
+    }
+
+    private void setColor(RaycastHit hit)
+    {
+        if (hit.collider.CompareTag("Stopper"))
+        {
+            planeRenderer.material.color = getSaturationColor(colors["RED"]);
+            laserDotLight.color = getSaturationColor(colors["RED"]);
+            lineRenderer.startColor = colors["RED"];
+            lineRenderer.endColor = transparentColors["RED"];
+        }
+        else if (hit.collider.CompareTag("MoveableObject"))
+        {
+            if (hit.rigidbody.mass >= player.GetComponent<Rigidbody>().mass * 1.5)
+            {
+                planeRenderer.material.color = getSaturationColor(colors["ORANGE"]);
+                laserDotLight.color = getSaturationColor(colors["ORANGE"]);
+                lineRenderer.startColor = colors["ORANGE"];
+                lineRenderer.endColor = transparentColors["ORANGE"];
+            }
+            else if (hit.rigidbody.mass <= player.GetComponent<Rigidbody>().mass / 1.5)
+            {
+                planeRenderer.material.color = getSaturationColor(colors["GREEN"]);
+                laserDotLight.color = getSaturationColor(colors["GREEN"]);
+                lineRenderer.startColor = colors["GREEN"];
+                lineRenderer.endColor = transparentColors["GREEN"];
+            }
+            else
+            {
+                planeRenderer.material.color = getSaturationColor(colors["YELLOW"]);
+                laserDotLight.color = getSaturationColor(colors["YELLOW"]);
+                lineRenderer.startColor = colors["YELLOW"];
+                lineRenderer.endColor = transparentColors["YELLOW"];
+            }
+        }
+        else if (hit.collider.CompareTag("Grabbable"))
+        {
+            planeRenderer.material.color = getSaturationColor(colors["BLUE"]);
+            laserDotLight.color = getSaturationColor(colors["BLUE"]);
+            lineRenderer.startColor = colors["BLUE"];
+            lineRenderer.endColor = transparentColors["BLUE"];
+        }
+        else
+        {
+            planeRenderer.material.color = getSaturationColor(colors["CYAN"]);
+            laserDotLight.color = getSaturationColor(colors["CYAN"]);
+            lineRenderer.startColor = colors["CYAN"];
+            lineRenderer.endColor = transparentColors["CYAN"];
+        }
+
+    }
+    Dictionary<string, Color> colors = new Dictionary<string, Color>()
+    {
+        {"RED", new Color(1.0f, 0.0f, 0.0f) },
+        {"BLUE", new Color(0.0f, 0.0f, 1.0f) },
+        {"GREEN", new Color(0.0f, 1.0f, 0.0f) },
+        {"ORANGE", new Color(1.0f, .5f, 0.0f) },
+        {"YELLOW", new Color(1.0f, 1.0f, 0.0f) },
+        {"CYAN", new Color(0.0f, 1.0f, 1.0f) }
+    };
+
+    Dictionary<string, Color> transparentColors = new Dictionary<string, Color>()
+    {
+        {"RED", new Color(1.0f, 0.0f, 0.0f, 0f) },
+        {"BLUE", new Color(0.0f, 0.0f, 1.0f, 0f) },
+        {"GREEN", new Color(0.0f, 1.0f, 0.0f, 0f) },
+        {"ORANGE", new Color(1.0f, .5f, 0.0f, 0f) },
+        {"YELLOW", new Color(1.0f, 1.0f, 0.0f, 0f) },
+        {"CYAN", new Color(0.0f, 1.0f, 1.0f, 0f) }
+    };
+    private Color getSaturationColor(Color color)
+    {
+        float H, S, V;
+        Color.RGBToHSV(color, out H, out S, out V);
+        if (!outOfRange)
+        {
+            return Color.HSVToRGB(H, S / 1, V); //play with this
+        } else
+        {
+            return Color.HSVToRGB(H, S, V / 2f); //play with this
         }
     }
 }
