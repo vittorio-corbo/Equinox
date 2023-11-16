@@ -8,6 +8,6 @@ public class GrappleExtend : MonoBehaviour
 
     public void ExtendGrapple()
     {
-        FindObjectOfType<CrosshairCubeRayCast>().MAXDISTANCE = GrappleDist;
+        FindObjectOfType<PlayerGrapple>().crc.MAXDISTANCE = GrappleDist;
     }
 }
