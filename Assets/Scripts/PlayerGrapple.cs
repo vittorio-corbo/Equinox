@@ -166,6 +166,14 @@ public class PlayerGrapple : MonoBehaviour
                 joint.yMotion = ConfigurableJointMotion.Locked;
                 joint.zMotion = ConfigurableJointMotion.Locked;
                 crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
+                /*if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<GrappleExtend>().Effect();
+                }
+                if (hit.transform.gameObject.GetComponent<Rocket>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
+                }*/
             }
         }
     }
@@ -195,9 +203,7 @@ public class PlayerGrapple : MonoBehaviour
             {
                 if(Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
                 {
-                    Debug.Log(rigidbody.velocity);
                     rigidbody.velocity = rigidbody.velocity * (1-dampingSpeed);
-                    Debug.Log(rigidbody.velocity);
                 }
                 collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
                 rigidbody.AddForce(moveVector.normalized * (grappleForce / 2));
