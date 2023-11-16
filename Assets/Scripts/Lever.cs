@@ -16,12 +16,12 @@ public class Lever : MonoBehaviour
         state = newState;
     }
 
-    public void LeftRoutine()
+    public virtual void LeftRoutine()
     {
         Debug.Log("LEFT");
     }
 
-    public void RightRoutine()
+    public virtual void RightRoutine()
     {
         Debug.Log("RIGHT");
     }
