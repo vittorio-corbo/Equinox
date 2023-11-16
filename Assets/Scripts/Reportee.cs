@@ -8,32 +8,39 @@ public class Reportee : MonoBehaviour
     Reporter myReporter;
     public bool allFixed;
     public string fixedString;
+
+    //This is a boolean used to control whether a Reportee subclass will react to a report by doing a physical task.
+    //For example, Door objects use this when opening
+    public bool react;
     // Start is called before the first frame update
     protected void Start()
     {
         myReporter = GetComponent<Reporter>();
+        Debug.Log(myReporter);
         foreach(Reporter rep in minions)
         {
             rep.AddReportee(this);
         }
     }
 
-    public void GatherReport()
+    public virtual void GatherReport()
     {
+        Debug.Log(this.gameObject.name);
         bool isAllEqual = minions.TrueForAll(x => x.GetFixed().Equals(minions[0].GetFixed())) && minions[0].GetFixed() == true;
         if (isAllEqual)
         {
+            react = true;
             allFixed = true;
             Debug.Log(fixedString);
             foreach (Reporter rep in minions)
             {
                 rep.GetComponent<SaveAndLoad>().Save();
             }
-            GetComponent<SaveAndLoad>().Save();
-            if(myReporter != null)
+            if (myReporter != null)
             {
                 myReporter.Fix();
             }
+            GetComponent<SaveAndLoad>().Save();
         }
     }
 
