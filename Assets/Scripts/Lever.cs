@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriStateLever : MonoBehaviour
+public class Lever : MonoBehaviour
 {
     public enum STATE
     {
@@ -13,7 +13,6 @@ public class TriStateLever : MonoBehaviour
     public STATE state;
     public void ChangeState(STATE newState) 
     {
-        Debug.Log(newState);
         state = newState;
     }
 
