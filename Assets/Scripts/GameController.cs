@@ -19,11 +19,6 @@ public class GameController : MonoBehaviour
     {
         if (!(PauseScript.isPaused))
         {
-            //Quit Game
-            if (Input.GetKey("escape"))
-            {
-                Application.Quit();
-            }
             //RESET ROOM
             if (Input.GetKey(KeyCode.R))
             {
