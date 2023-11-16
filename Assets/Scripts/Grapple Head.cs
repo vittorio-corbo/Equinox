@@ -46,8 +46,8 @@ public class GrappleHead : MonoBehaviour
         {
             grapplingHookLine.SetPosition(0, player.grappleGun.transform.position);
             grapplingHookLine.SetPosition(1, transform.position);
-            grapplingHookLine.startWidth = .25f;
-            grapplingHookLine.endWidth = .25f;
+            grapplingHookLine.startWidth = .02f;
+            grapplingHookLine.endWidth = .02f;
         }
         else
         {
