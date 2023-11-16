@@ -44,6 +44,8 @@ public class PlayerGrapple : MonoBehaviour
 
     private GrappleHead grappleHead;
 
+    private float normalGrappleDist;
+
     private bool holding;
 
     [SerializeField] float dampingAngle;
@@ -63,6 +65,7 @@ public class PlayerGrapple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        normalGrappleDist = crc.MAXDISTANCE;
         //KILL BLINK IF IT PLAYS AT THE START
         hand = GameObject.Find("CinematicBlackBarsContainer");
         //print(hand);
@@ -193,23 +196,22 @@ public class PlayerGrapple : MonoBehaviour
                 joint.xMotion = ConfigurableJointMotion.Locked;
                 joint.yMotion = ConfigurableJointMotion.Locked;
                 joint.zMotion = ConfigurableJointMotion.Locked;
-                crc.MAXDISTANCE = 100f; //WHY ARE THESE VALUES HARDCODED
-                /*if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
+                if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
                 {
-                    hit.transform.gameObject.GetComponent<GrappleExtend>().Effect();
+                    hit.transform.gameObject.GetComponent<GrappleExtend>().ExtendGrapple();
                 }
                 if (hit.transform.gameObject.GetComponent<Rocket>() != null)
                 {
                     hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
-                }*/
+                }
             }
         }
     }
 
-    private void StopHolding()
+    public void StopHolding()
     {
         Destroy(GetComponent<ConfigurableJoint>());
-        crc.MAXDISTANCE = 50f;
+        crc.MAXDISTANCE = normalGrappleDist;
     }
 
     
