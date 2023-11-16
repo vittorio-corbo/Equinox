@@ -15,7 +15,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip retractingNow;
 
     public PlayerGrapple player;
-    private CrosshairCubeRayCast crc;
+    private Laser crc;
     private Rigidbody rigidBody;
     public bool retracting;
     private LineRenderer grapplingHookLine;
@@ -28,7 +28,7 @@ public class GrappleHead : MonoBehaviour
 
     void Awake()
     {
-        crc = FindObjectOfType<CrosshairCubeRayCast>();
+        crc = FindObjectOfType<Laser>();
         player = FindObjectOfType<PlayerGrapple>();
         playerAudio = player.GetComponent<AudioSource>();
         grab = FindObjectOfType<GrabScript>();

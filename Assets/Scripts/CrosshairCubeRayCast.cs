@@ -6,7 +6,7 @@ public class CrosshairCubeRayCast : MonoBehaviour
 {
 
     public float MAXDISTANCE = 70;
-    public float MAXCUBEDIST = 5000;
+    //public float MAXCUBEDIST = 5000;
     [SerializeField] private GameObject cube;
     private Renderer cubeRenderer;
     private Material defaultCubeMat;

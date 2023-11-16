@@ -26,7 +26,7 @@ public class Music : MonoBehaviour
     //Setting in the Update() method pls.
     public float volume;
     public float doppler;
-    AudioSource audio;
+    private AudioSource audio;
     public bool BeatzAreDroppin = true;
 
     private bool paused;
