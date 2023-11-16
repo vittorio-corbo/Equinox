@@ -15,9 +15,11 @@ public class Laser : MonoBehaviour
     private Renderer planeRenderer;
 
     public bool outOfRange = false;
-
+    public bool shooting = false;
+    public bool hitSomething;
     public float MAXDISTANCE;
-    RaycastHit hit;
+    public RaycastHit hit;
+
 
     void Start()
     {
@@ -48,8 +50,8 @@ public class Laser : MonoBehaviour
     {
         if (Physics.Raycast(origin, direction, out hit))
         {
+            hitSomething = true;
             Vector3 referenceScaleVector = hit.point - origin;
-
             
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
@@ -77,6 +79,7 @@ public class Laser : MonoBehaviour
         }
         else
         {
+            hitSomething = false;
             lineRenderer.startColor = colors["RED"];
             lineRenderer.endColor = transparentColors["RED"];
             laserDot.SetActive(false);
@@ -156,7 +159,7 @@ public class Laser : MonoBehaviour
     {
         float H, S, V;
         Color.RGBToHSV(color, out H, out S, out V);
-        if (!outOfRange)
+        if (!outOfRange && !shooting)
         {
             return Color.HSVToRGB(H, S / 1, V); //play with this
         } else
