@@ -7,7 +7,7 @@ public class MenuActions : MonoBehaviour
 {
     public static float musicVolume = 0.5f;
     public static float effectsVolume = 0.5f;
-    public bool holdToGrapple = false;
+    public static bool holdToGrapple = false;
     public Slider musicVolSlider;
     public Slider effectVolSlider;
     public Toggle holdGrappleToggle;
@@ -21,7 +21,7 @@ public class MenuActions : MonoBehaviour
 
     public void setHoldToGrapple()
     {
-        holdToGrapple = !holdToGrapple;
+        holdToGrapple = holdGrappleToggle.isOn;
     }
 
     public void setMusicVolume()
