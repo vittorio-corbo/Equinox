@@ -13,7 +13,7 @@ public class Reportee : MonoBehaviour
     //For example, Door objects use this when opening
     public bool react;
     // Start is called before the first frame update
-    protected void Start()
+    public virtual void Start()
     {
         myReporter = GetComponent<Reporter>();
         Debug.Log(myReporter);

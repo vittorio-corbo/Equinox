@@ -10,30 +10,19 @@ public class DoorOpen : Reportee
     float speed = 0.5f;
     bool open = false;
 
-    void Start()
+    public override void Start()
     {
+        closedPos = new Vector3(transform.position.x,
+            transform.position.y,
+            transform.position.z);
         base.Start();
     }
 
     void Update()
     {
-        if (allFixed && !open && react)
+        if (allFixed)
         {
             transform.position = Vector3.Lerp(transform.position, openPos, speed * Time.deltaTime);
-            if (transform.position == openPos)
-            {
-                open = !open;
-                react = false;
-            }
-        }
-        else if (allFixed && open && react)
-        {
-            transform.position = Vector3.Lerp(transform.position, closedPos, speed * Time.deltaTime);
-            if (transform.position == closedPos)
-            {
-                open = !open;
-                react = false;
-            }
         }
     }
 }
