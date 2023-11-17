@@ -16,7 +16,7 @@ public class HoldPrompt : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 5f, ~LayerMask.GetMask("NotHoldable")) && player.holding == false && !PauseScript.isPaused)
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 5f, (~LayerMask.GetMask("NotHoldable") & ~LayerMask.GetMask("GrappleHead"))) && player.holding == false && !PauseScript.isPaused)
         {
             holdText.SetActive(true);
         }
