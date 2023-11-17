@@ -16,7 +16,7 @@ public class Laser : MonoBehaviour
 
     public bool outOfRange = false;
     public bool shooting = false;
-    public bool hitSomething;
+    public bool hitSomething = false;
     public float MAXDISTANCE;
     public RaycastHit hit;
 
@@ -44,6 +44,7 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(1, endPoint);
 
         laserRaycast(playerCameraOrigin, direction);
+        //Debug.Log(hitSomething);
     }
 
     private void laserRaycast(Vector3 origin, Vector3 direction)
@@ -64,10 +65,12 @@ public class Laser : MonoBehaviour
 
                 if (hit.distance > MAXDISTANCE)
                 {
+                    hitSomething = false;
                     outOfRange = true;
                 }
                 else
                 {
+                    hitSomething = true;
                     outOfRange = false;
                 }
 

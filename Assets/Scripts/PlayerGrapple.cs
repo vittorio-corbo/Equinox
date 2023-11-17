@@ -43,10 +43,14 @@ public class PlayerGrapple : MonoBehaviour
     private AudioSource source;
 
     private GrappleHead grappleHead;
+    private Transform grappleHeadTransform;
+    
 
     private float normalGrappleDist;
 
     private bool holding;
+
+    private Transform playerCamera;
 
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
@@ -81,8 +85,9 @@ public class PlayerGrapple : MonoBehaviour
 
         //Use FindObjectsOfTypeAll so it finds inactive scripts too
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
-        grappleHead.gameObject.SetActive(false);
+        grappleHeadTransform = grappleGun.transform.GetChild(1);
         holding = Input.GetKeyDown(KeyCode.F);
+        playerCamera = transform.GetChild(0);
         foreach (SaveAndLoad save in Resources.FindObjectsOfTypeAll<SaveAndLoad>())
         {
             save.Save();
@@ -118,11 +123,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
                     }
                 }
             } else
@@ -132,11 +137,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
                     }
                 }
                 if (Input.GetMouseButtonUp(0) && crc.shooting == true)
@@ -144,11 +149,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
                     }
                 }
             }
