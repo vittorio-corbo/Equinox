@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -46,10 +47,15 @@ public class PlayerGrapple : MonoBehaviour
     private bool musicPlaying;
 
     private GrappleHead grappleHead;
+    private Transform grappleHeadTransform;
+    
 
     private float normalGrappleDist;
 
     private bool holding;
+
+    private Transform playerCamera;
+    private Vector3 endPoint;
 
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
@@ -84,8 +90,9 @@ public class PlayerGrapple : MonoBehaviour
 
         //Use FindObjectsOfTypeAll so it finds inactive scripts too
         grappleHead = Resources.FindObjectsOfTypeAll(typeof(GrappleHead))[0] as GrappleHead;
-        grappleHead.gameObject.SetActive(false);
+        grappleHeadTransform = grappleGun.transform.GetChild(1);
         holding = Input.GetKeyDown(KeyCode.F);
+        playerCamera = transform.GetChild(0);
         foreach (SaveAndLoad save in Resources.FindObjectsOfTypeAll<SaveAndLoad>())
         {
             save.Save();
@@ -114,10 +121,11 @@ public class PlayerGrapple : MonoBehaviour
             {
                 ToggleHold();
             }
-
+            endPoint = playerCamera.transform.position + crc.MAXDISTANCE * playerCamera.transform.forward.normalized;
             //If not holding to grapple, treat as a toggle
             if (!MenuActions.holdToGrapple)
             {
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     //PLAY SOUND
@@ -125,11 +133,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
             } else
@@ -139,11 +147,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
                 if (Input.GetMouseButtonUp(0) && crc.shooting == true)
@@ -151,11 +159,11 @@ public class PlayerGrapple : MonoBehaviour
                     crc.outOfRange = true;
                     if (crc.hitSomething)
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, (crc.hit.point - grappleGun.transform.position).normalized);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleGun.transform.position, grappleGun.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
             }
