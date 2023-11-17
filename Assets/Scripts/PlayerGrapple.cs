@@ -244,16 +244,19 @@ public class PlayerGrapple : MonoBehaviour
 
     private IEnumerator Grappling(Collider collider)
     {
+        PlayerRopeNode playerRope = FindObjectOfType<PlayerRopeNode>();
+        HeadRopeNode headRope = FindObjectOfType<HeadRopeNode>();
         while (true) {
-            Vector3 moveVector = grappleHead.transform.position - transform.position;
+            Vector3 playerMoveVector = -(playerRope.transform.position - playerRope.last.transform.position);
+            Vector3 headMoveVector = headRope.transform.position - headRope.next.transform.position;
             if (collider.CompareTag("MoveableObject"))
             {
-                if(Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
+                if(Vector3.Angle(rigidbody.velocity.normalized, playerMoveVector.normalized) > dampingAngle)
                 {
                     rigidbody.velocity = rigidbody.velocity * (1-dampingSpeed);
                 }
-                collider.GetComponent<Rigidbody>().AddForceAtPosition(moveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
-                rigidbody.AddForce(moveVector.normalized * (grappleForce / 2));
+                collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
+                rigidbody.AddForce(playerMoveVector.normalized * (grappleForce / 2));
             }
             //WE MOVING
             else if (!collider.CompareTag("Stopper"))
@@ -261,11 +264,11 @@ public class PlayerGrapple : MonoBehaviour
                 //Wall BUFFER
                 if (collider.name != "Goal")
                 {
-                    if (Vector3.Angle(rigidbody.velocity.normalized, moveVector.normalized) > dampingAngle)
+                    if (Vector3.Angle(rigidbody.velocity.normalized, playerMoveVector.normalized) > dampingAngle)
                     {
                         rigidbody.velocity = rigidbody.velocity * (1 - dampingSpeed);
                     }
-                    rigidbody.AddForce(moveVector.normalized * grappleForce);
+                    rigidbody.AddForce(playerMoveVector.normalized * grappleForce);
                 }
                 else
                 {

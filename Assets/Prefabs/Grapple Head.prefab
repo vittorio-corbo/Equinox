@@ -317,6 +317,8 @@ GameObject:
   - component: {fileID: 4151886072453926611}
   - component: {fileID: 6616972854697206404}
   - component: {fileID: 9071569380318404204}
+  - component: {fileID: 6223567647185291261}
+  - component: {fileID: 2296025797651028845}
   m_Layer: 7
   m_Name: Grapple Head
   m_TagString: Grapple
@@ -446,3 +448,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c75cae3bb76b514daef89409934e889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6223567647185291261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054827177133817321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c75cae3bb76b514daef89409934e889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2296025797651028845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054827177133817321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcfebe1bdee57c459ad5e378ac17017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  last: {fileID: 0}
+  materialRef: {fileID: 2100000, guid: a78c7ec38eb2626489e2a08d3ce4986a, type: 2}
