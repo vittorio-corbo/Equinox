@@ -458,6 +458,8 @@ MonoBehaviour:
   crc: {fileID: 7473446790915705461}
   goal: {fileID: 0}
   grappleForce: 30
+  hold: {fileID: 8300000, guid: bbb28b9a0492e459fb90ad7883490529, type: 3}
+  stopHold: {fileID: 8300000, guid: bbb28b9a0492e459fb90ad7883490529, type: 3}
   dampingAngle: 30
   dampingSpeed: 0.005
 --- !u!114 &151374550744832509
