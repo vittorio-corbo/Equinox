@@ -49,6 +49,16 @@ public class PauseScript : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void ResetCheckpoint()
+    {
+        Resume();
+        Debug.Log("loading");
+        foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
+        {
+            go.Load();
+        }
+    }
+
     public void Options()
     {
         options.SetActive(true);

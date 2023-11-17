@@ -84,6 +84,7 @@ public class GrappleHead : MonoBehaviour
         //gameObject.SetActive(true);
         grappleHeadActive = true;
         PlaySFX(shoot, false);
+        StartCoroutine(WaitForShootSound());
         transform.position = startPosition;
         rigidBody.AddForce(direction * SPEED);
         FindObjectOfType<PlayerRopeNode>().StartRope();
@@ -92,7 +93,7 @@ public class GrappleHead : MonoBehaviour
 
     private IEnumerator WaitForShootSound()
     {
-        yield return new WaitForSeconds(shoot.length);
+        yield return new WaitForSeconds(shoot.length - .1f);
         PlaySFX(reelOut, true);
     }
 

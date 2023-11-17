@@ -601,6 +601,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
       objectReference: {fileID: 0}
+    - target: {fileID: 8335305267177403827, guid: 38cc42f885803db4ba99c93340c931d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7483853030565791364}
+    - target: {fileID: 8335305267177403827, guid: 38cc42f885803db4ba99c93340c931d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335305267177403827, guid: 38cc42f885803db4ba99c93340c931d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetCheckpoint
+      objectReference: {fileID: 0}
     - target: {fileID: 9047389743595585825, guid: 38cc42f885803db4ba99c93340c931d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
