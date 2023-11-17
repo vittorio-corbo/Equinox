@@ -53,6 +53,16 @@ public class Laser : MonoBehaviour
         {
             hitSomething = true;
             Vector3 referenceScaleVector = hit.point - origin;
+
+            //For "Hold onto wall" prompt
+            if (hit.distance <= 5f && hit.transform.gameObject.layer != LayerMask.NameToLayer("NotHoldable"))
+            {
+                Debug.Log("AYO2");
+                HoldPrompt.showHoldText = true;
+            } else
+            {
+                HoldPrompt.showHoldText = false;
+            }
             
             if (!hit.collider.CompareTag("CUBE") && hit.collider.GetComponent<GrappleHead>() == null)
             {//IGNORE SELF AND GRAPPLE HEAD
@@ -89,6 +99,7 @@ public class Laser : MonoBehaviour
             laserPlane.SetActive(false);
         }
     }
+
 
     private void setColor(RaycastHit hit)
     {

@@ -184,10 +184,12 @@ public class PlayerGrapple : MonoBehaviour
         if (GetComponent<ConfigurableJoint>() == null)
         {
             HoldSurface();
+            HoldPrompt.isHolding = true;
         }
         else
         {
             StopHolding();
+            HoldPrompt.isHolding = false;
         }
     }
 
