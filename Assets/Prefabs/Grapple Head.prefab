@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 9071569380318404204}
   - component: {fileID: 6223567647185291261}
   - component: {fileID: 2296025797651028845}
+  - component: {fileID: 8765327131323098702}
   m_Layer: 7
   m_Name: Grapple Head
   m_TagString: Grapple
@@ -383,6 +384,7 @@ MonoBehaviour:
   shoot: {fileID: 8300000, guid: 4ac2bcc5d48c9a74fb61518b5b054048, type: 3}
   doneRetracting: {fileID: 8300000, guid: 5e9264041ecc2ac4488a4c21e76b6785, type: 3}
   retractingNow: {fileID: 8300000, guid: 147644826f9d50a40bfdc6c49f9b3d85, type: 3}
+  reelOut: {fileID: 8300000, guid: f2d80ebb32b9a2b44a3be9d0b553605d, type: 3}
   player: {fileID: 0}
   retracting: 0
 --- !u!54 &7818727169076017518
@@ -475,3 +477,15 @@ MonoBehaviour:
   next: {fileID: 0}
   last: {fileID: 0}
   materialRef: {fileID: 2100000, guid: a78c7ec38eb2626489e2a08d3ce4986a, type: 2}
+--- !u!114 &8765327131323098702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054827177133817321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
