@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Reporter : MonoBehaviour
 {
-    List<Reportee> reportees = new List<Reportee>();
+    [SerializeField] List<Reportee> reportees = new List<Reportee>();
     Reporter selfReportee;
     public bool isFixed = false;
     public  void Fix()
@@ -13,6 +13,7 @@ public class Reporter : MonoBehaviour
         foreach (Reportee reportee in reportees)
         {
             reportee.GatherReport();
+            Debug.Log("AAAAAAAAAA");
         }
     }
 
