@@ -88,7 +88,7 @@ public class GrappleHead : MonoBehaviour
         transform.position = startPosition;
         rigidBody.AddForce(direction * SPEED);
         FindObjectOfType<PlayerRopeNode>().StartRope();
-        transform.rotation.SetFromToRotation(transform.forward, GetComponent<Rigidbody>().velocity.normalized);
+        transform.rotation.SetFromToRotation(transform.forward, player.transform.forward);
     }
 
     private IEnumerator WaitForShootSound()
