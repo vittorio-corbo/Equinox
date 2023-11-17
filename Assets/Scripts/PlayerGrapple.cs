@@ -41,6 +41,9 @@ public class PlayerGrapple : MonoBehaviour
 
     //AUDIO
     private AudioSource source;
+    public AudioClip hold;
+    public AudioClip stopHold;
+    private bool musicPlaying;
 
     private GrappleHead grappleHead;
     private Transform grappleHeadTransform;
@@ -98,6 +101,10 @@ public class PlayerGrapple : MonoBehaviour
     //MOVE DA CAMERA
     void Update()
     {
+        if (musicPlaying && PauseScript.isPaused || (!musicPlaying) && !(PauseScript.isPaused))
+        {
+            PauseUnpauseSFX();
+        }
         if (!(PauseScript.isPaused))
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -209,6 +216,7 @@ public class PlayerGrapple : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
                 }
+                PlaySFX(hold, false);
             }
         }
     }
@@ -217,6 +225,7 @@ public class PlayerGrapple : MonoBehaviour
     {
         Destroy(GetComponent<ConfigurableJoint>());
         crc.MAXDISTANCE = normalGrappleDist;
+        PlaySFX(stopHold, false);
     }
 
     
@@ -279,5 +288,42 @@ public class PlayerGrapple : MonoBehaviour
     private void OnJointBreak(float breakForce)
     {
         StopHolding();
+    }
+
+    private void PauseUnpauseSFX()
+    {
+        if (musicPlaying)
+        {
+            source.Pause();
+        }
+        else
+        {
+            source.UnPause();
+        }
+        musicPlaying = !musicPlaying;
+    }
+
+    //Plays the sound, prints stack trace to console if it cannot find the file
+    private void PlaySFX(AudioClip clip, bool loop)
+    {
+        try
+        {
+            source.clip = clip;
+            if (loop)
+            {
+                source.loop = true;
+            }
+            else
+            {
+                source.loop = false;
+            }
+            source.volume = MenuActions.effectsVolume;
+            source.Play();
+            musicPlaying = true;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 }

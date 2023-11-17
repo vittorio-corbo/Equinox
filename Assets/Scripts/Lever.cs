@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour
         Right,
     }
     public STATE state;
-    public void ChangeState(STATE newState) 
+    public virtual void ChangeState(STATE newState) 
     {
         state = newState;
     }

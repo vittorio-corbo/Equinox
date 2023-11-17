@@ -17,7 +17,7 @@ public class HatchController : Reportee
 
     private void Update()
     {
-        if (!open && allFixed && react)
+        if (allFixed)
         {
             var m = hj.motor;
             m.force = 10;
@@ -27,23 +27,6 @@ public class HatchController : Reportee
             hj.useMotor = true;
             if (hj.angle == hj.limits.min)
             {
-                open = !open;
-                react = false;
-                hj.useMotor = false;
-                rb.isKinematic = true;
-            }
-        }
-        else if (open && allFixed && react)
-        {
-            var m = hj.motor;
-            m.force = 10;
-            m.targetVelocity = 10;
-            hj.motor = m;
-            rb.isKinematic = false;
-            hj.useMotor = true;
-            if (hj.angle == hj.limits.max)
-            {
-                open = !open;
                 react = false;
                 hj.useMotor = false;
                 rb.isKinematic = true;
