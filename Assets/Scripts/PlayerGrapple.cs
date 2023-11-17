@@ -201,7 +201,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private void HoldSurface() {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 5f)) //not check for layer anymore
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 5f, ~LayerMask.GetMask("NotHoldable"))) //Check Mask once more
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
