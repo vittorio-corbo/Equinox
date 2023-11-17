@@ -656,7 +656,7 @@ MonoBehaviour:
   goal: {fileID: 0}
   grappleForce: 30
   hold: {fileID: 8300000, guid: bbb28b9a0492e459fb90ad7883490529, type: 3}
-  stopHold: {fileID: 8300000, guid: bbb28b9a0492e459fb90ad7883490529, type: 3}
+  stopHold: {fileID: 8300000, guid: 53ce88bfc0adea746ab39313ff8025d0, type: 3}
   dampingAngle: 30
   dampingSpeed: 0.005
 --- !u!114 &151374550744832509
