@@ -10,6 +10,7 @@ public class RopeNode : MonoBehaviour
     public Material materialRef;
     public void UpdateNode()
     {
+        /*
         if (next == null)
         {
             return;
@@ -31,6 +32,7 @@ public class RopeNode : MonoBehaviour
         next.UpdateNode();
 
         UpdateForce();
+        */
     }
 
     public void UpdateLine()
