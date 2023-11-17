@@ -13,6 +13,7 @@ public class GrappleHead : MonoBehaviour
     public AudioClip shoot;
     public AudioClip doneRetracting;
     public AudioClip retractingNow;
+    public AudioClip reelOut;
 
     public PlayerGrapple player;
     private Laser crc;
@@ -87,6 +88,12 @@ public class GrappleHead : MonoBehaviour
         rigidBody.AddForce(direction * SPEED);
         FindObjectOfType<PlayerRopeNode>().StartRope();
         transform.rotation.SetFromToRotation(transform.forward, GetComponent<Rigidbody>().velocity.normalized);
+    }
+
+    private IEnumerator WaitForShootSound()
+    {
+        yield return new WaitForSeconds(shoot.length);
+        PlaySFX(reelOut, true);
     }
 
     // In this method you see the ramblings of a madman trying to figure out why I was being flung out into space.
@@ -189,6 +196,10 @@ public class GrappleHead : MonoBehaviour
         grappleHeadActive = false;
         retracting = false;
         PlaySFX(doneRetracting, false);
+        if (gameObject.GetComponent<LineRenderer>() != null)
+        {
+            Destroy(gameObject.GetComponent<LineRenderer>());
+        }
         crc.shooting = false;
     }
 
