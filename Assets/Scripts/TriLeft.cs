@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriStateLeft : MonoBehaviour
+public class TriLeft : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
