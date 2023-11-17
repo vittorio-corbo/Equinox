@@ -109,14 +109,6 @@ public class PlayerGrapple : MonoBehaviour
         }
         if (!(PauseScript.isPaused))
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                Debug.Log("loading");
-                foreach (SaveAndLoad go in Resources.FindObjectsOfTypeAll(typeof(SaveAndLoad)))
-                {
-                    go.Load();
-                }
-            }
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ToggleHold();

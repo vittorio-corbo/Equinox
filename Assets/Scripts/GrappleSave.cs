@@ -28,10 +28,10 @@ public class GrappleSave : SaveAndLoad
 
     public override void Load()
     {
-        gameObject.SetActive(false);
-        transform.parent = null;
+        GameObject player = FindObjectOfType<PlayerGrapple>().gameObject;
+        transform.position = player.transform.GetChild(3).GetChild(1).position;
+        transform.rotation = player.transform.rotation;
         script.insideSomething = false;
-        GetComponent<Collider>().enabled = true;
         script.StopGrappling();
     }
 }
