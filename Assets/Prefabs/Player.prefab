@@ -181,6 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2661760850931013713}
+  - component: {fileID: 2490815729727919639}
   m_Layer: 8
   m_Name: GrappleHeadTransform
   m_TagString: Untagged
@@ -203,6 +204,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3672050127128618826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2490815729727919639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231507445944142542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8910b1c7cfef5c4fb472f938c151cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  last: {fileID: 0}
+  materialRef: {fileID: 2100000, guid: a78c7ec38eb2626489e2a08d3ce4986a, type: 2}
 --- !u!1 &5188018038648664530
 GameObject:
   m_ObjectHideFlags: 0

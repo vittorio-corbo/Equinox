@@ -49,17 +49,15 @@ public class GrappleHead : MonoBehaviour
         }
         if (grappleHeadActive)//gameObject.activeSelf)
         {
-            grapplingHookLine.gameObject.SetActive(true);
-            grapplingHookLine.SetPosition(0, grappleHeadTransform.position);
-            grapplingHookLine.SetPosition(1, transform.position);
-            grapplingHookLine.startWidth = .02f;
-            grapplingHookLine.endWidth = .02f;
+            GetComponent<HeadRopeNode>().UpdateNode();
+            GetComponent<HeadRopeNode>().UpdateLine();
         }
         else
         {
             transform.position = grappleHeadTransform.position;
             transform.rotation = player.transform.rotation;
             grapplingHookLine.gameObject.SetActive(false);
+
         }
         if (crc.MAXDISTANCE < (player.transform.position - transform.position).magnitude)
         {
@@ -87,6 +85,7 @@ public class GrappleHead : MonoBehaviour
         PlaySFX(shoot, false);
         transform.position = startPosition;
         rigidBody.AddForce(direction * SPEED);
+        FindObjectOfType<PlayerRopeNode>().StartRope();
         transform.rotation.SetFromToRotation(transform.forward, GetComponent<Rigidbody>().velocity.normalized);
     }
 
