@@ -57,6 +57,10 @@ public class GrappleHead : MonoBehaviour
         {
             StopGrappling();
         }
+        if (gameObject.activeSelf && !insideSomething)
+        {
+            transform.rotation = Quaternion.FromToRotation(transform.forward, GetComponent<Rigidbody>().velocity.normalized);
+        }
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
@@ -73,6 +77,7 @@ public class GrappleHead : MonoBehaviour
         gameObject.SetActive(true);
         PlaySFX(shoot, false);
         transform.position = startPosition + direction.normalized * 1f;
+        transform.rotation = FindObjectOfType<PlayerGrapple>().transform.rotation;
         rigidBody.AddForce(direction * SPEED);
     }
 
@@ -101,9 +106,10 @@ public class GrappleHead : MonoBehaviour
                 }
                 rigidBody.isKinematic = true; //Disables Physics on this object
                 GetComponent<Collider>().enabled = false;
-                transform.parent = collision.transform;
+                gameObject.AddComponent<FixedJoint>().connectedBody = collision.gameObject.GetComponent<Rigidbody>();
                 insideSomething = true;
                 player.StartGrappling(collision.collider);
+                transform.rotation = Quaternion.FromToRotation(-Vector3.forward, collision.contacts[0].normal);
                 PlaySFX(hit, false);
                 if (collision.gameObject.CompareTag("Grabbable")
                     && grab.getObjectGrabbed() == false) {
@@ -141,7 +147,7 @@ public class GrappleHead : MonoBehaviour
     {
         insideSomething = false;
         player.StopGrappling();
-        transform.parent = null;
+        Destroy(GetComponent<FixedJoint>());
         rigidBody.isKinematic = false;
         rigidBody.velocity = Vector3.zero;
         StartCoroutine(Retract());
@@ -151,7 +157,7 @@ public class GrappleHead : MonoBehaviour
     {
         insideSomething = false;
         player.StopGrappling();
-        transform.parent = null;
+        Destroy(GetComponent<FixedJoint>());
     }
 
     public IEnumerator Retract()
