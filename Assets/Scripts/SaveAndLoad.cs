@@ -13,10 +13,6 @@ public class SaveAndLoad : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (GetComponent<Rigidbody>() == null)
-        {
-            Destroy(this);
-        }
         if (GetComponent<NeedExternalObject>() != null)
         {
             gameObject.AddComponent<FixableObjectSave>();
@@ -37,13 +33,20 @@ public class SaveAndLoad : MonoBehaviour
             gameObject.AddComponent<PlayerSave>();
             Destroy(this);
         }
+        if (GetComponent<Rigidbody>() == null)
+        {
+            Destroy(this);
+        }
     }
     public virtual void Save()
     {
         position = transform.localPosition;
         rotation = transform.localRotation;
-        velocity = GetComponent<Rigidbody>().velocity;
-        angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        if (GetComponent<Rigidbody>() != null)
+        {
+            velocity = GetComponent<Rigidbody>().velocity;
+            angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+        }
         Debug.Log("Saved " + gameObject.name);
     }
 
@@ -51,8 +54,11 @@ public class SaveAndLoad : MonoBehaviour
     {
         transform.localPosition = position;
         transform.localRotation = rotation;
-        GetComponent<Rigidbody>().velocity = velocity;
-        GetComponent<Rigidbody>().angularVelocity = angularVelocity;
+        if (GetComponent<Rigidbody>() != null)
+        {
+            GetComponent<Rigidbody>().velocity = velocity;
+            GetComponent<Rigidbody>().angularVelocity = angularVelocity;
+        }
         Debug.Log(gameObject.name + position);
     }
 }
