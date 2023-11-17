@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -54,6 +55,7 @@ public class PlayerGrapple : MonoBehaviour
     private bool holding;
 
     private Transform playerCamera;
+    private Vector3 endPoint;
 
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
@@ -119,10 +121,11 @@ public class PlayerGrapple : MonoBehaviour
             {
                 ToggleHold();
             }
-
+            endPoint = playerCamera.transform.position + crc.MAXDISTANCE * playerCamera.transform.forward.normalized;
             //If not holding to grapple, treat as a toggle
             if (!MenuActions.holdToGrapple)
             {
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     //PLAY SOUND
@@ -134,7 +137,7 @@ public class PlayerGrapple : MonoBehaviour
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
             } else
@@ -148,7 +151,7 @@ public class PlayerGrapple : MonoBehaviour
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
                 if (Input.GetMouseButtonUp(0) && crc.shooting == true)
@@ -160,7 +163,7 @@ public class PlayerGrapple : MonoBehaviour
                     }
                     else
                     {
-                        grappleHead.StartMovement(grappleHeadTransform.position, playerCamera.transform.forward);
+                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
                     }
                 }
             }
