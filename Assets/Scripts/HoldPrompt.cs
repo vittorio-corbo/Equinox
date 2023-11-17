@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class HoldPrompt : MonoBehaviour
 {
-    public static bool showHoldText = false;
-    public static bool isHolding = false;
     public GameObject holdText;
+    public PlayerGrapple player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<PlayerGrapple>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (showHoldText == true && isHolding == false && !PauseScript.isPaused)
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, 5f, ~LayerMask.GetMask("NotHoldable")) && player.holding == false && !PauseScript.isPaused)
         {
             holdText.SetActive(true);
         }

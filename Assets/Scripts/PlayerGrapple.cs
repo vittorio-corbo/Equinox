@@ -52,7 +52,7 @@ public class PlayerGrapple : MonoBehaviour
 
     private float normalGrappleDist;
 
-    private bool holding;
+    public bool holding;
 
     private Transform playerCamera;
     private Vector3 endPoint;
@@ -184,12 +184,12 @@ public class PlayerGrapple : MonoBehaviour
         if (GetComponent<ConfigurableJoint>() == null)
         {
             HoldSurface();
-            HoldPrompt.isHolding = true;
+            holding = true;
         }
         else
         {
             StopHolding();
-            HoldPrompt.isHolding = false;
+            holding = false;
         }
     }
 
