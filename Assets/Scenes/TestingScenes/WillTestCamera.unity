@@ -1514,7 +1514,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!1001 &895264606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1525,11 +1525,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 61736555970987477, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Height
-      value: 2.5978029
+      value: 2.8678613
       objectReference: {fileID: 0}
     - target: {fileID: 61736555970987477, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Radius
-      value: 1.117813
+      value: 1.3248426
       objectReference: {fileID: 0}
     - target: {fileID: 61736555970987477, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Enabled
@@ -1541,7 +1541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61736555970987477, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Center.z
-      value: 0.6178129
+      value: 0.82484245
       objectReference: {fileID: 0}
     - target: {fileID: 453011136548440145, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Mesh
