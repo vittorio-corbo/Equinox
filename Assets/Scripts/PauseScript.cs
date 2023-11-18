@@ -75,9 +75,9 @@ public class PauseScript : MonoBehaviour
 
     public void QuitGame()
     {
-        //TODO: Change to build index if needed
-        SceneManager.LoadScene("Start");
-        SceneManager.UnloadScene("pause");
+        //Comment this out when we have a start scene
+        Application.Quit();
+        //SceneManager.LoadScene(0);
     }
 
     public static void pauseHelper(bool isPaused)
