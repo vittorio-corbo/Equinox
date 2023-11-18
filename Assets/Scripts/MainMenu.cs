@@ -21,9 +21,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void StartGame() {
-        //TODO: Switch to SceneManager.GetActiveScene().buildIndex + 1 for build
-        SceneManager.LoadScene(StartButtonScene);
-        SceneManager.UnloadScene("Start");
+        SceneManager.LoadScene(1);
         PauseScript.isPaused = false;
         PauseScript.pauseHelper(PauseScript.isPaused);
     }
@@ -31,8 +29,6 @@ public class MainMenu : MonoBehaviour
     //public void CloseOptions() { }
     public void QuitGame() { 
         Application.Quit();
-        //print("game quat");
-        print("game quat");
     }
 
     public void openOptions()
