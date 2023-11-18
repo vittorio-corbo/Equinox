@@ -181,6 +181,10 @@ public class GrappleHead : MonoBehaviour
     {
         PlaySFX(retractingNow, true);
         retracting = true;
+        if (grabbedObj != null)
+        {
+            grabbedObj.GetComponent<Collider>().enabled = false;
+        }
         while ((transform.position - grappleHeadTransform.position).magnitude > 2f)
         {
             transform.position -= (transform.position - grappleHeadTransform.position).normalized * (SPEED / 20);
