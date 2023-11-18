@@ -18,6 +18,11 @@ public class SaveAndLoad : MonoBehaviour
             gameObject.AddComponent<FixableObjectSave>();
             Destroy(this);
         }
+        if (GetComponent<FixingObject>() != null)
+        {
+            gameObject.AddComponent<FixingObjectSave>();
+            Destroy(this);
+        }
         if (GetComponent<GrappleHead>() != null)
         {
             gameObject.AddComponent<GrappleSave>();

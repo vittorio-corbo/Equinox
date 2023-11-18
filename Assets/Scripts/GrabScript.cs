@@ -84,6 +84,7 @@ public class GrabScript : MonoBehaviour
         grabRigid.isKinematic = false;
         grabbedObject.transform.parent = null;
         if (chuck) {
+            grabbedObject.transform.position += transform.forward;
             grabRigid.AddForce(transform.forward * chuckSpeed);
             grabRigid.AddTorque(turnVector * 1f);
         }

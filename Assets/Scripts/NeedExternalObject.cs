@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static FixingObject;
 
 public class NeedExternalObject : Reporter
 {
     public GameObject fixedText;
-    public Transform slot; // specific slot for grabbable object
     public float detectionRadius = 20f;
+
+    public Transform[] positions;
 
     [SerializeField] private List<FixingObjectType> fixingTypes;
     public List<FixableObjectCheck> fixableObjectChecks = new List<FixableObjectCheck>();
@@ -40,7 +42,18 @@ public class NeedExternalObject : Reporter
         {
             fixableObjectChecks.Add(new FixableObjectCheck(type));
         }
-
+        positions = new Transform[fixableObjectChecks.Count];
+        try
+        {
+            for (int i = 0; i < fixableObjectChecks.Count; ++i)
+            {
+                positions[i] = transform.GetChild(i);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("There are not enough Children Transforms on " + gameObject.name);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -56,6 +69,7 @@ public class NeedExternalObject : Reporter
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<FixingObject>() != null)
         {
+            int counter = 0;
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
                 if (!check.isFixed
@@ -63,12 +77,15 @@ public class NeedExternalObject : Reporter
                     && collision.gameObject.GetComponent<FixingObject>().type == check.type)
                 {
                     check.isFixed = true;
+                    collision.transform.position = positions[counter].position;
+                    collision.transform.rotation = positions[counter].rotation;
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
                     collision.gameObject.tag = "MoveableObject";
                     connectedObjects.Add(collision.gameObject);
                     break;
                 }
+                counter++;
             }
             bool checkBool = true;
             foreach (FixableObjectCheck check in fixableObjectChecks)
