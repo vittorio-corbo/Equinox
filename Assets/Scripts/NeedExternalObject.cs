@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static FixingObject;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class NeedExternalObject : Reporter
 {
@@ -110,18 +111,22 @@ public class NeedExternalObject : Reporter
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<FixingObject>() != null)
         {
+            int counter = 0;
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
                 if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type && collision.gameObject.transform.parent == null)
                 {
                     connectedObjects.Add(collision.gameObject);
                     check.isFixed = true;
+                    collision.transform.position = positions[counter].position;
+                    collision.transform.rotation = positions[counter].rotation;
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
                     collision.gameObject.tag = "MoveableObject";
                     collision.GetComponent<Collider>().isTrigger = true;
                     break;
                 }
+                counter++;
             }
             bool checkBool = true;
             foreach (FixableObjectCheck check in fixableObjectChecks)
