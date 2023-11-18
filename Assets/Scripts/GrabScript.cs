@@ -26,7 +26,7 @@ public class GrabScript : MonoBehaviour
             if (grabbedObject == null)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1f))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f))
                 {
                     if (hit.transform.gameObject.tag == "Grabbable")
                     {
