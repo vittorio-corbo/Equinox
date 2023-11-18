@@ -7,7 +7,7 @@ using static FixingObject;
 
 public class NeedExternalObject : Reporter
 {
-    public GameObject fixedText;
+    //public GameObject fixedText;
     public float detectionRadius = 20f;
 
     public Transform[] positions;
@@ -37,7 +37,7 @@ public class NeedExternalObject : Reporter
     // Start is called before the first frame update
     void Start()
     {
-        fixedText.SetActive(false);
+        //fixedText.SetActive(false);
         foreach (FixingObjectType type in fixingTypes)
         {
             fixableObjectChecks.Add(new FixableObjectCheck(type));
@@ -59,10 +59,10 @@ public class NeedExternalObject : Reporter
     void Update()
     {
         // Check if the text is active and hide it after 2 seconds
-        if (fixedText.activeSelf)
+        /*if (fixedText.activeSelf)
         {
             StartCoroutine(HideTextAfterDelay(2f));
-        }
+        }*/
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -100,7 +100,7 @@ public class NeedExternalObject : Reporter
                     go.GetComponent<SaveAndLoad>().Save();
                 }
                 Fix();
-                fixedText.SetActive(true);
+                //fixedText.SetActive(true);
             }
         }
     }
@@ -141,7 +141,7 @@ public class NeedExternalObject : Reporter
                     go.GetComponent<SaveAndLoad>().Save();
                 }
                 Fix();
-                fixedText.SetActive(true);
+                //fixedText.SetActive(true);
             }
         }
     }
@@ -149,7 +149,7 @@ public class NeedExternalObject : Reporter
     private IEnumerator HideTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        fixedText.SetActive(false);
+        //fixedText.SetActive(false);
     }
 
     public bool getFixed()

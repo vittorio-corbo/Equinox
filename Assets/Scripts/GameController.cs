@@ -20,10 +20,10 @@ public class GameController : MonoBehaviour
         if (!(PauseScript.isPaused))
         {
             //RESET ROOM
-            if (Input.GetKey(KeyCode.R))
+            /*if (Input.GetKey(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+            }*/
             if (Input.GetKeyDown(KeyCode.C))
             {
                 controlImage.gameObject.SetActive(!controlImage.gameObject.activeSelf);

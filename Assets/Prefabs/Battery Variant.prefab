@@ -142,9 +142,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3677817757614278034, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1736294561448580372, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439516310653078524, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
       propertyPath: m_Name
       value: Battery Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590879325585990709, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793171510991142646, guid: 21ce1dc5f70f75a42ae23f9ff321faa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

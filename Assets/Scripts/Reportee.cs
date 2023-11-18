@@ -18,6 +18,7 @@ public class Reportee : MonoBehaviour
     public virtual void Start()
     {
         myReporter = GetComponent<Reporter>();
+        fixedText.SetActive(false);
         Debug.Log(myReporter);
         foreach(Reporter rep in minions)
         {
