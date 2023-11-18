@@ -71,6 +71,7 @@ public class GrappleHead : MonoBehaviour
     }
     public void StartMovement(Vector3 startPosition, Vector3 direction)
     {
+        crc = FindObjectOfType<Laser>();
         crc.shooting = true;
         if (retracting)
         {

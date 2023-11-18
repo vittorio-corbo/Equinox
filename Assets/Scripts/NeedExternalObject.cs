@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static FixingObject;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class NeedExternalObject : Reporter
 {
@@ -118,6 +117,7 @@ public class NeedExternalObject : Reporter
                 {
                     connectedObjects.Add(collision.gameObject);
                     check.isFixed = true;
+                    Debug.Log(gameObject.name);
                     collision.transform.position = positions[counter].position;
                     collision.transform.rotation = positions[counter].rotation;
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();

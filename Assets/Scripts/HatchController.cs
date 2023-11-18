@@ -8,7 +8,7 @@ public class HatchController : Reportee
     bool open = false;
     HingeJoint hj;
     float targetAngle;
-    private void Start()
+    private new void Start()
     {
         base.Start();
         rb = GetComponent<Rigidbody>();
