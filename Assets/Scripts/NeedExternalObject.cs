@@ -113,7 +113,7 @@ public class NeedExternalObject : Reporter
             int counter = 0;
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
-                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type && collision.gameObject.transform.parent == null)
+                if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type && collision.gameObject.transform.parent.gameObject.layer == LayerMask.NameToLayer("Pizza"))
                 {
                     connectedObjects.Add(collision.gameObject);
                     check.isFixed = true;
