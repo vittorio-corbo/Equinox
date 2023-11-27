@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08949142, g: 0.045243386, b: 0.018467382, a: 1}
+  m_IndirectSpecularColor: {r: 0.08950024, g: 0.04522766, b: 0.018478226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -966,6 +966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &70833583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564154717438831749, guid: bccffacc811f5884a9dde17a0ea72a7d, type: 3}
+  m_PrefabInstance: {fileID: 1099956567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &75688917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2085,10 +2090,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1733756386201357856, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1861582412}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
 --- !u!1001 &141837887
 PrefabInstance:
@@ -4232,10 +4234,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 986961861}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
-      propertyPath: fixedText
-      value: 
-      objectReference: {fileID: 986961861}
-    - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: openPos.x
       value: -29.31
       objectReference: {fileID: 0}
@@ -4594,6 +4592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &283114150 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6353999895170042829, guid: 91c1d841f6e883b4283589587daf9e60, type: 3}
+  m_PrefabInstance: {fileID: 1530676226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &283344981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5793,6 +5796,112 @@ Transform:
   - {fileID: 534370204}
   - {fileID: 29810053}
   - {fileID: 769074010}
+  - {fileID: 2351466}
+  - {fileID: 52682637}
+  - {fileID: 108383348}
+  - {fileID: 109297133}
+  - {fileID: 131881927}
+  - {fileID: 135752626}
+  - {fileID: 159185291}
+  - {fileID: 161693767}
+  - {fileID: 173151684}
+  - {fileID: 194282941}
+  - {fileID: 197082756}
+  - {fileID: 226771879}
+  - {fileID: 228606830}
+  - {fileID: 228988615}
+  - {fileID: 249378628}
+  - {fileID: 315735435}
+  - {fileID: 320510433}
+  - {fileID: 322876503}
+  - {fileID: 345098728}
+  - {fileID: 367171981}
+  - {fileID: 379808271}
+  - {fileID: 439741452}
+  - {fileID: 440887189}
+  - {fileID: 451808136}
+  - {fileID: 476073342}
+  - {fileID: 491305423}
+  - {fileID: 515281223}
+  - {fileID: 528155652}
+  - {fileID: 586765032}
+  - {fileID: 606677897}
+  - {fileID: 610145889}
+  - {fileID: 620069722}
+  - {fileID: 636880885}
+  - {fileID: 653471673}
+  - {fileID: 699744784}
+  - {fileID: 742172348}
+  - {fileID: 749072363}
+  - {fileID: 768815839}
+  - {fileID: 773035893}
+  - {fileID: 819275168}
+  - {fileID: 833292568}
+  - {fileID: 860035530}
+  - {fileID: 867128630}
+  - {fileID: 890162761}
+  - {fileID: 946683293}
+  - {fileID: 980413944}
+  - {fileID: 1037801184}
+  - {fileID: 1053806276}
+  - {fileID: 1060253445}
+  - {fileID: 1060818331}
+  - {fileID: 1067052688}
+  - {fileID: 1076374165}
+  - {fileID: 1147560120}
+  - {fileID: 1173371804}
+  - {fileID: 1215176106}
+  - {fileID: 1227843277}
+  - {fileID: 1241515524}
+  - {fileID: 1245875458}
+  - {fileID: 1253564902}
+  - {fileID: 1284725538}
+  - {fileID: 1284891591}
+  - {fileID: 1285235049}
+  - {fileID: 1289669725}
+  - {fileID: 1313782042}
+  - {fileID: 1318297846}
+  - {fileID: 1319025532}
+  - {fileID: 1351294065}
+  - {fileID: 1354093794}
+  - {fileID: 1357856395}
+  - {fileID: 1358286989}
+  - {fileID: 1376538758}
+  - {fileID: 1429359145}
+  - {fileID: 1442172439}
+  - {fileID: 1447031517}
+  - {fileID: 1485341066}
+  - {fileID: 1493676720}
+  - {fileID: 1505772080}
+  - {fileID: 1583287804}
+  - {fileID: 1627649361}
+  - {fileID: 1627747839}
+  - {fileID: 1651474445}
+  - {fileID: 1652586837}
+  - {fileID: 1665286024}
+  - {fileID: 1678007057}
+  - {fileID: 1678812980}
+  - {fileID: 1688870239}
+  - {fileID: 1701342281}
+  - {fileID: 1705064280}
+  - {fileID: 1782349327}
+  - {fileID: 1796992864}
+  - {fileID: 1825863094}
+  - {fileID: 1832362022}
+  - {fileID: 1840575653}
+  - {fileID: 1841403049}
+  - {fileID: 1870875022}
+  - {fileID: 1922211831}
+  - {fileID: 1961792673}
+  - {fileID: 1997551257}
+  - {fileID: 2022421766}
+  - {fileID: 2023548794}
+  - {fileID: 2023675079}
+  - {fileID: 2034115705}
+  - {fileID: 2076543832}
+  - {fileID: 2088084016}
+  - {fileID: 2093058372}
+  - {fileID: 2137459183}
   m_Father: {fileID: 938548052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &366558597
@@ -7621,10 +7730,6 @@ PrefabInstance:
       propertyPath: react
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
-      propertyPath: fixedText
-      value: 
-      objectReference: {fileID: 986961861}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: fixedText
       value: 
@@ -13072,6 +13177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6957117945054136501, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7032278672084809848, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14259,10 +14368,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 986961861}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
-      propertyPath: fixedText
-      value: 
-      objectReference: {fileID: 986961861}
-    - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: openPos.x
       value: 24.78
       objectReference: {fileID: 0}
@@ -15420,7 +15525,6 @@ Transform:
   - {fileID: 1547097335}
   - {fileID: 925540884}
   - {fileID: 982022607}
-  - {fileID: 70833583}
   - {fileID: 1658189678}
   - {fileID: 626852939}
   - {fileID: 1561795541}
@@ -15473,7 +15577,6 @@ Transform:
   - {fileID: 853287690}
   - {fileID: 373784073}
   - {fileID: 295145449}
-  - {fileID: 1269501787}
   - {fileID: 993403890}
   - {fileID: 1610407451}
   - {fileID: 1237058956}
@@ -15490,7 +15593,6 @@ Transform:
   - {fileID: 486037697}
   - {fileID: 1144396105}
   - {fileID: 83521276}
-  - {fileID: 283114150}
   - {fileID: 761816049}
   - {fileID: 825368877}
   - {fileID: 18287759}
@@ -15502,6 +15604,9 @@ Transform:
   - {fileID: 1342537991}
   - {fileID: 581555299}
   - {fileID: 23207920}
+  - {fileID: 1269501787}
+  - {fileID: 70833583}
+  - {fileID: 283114150}
   m_Father: {fileID: 938548052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918609790
@@ -21881,6 +21986,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1269501787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6353999895170042829, guid: 91c1d841f6e883b4283589587daf9e60, type: 3}
+  m_PrefabInstance: {fileID: 263111369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1273745624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37923,6 +38033,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5815383979502135765, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1053727473553697644, guid: 696755a606017664c988f1885700b878, type: 2}
+    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
+      propertyPath: mix
+      value: 
+      objectReference: {fileID: 24100000, guid: 696755a606017664c988f1885700b878, type: 2}
     - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
       propertyPath: clipToUse
       value: 
@@ -38205,3 +38323,4 @@ SceneRoots:
   - {fileID: 1273745624}
   - {fileID: 283344981}
   - {fileID: 1404092925}
+  - {fileID: 969225881}
