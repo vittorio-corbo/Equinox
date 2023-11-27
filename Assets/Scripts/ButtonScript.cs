@@ -25,11 +25,20 @@ public class ButtonScript : MonoBehaviour
     {
         if (buttonDown)
         {
-            ButtonThing();
+            ButtonOn();
+        }
+        else
+        {
+            ButtonOff();
         }
     }
-    public void ButtonThing()
+    public virtual void ButtonOn()
     {
         Debug.Log("BUTTON");
+    }
+
+    public virtual void ButtonOff()
+    {
+        
     }
 }
