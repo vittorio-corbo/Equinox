@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 47bc704b353f80b4a9a036adad331960, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 043f62e753e08b24a85ed42a08344871, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08949142, g: 0.045243386, b: 0.018467382, a: 1}
+  m_IndirectSpecularColor: {r: 0.08974599, g: 0.045441426, b: 0.018768447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6505,7 +6505,7 @@ Transform:
   - {fileID: 1738383281}
   - {fileID: 1876695487}
   - {fileID: 1111833427}
-  - {fileID: 1376952513}
+  - {fileID: 543450652323333973}
   - {fileID: 959170545}
   - {fileID: 543450652704948593}
   - {fileID: 1657925552}
@@ -26054,18 +26054,13 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1376952514}
   m_SourcePrefab: {fileID: 100100000, guid: cc27e1482db87994182fce1991434a77, type: 3}
---- !u!1 &1376952511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27e1482db87994182fce1991434a77, type: 3}
-  m_PrefabInstance: {fileID: 1376952510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1376952512
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376952511}
+  m_GameObject: {fileID: 919132148384898543}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -26080,18 +26075,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.5, y: 26.5, z: 15.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1376952513 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27e1482db87994182fce1991434a77, type: 3}
-  m_PrefabInstance: {fileID: 1376952510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1376952514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376952511}
+  m_GameObject: {fileID: 919132148384898543}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
@@ -31776,7 +31766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1376952513}
+  m_Father: {fileID: 543450652323333973}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &1718721260
 MeshRenderer:
@@ -35082,6 +35072,10 @@ PrefabInstance:
       propertyPath: goal
       value: 
       objectReference: {fileID: 1793880299}
+    - target: {fileID: 6453805697313927932, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7049842342309091168, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -38366,6 +38360,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &543450652323333973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc27e1482db87994182fce1991434a77, type: 3}
+  m_PrefabInstance: {fileID: 1376952510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450652704948593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6203560034329417104, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
@@ -38410,6 +38409,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &919132148384898543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc27e1482db87994182fce1991434a77, type: 3}
+  m_PrefabInstance: {fileID: 1376952510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &2024759108743500218
 MeshFilter:
   m_ObjectHideFlags: 0
