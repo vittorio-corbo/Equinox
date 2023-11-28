@@ -5,12 +5,58 @@ using UnityEngine;
 public class ButtonScript : MonoBehaviour
 {
     bool buttonDown = false;
-    [SerializeField] private GameObject button;
+    [SerializeField] private Button button;
+    private GameObject buttonBase;
+
+    Vector3 buttonPosition;
+    Quaternion buttonRotation;
+    float damp;
+    float min;
+    float max;
+    float force;
+    float breakForce;
+
+    [SerializeField] float cooldown;
+    bool justLeft = false;
+
+    protected void Start()
+    {
+        buttonPosition = button.transform.position;
+        buttonRotation = button.transform.rotation;
+        SpringJoint spring = button.GetComponent<SpringJoint>();
+        buttonBase = spring.connectedBody.gameObject;
+        damp = spring.damper;
+        min = spring.minDistance;
+        max = spring.maxDistance;
+        force = spring.spring;
+        breakForce = spring.breakForce;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.Equals(button))
         {
             buttonDown = true;
+        }
+        if (!justLeft && (other.gameObject.GetComponent<Button>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null) && button == null))
+        {
+            if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null)
+            {
+                button = other.gameObject.transform.parent.GetComponent<Button>();
+            }
+            else
+            {
+                button = other.gameObject.GetComponent<Button>();
+            }
+            button.transform.position = buttonPosition;
+            button.transform.rotation = buttonRotation;
+            button.ReAttach(this);
+            SpringJoint joint = button.gameObject.AddComponent<SpringJoint>();
+            joint.damper = damp;
+            joint.minDistance = min;
+            joint.maxDistance = max;
+            joint.spring = force;
+            joint.breakForce = breakForce;
+            joint.connectedBody = buttonBase.GetComponent<Rigidbody>();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -21,15 +67,36 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void Update()
     {
         if (buttonDown)
         {
-            ButtonThing();
+            ButtonOn();
+        }
+        else
+        {
+            ButtonOff();
         }
     }
-    public void ButtonThing()
+
+    IEnumerator ButtonCooldown()
     {
-        Debug.Log("BUTTON");
+        justLeft = true;
+        yield return new WaitForSeconds(cooldown);
+        justLeft = false;
+    }
+    public virtual void ButtonOn()
+    {
+
+    }
+
+    public virtual void ButtonOff()
+    {
+        
+    }
+
+    public void Break()
+    {
+        button = null;
     }
 }
