@@ -9,6 +9,7 @@ public class GrabScript : MonoBehaviour
     private GameObject pickUpText;
     private GameObject lookObject;
     private GameObject grabbedObject;
+    private GameObject parentGrabbedObject;
     private Rigidbody grabRigid;
     private bool currLook = false;
     private Vector3 turnVector = new Vector3(1, 1, 1);
@@ -66,6 +67,22 @@ public class GrabScript : MonoBehaviour
     }
 
     public void grabObject(GameObject grabObj) {
+        //Save old parent
+        
+        if (grabObj.transform.parent.gameObject.layer == 7) { //"GrappleHead"
+            //If part of grapplehead diasychaing and get its parentvariable
+            //parentGrabbedObject = ((GrappleHead) grabObj.transform.parent.gameObject).parentGrabbedObj;
+            parentGrabbedObject = FindObjectOfType<GrappleHead>().parentGrabbedObj;
+            
+            //parentGrabbedObject = grabObj.transform.parent.gameObject.parentGrabbedObj;
+
+            //NEED TO UNSET THIS SOMEWHERE
+        }
+        else
+        {
+            parentGrabbedObject = grabObj.transform.parent.gameObject;
+        }
+
         grabbedObject = grabObj;
         grabRigid = grabbedObject.GetComponent<Rigidbody>();
         grabRigid.isKinematic = true;
@@ -88,7 +105,13 @@ public class GrabScript : MonoBehaviour
             grabRigid.AddForce(transform.forward * chuckSpeed);
             grabRigid.AddTorque(turnVector * 1f);
         }
+        //reasign to old parent
+        grabbedObject.transform.parent = parentGrabbedObject.transform;
+        parentGrabbedObject = null;
+
         grabbedObject = null;
+
+        
     }
 
     void moveObject() {
