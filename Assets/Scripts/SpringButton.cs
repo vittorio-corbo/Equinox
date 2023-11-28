@@ -6,9 +6,10 @@ public class SpringButton : ButtonScript
 {
     [SerializeField] SpringScript spring;
 
-    public void Start()
+    public new void Start()
     {
         spring.winching = true;
+        base.Start();
     }
 
     public override void ButtonOn()
