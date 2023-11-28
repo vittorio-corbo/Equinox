@@ -117,6 +117,7 @@ public class GrappleHead : MonoBehaviour
                     grabRig.isKinematic = true;
                     //save old parent
                     parentGrabbedObj = grabRig.transform.parent.gameObject;
+
                     grabRig.transform.parent = rigidBody.transform;
                 }
                 if (collision.gameObject.CompareTag("Grabbable")

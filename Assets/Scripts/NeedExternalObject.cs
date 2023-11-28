@@ -110,15 +110,11 @@ public class NeedExternalObject : Reporter
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<FixingObject>() != null)
         {
-            Debug.Log("cumm");
             int counter = 0;
             foreach (FixableObjectCheck check in fixableObjectChecks)
             {
-                Debug.Log("looped");
-                Debug.Log(collision.gameObject.transform.parent.gameObject.layer);
                 if (!check.isFixed && collision.gameObject.GetComponent<FixingObject>().type == check.type && collision.gameObject.transform.parent.gameObject.layer != LayerMask.NameToLayer("Pizza"))
                 {
-                    Debug.Log("exit_loop");
                     connectedObjects.Add(collision.gameObject);
                     check.isFixed = true;
                     Debug.Log(gameObject.name);
