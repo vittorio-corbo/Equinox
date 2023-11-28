@@ -249,10 +249,29 @@ public class PlayerGrapple : MonoBehaviour
                 {
                     rigidbody.velocity = rigidbody.velocity * (1-dampingSpeed);
                 }
-                collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
-                rigidbody.AddForce(playerMoveVector.normalized * (grappleForce / 2));
+                if (!holding)
+                {
+                    collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
+                    rigidbody.AddForce(playerMoveVector.normalized * (grappleForce / 2));
+                }
+                else
+                {
+                    if (GetComponent<ConfigurableJoint>().connectedBody.isKinematic)
+                    {
+                        collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce, grappleHead.transform.position);
+                    }
+                    else 
+                    {
+                        collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
+                        rigidbody.AddForce(playerMoveVector.normalized * (grappleForce / 2));
+                    }
+                }
             }
             //WE MOVING
+            else if (collider.CompareTag("Grabbable"))
+            {
+                //Nothing
+            }
             else if (!collider.CompareTag("Stopper"))
             {
                 //Wall BUFFER
