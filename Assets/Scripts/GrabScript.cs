@@ -105,7 +105,7 @@ public class GrabScript : MonoBehaviour
             grabRigid.AddForce(transform.forward * chuckSpeed);
             grabRigid.AddTorque(turnVector * 1f);
         }
-        //to do: reasign parent
+        //reasign to old parent
         grabbedObject.transform.parent = parentGrabbedObject.transform;
         parentGrabbedObject = null;
 
