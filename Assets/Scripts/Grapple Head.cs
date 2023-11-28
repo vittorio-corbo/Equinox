@@ -22,6 +22,7 @@ public class GrappleHead : MonoBehaviour
     private LineRenderer grapplingHookLine;
     private AudioSource playerAudio;
     private GameObject grabbedObj;
+    public GameObject parentGrabbedObj;
     private Rigidbody grabRig;
     private GrabScript grab;
 
@@ -109,9 +110,13 @@ public class GrappleHead : MonoBehaviour
                 if (collision.gameObject.CompareTag("Grabbable")
                     && grab.getObjectGrabbed() == false)
                 {
+
+
                     grabbedObj = collision.gameObject;
                     grabRig = grabbedObj.GetComponent<Rigidbody>();
                     grabRig.isKinematic = true;
+                    //save old parent
+                    parentGrabbedObj = grabRig.transform.parent.gameObject;
                     grabRig.transform.parent = rigidBody.transform;
                 }
                 if (collision.gameObject.CompareTag("Grabbable")
@@ -207,6 +212,9 @@ public class GrappleHead : MonoBehaviour
             Destroy(gameObject.GetComponent<LineRenderer>());
         }
         crc.shooting = false;
+
+        //disacciate game object
+        parentGrabbedObj = null;
     }
 
     //Plays the sound, prints stack trace to console if it cannot find the file
