@@ -67,7 +67,7 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void Update()
     {
         if (buttonDown)
         {
