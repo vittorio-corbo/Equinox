@@ -657,6 +657,7 @@ MonoBehaviour:
   grappleForce: 30
   hold: {fileID: 8300000, guid: bbb28b9a0492e459fb90ad7883490529, type: 3}
   stopHold: {fileID: 8300000, guid: 53ce88bfc0adea746ab39313ff8025d0, type: 3}
+  holding: 0
   dampingAngle: 30
   dampingSpeed: 0.005
 --- !u!114 &151374550744832509
@@ -1000,7 +1001,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: dd644008de4ab8a40b2a662256901972, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
