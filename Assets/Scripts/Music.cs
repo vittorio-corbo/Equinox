@@ -49,7 +49,7 @@ public class Music : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mix.SetFloat("settingsVol", Mathf.Log10(MenuActions.musicVolume) * 20);
+        mix.SetFloat("settingsVol", Mathf.Log10(PlayerPrefs.GetFloat("MusicVol")) * 20);
         if (!paused && PauseScript.isPaused || paused && !(PauseScript.isPaused)) {
             pause();
         }
