@@ -213,6 +213,10 @@ public class PlayerGrapple : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
                 }
+                if (hit.transform.gameObject.GetComponent<TurnKinematic>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<TurnKinematic>().StopKinematic();
+                }
                 PlaySFX(hold, false);
             }
         }
@@ -220,9 +224,15 @@ public class PlayerGrapple : MonoBehaviour
 
     public void StopHolding()
     {
+        if (GetComponent<ConfigurableJoint>().connectedBody.GetComponent<TurnKinematic>() != null)
+        {
+            GetComponent<ConfigurableJoint>().connectedBody.GetComponent<TurnKinematic>().MakeKinematic();
+        }
+
         Destroy(GetComponent<ConfigurableJoint>());
         crc.MAXDISTANCE = normalGrappleDist;
         PlaySFX(stopHold, false);
+
     }
 
     
