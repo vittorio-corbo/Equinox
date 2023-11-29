@@ -10368,8 +10368,8 @@ MonoBehaviour:
   Music: {fileID: 0}
   position: {x: 3, y: 42, z: -1175}
   rotation: {x: 1, y: -0.00000004371139, z: -0.00000004371139, w: 1.9106855e-15}
-  musicReportee: {fileID: 0}
-  musicGenerator: {fileID: 0}
+  musicReportee: {fileID: 385664843}
+  musicGenerator: {fileID: 4760709823810827398}
   inArea: 0
 --- !u!65 &385664842
 BoxCollider:
@@ -10407,16 +10407,16 @@ MonoBehaviour:
   minions:
   - {fileID: 955908159}
   allFixed: 0
-  fixedString: 
-  fixedText: {fileID: 0}
+  fixedString: woohoo
+  fixedText: {fileID: 986961861}
   react: 0
   clipsToPlay:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 4f8f685d9ff1c2643be5bdba013298e2, type: 3}
+  - {fileID: 8300000, guid: caeb39487a15cca47aedf80fa4cec359, type: 3}
   keys:
-  - 
-  - 
-  musicScript: {fileID: 0}
+  - 0
+  - 1
+  musicScript: {fileID: 4760709823810827398}
   trigger: {fileID: 0}
 --- !u!1001 &386170517
 PrefabInstance:
@@ -25507,7 +25507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -999.2
+      value: -1232.1
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalRotation.w
