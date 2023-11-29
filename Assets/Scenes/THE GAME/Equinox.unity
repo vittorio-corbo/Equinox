@@ -15039,6 +15039,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 366558596}
     m_Modifications:
+    - target: {fileID: 2354449739255706656, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     - target: {fileID: 5801687588151784707, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       propertyPath: m_Name
       value: SatelliteButton
@@ -26577,11 +26581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.6
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1065.6
+      value: -892.9
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53689,9 +53693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cad3f21473a0e4eb1b23b7f923052d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minions: []
+  minions:
+  - {fileID: 2143607667}
   allFixed: 0
-  fixedString: 
+  fixedString: lazer is firing
   fixedText: {fileID: 986961861}
   react: 0
   button: {fileID: 594316097}
