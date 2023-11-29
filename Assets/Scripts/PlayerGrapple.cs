@@ -115,7 +115,7 @@ public class PlayerGrapple : MonoBehaviour
             }
             endPoint = playerCamera.transform.position + crc.MAXDISTANCE * playerCamera.transform.forward.normalized;
             //If not holding to grapple, treat as a toggle
-            if (!MenuActions.holdToGrapple)
+            if (PlayerPrefs.GetInt("HoldGrapple") == 0)
             {
 
                 if (Input.GetMouseButtonDown(0))
@@ -346,7 +346,7 @@ public class PlayerGrapple : MonoBehaviour
             {
                 source.loop = false;
             }
-            source.volume = MenuActions.effectsVolume;
+            source.volume = PlayerPrefs.GetFloat("EffectVol");
             source.Play();
             musicPlaying = true;
         }
