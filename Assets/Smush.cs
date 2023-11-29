@@ -16,7 +16,10 @@ public class Smush : NeedExternalObject
      protected override void OnTriggerEnter(Collider collision)
     {
         //check if item is type liver
+        //if (areaA.allFixed) //if good do boring shit
         if (areaA.allFixed) //if good do boring shit
+            //maybe check rotations up top here?
+
         {
             
             base.OnTriggerEnter(collision);

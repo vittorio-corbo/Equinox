@@ -16,6 +16,9 @@ public class FixingObject : MonoBehaviour
         Rock,
         SidePannel,
         Liver,
+        BellyBottom,
+        Apendix,
+        PowerCore,
     }
 
     public FixingObjectType type;
