@@ -15,6 +15,7 @@ public class FixingObject : MonoBehaviour
         Gear,
         Rock,
         SidePannel,
+        Liver,
     }
 
     public FixingObjectType type;

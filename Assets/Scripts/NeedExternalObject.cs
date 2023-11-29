@@ -111,7 +111,7 @@ public class NeedExternalObject : Reporter
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    protected virtual void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<FixingObject>() != null)
