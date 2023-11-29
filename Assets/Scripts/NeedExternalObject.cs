@@ -56,8 +56,14 @@ public class NeedExternalObject : Reporter
         }
     }
     // Update is called once per frame
+    bool called = false;
     void Update()
     {
+        if (isFixed && !called)
+        {
+            Fix();
+            called = true;
+        }
         // Check if the text is active and hide it after 2 seconds
         /*if (fixedText.activeSelf)
         {
