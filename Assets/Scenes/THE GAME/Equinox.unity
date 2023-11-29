@@ -1769,11 +1769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.y
-      value: 19.9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.z
-      value: 232.32
+      value: 12.320007
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: minions.Array.data[0]
@@ -6592,15 +6592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.1966436
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.6463
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.2
+      value: -22.74
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6608,7 +6608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.359985
+      value: 30.16
       objectReference: {fileID: 0}
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6637,6 +6637,42 @@ PrefabInstance:
     - target: {fileID: 5463450420094160398, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278148628352517446, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278148628352517446, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278148628352517446, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278148628352517446, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278148628352517446, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567955043186515774, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567955043186515774, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567955043186515774, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567955043186515774, guid: c5b95a398ac74d74aace7dd54399c4eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18354,15 +18390,15 @@ PrefabInstance:
       objectReference: {fileID: 986961861}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: openPos.x
-      value: 24.78
+      value: 69.78
       objectReference: {fileID: 0}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: openPos.y
-      value: -11.65
+      value: -23.53
       objectReference: {fileID: 0}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: openPos.z
-      value: -886.7
+      value: 36.918335
       objectReference: {fileID: 0}
     - target: {fileID: 6839782101634198308, guid: ee7651ffeb933324e9dae3238a378264, type: 3}
       propertyPath: minions.Array.size
@@ -18836,6 +18872,18 @@ PrefabInstance:
       propertyPath: fixedText
       value: 
       objectReference: {fileID: 986961861}
+    - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
+      propertyPath: openPos.x
+      value: -29.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
+      propertyPath: openPos.y
+      value: -12.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
+      propertyPath: openPos.z
+      value: 181.57
+      objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: minions.Array.data[0]
       value: 
@@ -36744,11 +36792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.y
-      value: 20.61
+      value: 20.42
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.z
-      value: 213.42
+      value: -6.580017
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: minions.Array.data[0]
@@ -39102,11 +39150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.y
-      value: 20.06
+      value: 19.88
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.z
-      value: 160.67
+      value: -59.330017
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: minions.Array.data[0]
