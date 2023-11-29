@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class SaveAndLoad : MonoBehaviour
     private Quaternion rotation;
     private Vector3 velocity;
     private Vector3 angularVelocity;
+    private bool isKinematic;
 
 
     protected virtual void Awake()
@@ -51,7 +53,8 @@ public class SaveAndLoad : MonoBehaviour
         {
             velocity = GetComponent<Rigidbody>().velocity;
             angularVelocity = GetComponent<Rigidbody>().angularVelocity;
-        }
+            isKinematic = GetComponent<Rigidbody>().isKinematic;
+        }        
         Debug.Log("Saved " + gameObject.name);
     }
 
@@ -63,6 +66,7 @@ public class SaveAndLoad : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = velocity;
             GetComponent<Rigidbody>().angularVelocity = angularVelocity;
+            GetComponent<Rigidbody>().isKinematic = isKinematic;
         }
         Debug.Log(gameObject.name + position);
     }
