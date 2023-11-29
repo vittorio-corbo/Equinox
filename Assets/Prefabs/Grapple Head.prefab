@@ -384,9 +384,10 @@ MonoBehaviour:
   shoot: {fileID: 8300000, guid: 4ac2bcc5d48c9a74fb61518b5b054048, type: 3}
   doneRetracting: {fileID: 8300000, guid: 5e9264041ecc2ac4488a4c21e76b6785, type: 3}
   retractingNow: {fileID: 8300000, guid: 147644826f9d50a40bfdc6c49f9b3d85, type: 3}
-  reelOut: {fileID: 8300000, guid: f2d80ebb32b9a2b44a3be9d0b553605d, type: 3}
+  reelOut: {fileID: 8300000, guid: 8c06891530a280c4eba58b03f4f99dea, type: 3}
   player: {fileID: 0}
   retracting: 0
+  parentGrabbedObj: {fileID: 0}
 --- !u!54 &7818727169076017518
 Rigidbody:
   m_ObjectHideFlags: 0
