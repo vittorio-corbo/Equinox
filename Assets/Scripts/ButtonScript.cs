@@ -98,5 +98,6 @@ public class ButtonScript : MonoBehaviour
     public void Break()
     {
         button = null;
+        buttonDown = false;
     }
 }
