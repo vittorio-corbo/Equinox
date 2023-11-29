@@ -36140,8 +36140,8 @@ MonoBehaviour:
   Music: {fileID: 0}
   position: {x: 3, y: 56, z: -863}
   rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  musicReportee: {fileID: 0}
-  musicGenerator: {fileID: 0}
+  musicReportee: {fileID: 1477531316}
+  musicGenerator: {fileID: 4760709823810827398}
   inArea: 0
 --- !u!65 &1477531315
 BoxCollider:
@@ -36183,12 +36183,12 @@ MonoBehaviour:
   fixedText: {fileID: 986961861}
   react: 0
   clipsToPlay:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 5bbb0748898ea0e4cb0558ce5f49d96b, type: 3}
+  - {fileID: 8300000, guid: 85aa3816ac166d2479c30ebb0a741787, type: 3}
   keys:
   - 0
   - 1
-  musicScript: {fileID: 0}
+  musicScript: {fileID: 4760709823810827398}
   trigger: {fileID: 0}
 --- !u!1001 &1483753696
 PrefabInstance:
@@ -50189,6 +50189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3297057773695625292, guid: 3b1aa082413ce7748843cb5bf5152f1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2143607666}
+    - targetCorrespondingSourceObject: {fileID: 3297057773695625292, guid: 3b1aa082413ce7748843cb5bf5152f1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2143607668}
   m_SourcePrefab: {fileID: 100100000, guid: 3b1aa082413ce7748843cb5bf5152f1e, type: 3}
 --- !u!4 &2143607665 stripped
 Transform:
@@ -50211,7 +50214,7 @@ MonoBehaviour:
   - {fileID: 82580396}
   - {fileID: 1858358035}
   - {fileID: 1651213171}
-  allFixed: 1
+  allFixed: 0
   fixedString: yaii
   fixedText: {fileID: 986961861}
   react: 0
@@ -50229,6 +50232,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reportees: []
   isFixed: 0
+--- !u!114 &2143607668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191211952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &543450652067877144
 Transform:
   m_ObjectHideFlags: 0
