@@ -19,6 +19,7 @@ public class FixingObject : MonoBehaviour
         BellyBottom,
         Apendix,
         PowerCore,
+        Fuse,
     }
 
     public FixingObjectType type;
