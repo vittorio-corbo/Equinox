@@ -36438,6 +36438,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1757870699
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 334.70087
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 377.93195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -143.20908
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679906150241942196, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257783214733153252, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
+      propertyPath: m_Name
+      value: JEANSMODE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 814b0a683485e27489e6f40a93b82ab1, type: 3}
 --- !u!1 &1758639351
 GameObject:
   m_ObjectHideFlags: 0
@@ -43654,3 +43711,4 @@ SceneRoots:
   - {fileID: 560621855}
   - {fileID: 1544051923}
   - {fileID: 644252482}
+  - {fileID: 1757870699}
