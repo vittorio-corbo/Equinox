@@ -794,11 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &70833583 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 564154717438831749, guid: bccffacc811f5884a9dde17a0ea72a7d, type: 3}
-  m_PrefabInstance: {fileID: 1099956567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &75688917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13862,10 +13857,6 @@ PrefabInstance:
     - target: {fileID: 5235779056296859554, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957117945054136501, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7032278672084809848, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_Pivot.x
@@ -38530,14 +38521,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5815383979502135765, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 1053727473553697644, guid: 696755a606017664c988f1885700b878, type: 2}
-    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
-      propertyPath: mix
-      value: 
-      objectReference: {fileID: 24100000, guid: 696755a606017664c988f1885700b878, type: 2}
     - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
       propertyPath: clipToUse
       value: 
