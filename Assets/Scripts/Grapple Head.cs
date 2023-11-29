@@ -232,7 +232,7 @@ public class GrappleHead : MonoBehaviour
             {
                 playerAudio.loop = false;
             }
-            playerAudio.volume = MenuActions.effectsVolume;
+            playerAudio.volume = PlayerPrefs.GetFloat("EffectVol");
             playerAudio.Play();
             musicPlaying = true;
         }
