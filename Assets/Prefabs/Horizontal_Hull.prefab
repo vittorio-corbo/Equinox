@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5155912822887325104}
   - component: {fileID: 8679768217454632289}
   - component: {fileID: 4435831450381362235}
-  - component: {fileID: 1208325631364957132}
+  - component: {fileID: 8714406906418542650}
   m_Layer: 0
   m_Name: Horizontal_Hull
   m_TagString: MoveableObject
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   isGrabbable: 0
---- !u!114 &1208325631364957132
+--- !u!114 &8714406906418542650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6975580198554967593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d12eefbbcdaa04c804d210e44eba28, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b95440b004842f48a00a1d6bc609308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrappleDist: 100

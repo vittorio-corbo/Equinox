@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5678804367590670151}
   - component: {fileID: 5017369903935266251}
   - component: {fileID: 2267966706913429126}
-  - component: {fileID: 5739318531886885634}
+  - component: {fileID: 633353323459129150}
   m_Layer: 0
   m_Name: VerticalPannel
   m_TagString: MoveableObject
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 6
   isGrabbable: 0
---- !u!114 &5739318531886885634
+--- !u!114 &633353323459129150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7492234169255723873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d12eefbbcdaa04c804d210e44eba28, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b95440b004842f48a00a1d6bc609308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrappleDist: 100
