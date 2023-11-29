@@ -18,7 +18,6 @@ public class Smush : NeedExternalObject
         //check if item is type liver
         //if (areaA.allFixed) //if good do boring shit
         if (areaA.allFixed && Quaternion.Angle(collision.gameObject.transform.rotation, transform.rotation) < 5f) //if good do boring shit
-            //maybe check rotations up top here?
 
         {
             
