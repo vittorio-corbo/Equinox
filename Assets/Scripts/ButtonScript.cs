@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    bool buttonDown = false;
+    public bool buttonDown = false;
     [SerializeField] private Button button;
     private GameObject buttonBase;
 
