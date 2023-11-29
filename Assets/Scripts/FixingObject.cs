@@ -14,6 +14,7 @@ public class FixingObject : MonoBehaviour
         Antenna,
         Gear,
         Rock,
+        SidePannel,
     }
 
     public FixingObjectType type;
