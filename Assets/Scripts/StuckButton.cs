@@ -6,6 +6,7 @@ public class StuckButton : ButtonScript
 {
     private new void Update()
     {
+        buttonDown = true;
         ButtonOn();
     }
 }

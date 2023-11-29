@@ -22,7 +22,7 @@ public class LaserAntenna : Reportee
                     go = hit.transform.gameObject;
                 }
                 currentGameObject = go;
-                if (currentCoroutine == null) 
+                if (currentCoroutine == null)
                 {
                     lastGameObject = go;
                     StartCoroutine(GameObjectTimer());
