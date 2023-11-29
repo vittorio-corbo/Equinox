@@ -12,9 +12,9 @@ public class DoorOpen : Reportee
 
     public override void Start()
     {
-        closedPos = new Vector3(transform.position.x,
-            transform.position.y,
-            transform.position.z);
+        closedPos = new Vector3(transform.localPosition.x,
+            transform.localPosition.y,
+            transform.localPosition.z);
         base.Start();
     }
 
@@ -22,7 +22,7 @@ public class DoorOpen : Reportee
     {
         if (allFixed)
         {
-            transform.position = Vector3.Lerp(transform.position, openPos, speed * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, openPos, speed * Time.deltaTime);
         }
     }
 }
