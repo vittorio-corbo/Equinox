@@ -50,6 +50,7 @@ public class Laser : MonoBehaviour
     private void laserRaycast(Vector3 origin, Vector3 direction)
     {
         if (Physics.Raycast(origin, direction, out hit))
+        //if (Physics.Raycast(origin, direction, out hit,~LayerMask.GetMask("NotHoldable")))
         {
             hitSomething = true;
             Vector3 referenceScaleVector = hit.point - origin;
