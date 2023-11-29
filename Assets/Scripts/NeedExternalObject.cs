@@ -123,7 +123,7 @@ public class NeedExternalObject : Reporter
                     FixedJoint joint = collision.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = GetComponent<Rigidbody>();
                     collision.gameObject.tag = "MoveableObject";
-                    collision.GetComponent<Collider>().isTrigger = true;
+                    //collision.GetComponent<Collider>().isTrigger = true;
                     break;
                 }
                 counter++;
