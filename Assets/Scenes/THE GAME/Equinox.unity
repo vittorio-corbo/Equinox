@@ -1372,18 +1372,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions:
-  - {fileID: 0}
+  - {fileID: 1423562554}
   - {fileID: 1599750187}
   allFixed: 0
-  fixedString: 
+  fixedString: asdf asdf
   fixedText: {fileID: 986961861}
   react: 0
   clipsToPlay:
-  - {fileID: 8300000, guid: 5737d817052cd6c4a9a4335e849ae999, type: 3}
+  - {fileID: 8300000, guid: e507897220ff4ac4d92f41315ee5ab0f, type: 3}
   - {fileID: 8300000, guid: 147644826f9d50a40bfdc6c49f9b3d85, type: 3}
+  - {fileID: 8300000, guid: 16b770a29bc73bd4daa4add833f46dd7, type: 3}
   keys:
-  - 0
-  - 1
+  - 00
+  - 01
+  - 10
   musicScript: {fileID: 4760709823810827398}
   trigger: {fileID: 0}
 --- !u!1001 &56838658
@@ -34098,6 +34100,7 @@ GameObject:
   - component: {fileID: 1423562551}
   - component: {fileID: 1423562552}
   - component: {fileID: 1423562553}
+  - component: {fileID: 1423562554}
   m_Layer: 0
   m_Name: AAAA_Reportee
   m_TagString: Untagged
@@ -34154,6 +34157,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1423562554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423562550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548c3d5692ff44e45b6556c6368626c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reportees: []
+  isFixed: 0
 --- !u!4 &1425048080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5286721576424754446, guid: 8d218b774f1f4b54c858ac234af91a1f, type: 3}
@@ -38315,9 +38332,7 @@ GameObject:
   - component: {fileID: 1599750183}
   - component: {fileID: 1599750182}
   - component: {fileID: 1599750181}
-  - component: {fileID: 1599750180}
   - component: {fileID: 1599750187}
-  - component: {fileID: 1599750188}
   m_Layer: 0
   m_Name: BBBB_Reportee
   m_TagString: MoveableObject
@@ -38341,18 +38356,6 @@ Transform:
   - {fileID: 514424712}
   m_Father: {fileID: 1929010938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1599750180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599750178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1599750181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38482,18 +38485,6 @@ MonoBehaviour:
   connectedObjects: []
   areaA: {fileID: 1423562552}
   hullPieces: {fileID: 1929010937}
---- !u!114 &1599750188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599750178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1602193066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50558,6 +50549,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5815383979502135765, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1053727473553697644, guid: 696755a606017664c988f1885700b878, type: 2}
+    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
+      propertyPath: mix
+      value: 
+      objectReference: {fileID: 24100000, guid: 696755a606017664c988f1885700b878, type: 2}
+    - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
+      propertyPath: jingle
+      value: 
+      objectReference: {fileID: 8300000, guid: c753b092df2947141a0e09168e4a52bd, type: 3}
     - target: {fileID: 1799402924053540071, guid: 2eeb01ce80beca04b95aea77fe556ddb, type: 3}
       propertyPath: clipToUse
       value: 
