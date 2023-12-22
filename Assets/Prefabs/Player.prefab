@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4245479605286002922
 Transform:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -2813467912831258332, guid: 27e41817d42e87a40bd827a719adac7c, type: 3}
-  - {fileID: -5605289326131794027, guid: 27e41817d42e87a40bd827a719adac7c, type: 3}
+  - {fileID: 2100000, guid: 717affc16013a4149b0d7773dcbb8584, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1928272345232500870
 Transform:
   m_ObjectHideFlags: 0
@@ -145,10 +145,10 @@ Transform:
   m_LocalScale: {x: -3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4245479605286002922}
-  - {fileID: 1928272345232500870}
   - {fileID: 5978760704800964246}
   - {fileID: 2661760850931013713}
+  - {fileID: 4245479605286002922}
+  - {fileID: 1928272345232500870}
   m_Father: {fileID: 3242549122361363530}
   m_LocalEulerAnglesHint: {x: 0, y: 5, z: 0}
 --- !u!65 &4403372819934957111
@@ -660,6 +660,9 @@ MonoBehaviour:
   holding: 0
   dampingAngle: 30
   dampingSpeed: 0.005
+  visualGun: {fileID: 5513022530408648271}
+  unGrab: {fileID: -2813467912831258332, guid: 27e41817d42e87a40bd827a719adac7c, type: 3}
+  grab: {fileID: 2100000, guid: 42176534a7b08d0478d72ba514fd1c64, type: 2}
 --- !u!114 &151374550744832509
 MonoBehaviour:
   m_ObjectHideFlags: 0

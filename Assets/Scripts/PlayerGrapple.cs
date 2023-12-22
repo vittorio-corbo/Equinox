@@ -60,6 +60,9 @@ public class PlayerGrapple : MonoBehaviour
     [SerializeField] float dampingAngle;
     [SerializeField] float dampingSpeed;
 
+    //Gun Materials
+    [SerializeField] Material unGrab;
+    [SerializeField] Material grab;
     //GLASS MATERIAL
     //public Material glass;
 
@@ -217,6 +220,9 @@ public class PlayerGrapple : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<TurnKinematic>().StopKinematic();
                 }
+                //change gun material
+                grappleGun.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
+                //visualGun.GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
                 PlaySFX(hold, false);
             }
         }
@@ -231,6 +237,8 @@ public class PlayerGrapple : MonoBehaviour
 
         Destroy(GetComponent<ConfigurableJoint>());
         crc.MAXDISTANCE = normalGrappleDist;
+        //change gun material
+        grappleGun.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].mainTexture = unGrab.mainTexture;
         PlaySFX(stopHold, false);
 
     }
