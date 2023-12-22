@@ -7,6 +7,7 @@ public class LeverHatch : Lever
     public HatchStates door;
     Reporter rep;
     bool doFix;
+    [SerializeField] private LightCables cables;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class LeverHatch : Lever
         if (door.currentState != HatchStates.HatchState.OPEN)
         {
             door.ChangeState(HatchStates.HatchState.OPEN);
+            cables.FlipSwitch(true);
         }
     }
 
@@ -31,6 +33,7 @@ public class LeverHatch : Lever
         if (door.currentState != HatchStates.HatchState.CLOSED)
         {
             door.ChangeState(HatchStates.HatchState.CLOSED);
+            cables.FlipSwitch(false);
         }
     }
 }

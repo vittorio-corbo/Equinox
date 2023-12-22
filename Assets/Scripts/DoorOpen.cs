@@ -6,6 +6,7 @@ public class DoorOpen : Reportee
 {
     // Start is called before the first frame update
     [SerializeField] private Vector3 openPos;
+    [SerializeField] private LightCables cables;
     private Vector3 closedPos;
     float speed = 0.5f;
     bool open = false;
@@ -23,6 +24,8 @@ public class DoorOpen : Reportee
         if (allFixed)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, openPos, speed * Time.deltaTime);
+            //call lightswitch
+            cables.FlipSwitch(true);
         }
     }
 }
