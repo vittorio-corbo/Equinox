@@ -36660,6 +36660,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 875885200}
     m_Modifications:
+    - target: {fileID: 2452718686038797440, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2789075837044615900, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: m_Name
       value: v3MetalDoor (3)
@@ -36731,6 +36735,10 @@ PrefabInstance:
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: openPos.z
       value: 45.549988
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
+      propertyPath: fixedString
+      value: Ship Hatch Opening
       objectReference: {fileID: 0}
     - target: {fileID: 9189010267383644432, guid: f7cc53ed76802254c84a0a38f1255996, type: 3}
       propertyPath: minions.Array.data[0]
