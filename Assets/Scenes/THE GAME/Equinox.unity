@@ -29247,7 +29247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7049842342309091168, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49195,6 +49195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1776864500}
   - component: {fileID: 1776864501}
+  - component: {fileID: 1776864502}
   m_Layer: 0
   m_Name: FirstBatteryCable
   m_TagString: Untagged
@@ -49236,6 +49237,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1776864502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776864499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c433fa72e27c6284fa8585b61786df0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions:
+  - {fileID: 742643300}
+  allFixed: 0
+  fixedString: 
+  fixedText: {fileID: 986961861}
+  react: 0
+  litMaterial: {fileID: 2100000, guid: 12e050a65d3815845abfa08d4cec5c26, type: 2}
 --- !u!1 &1782349326
 GameObject:
   m_ObjectHideFlags: 0
@@ -52378,7 +52398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7049842342309091168, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
