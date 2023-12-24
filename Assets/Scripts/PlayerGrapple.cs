@@ -118,6 +118,7 @@ public class PlayerGrapple : MonoBehaviour
             }
             endPoint = playerCamera.transform.position + crc.MAXDISTANCE * playerCamera.transform.forward.normalized;
             //If not holding to grapple, treat as a toggle
+            
             if (PlayerPrefs.GetInt("HoldGrapple") == 0)
             {
 
@@ -126,19 +127,19 @@ public class PlayerGrapple : MonoBehaviour
                     //PLAY SOUND
                     //source.Play();
                     crc.outOfRange = true;
-                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
+                    grappleHead.StartMovement(transform.position +transform.up *0.5f + transform.forward * 3, transform.forward);
                 }
             } else
             {
                 if (Input.GetMouseButtonDown(0) && crc.shooting == false)
                 {
                     crc.outOfRange = true;
-                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
+                    grappleHead.StartMovement(transform.position +transform.up *0.5f+ transform.forward * 3, transform.forward);
                 }
                 if (Input.GetMouseButtonUp(0) && crc.shooting == true)
                 {
                     crc.outOfRange = true;
-                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
+                    grappleHead.StartMovement(transform.position +transform.up *0.5f+ transform.forward * 3, transform.forward);
                 }
             }
 
