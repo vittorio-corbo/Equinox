@@ -17,6 +17,8 @@ public class HatchStates : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         hj = GetComponent<HingeJoint>();
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     // Update is called once per frame
@@ -39,6 +41,7 @@ public class HatchStates : MonoBehaviour
 
     void ClosedRoutine()
     {
+        //rb.constraints = RigidbodyConstraints.None;
         var m = hj.motor;
         m.force = 10;
         m.targetVelocity = 10;
@@ -54,6 +57,7 @@ public class HatchStates : MonoBehaviour
 
     void OpenRoutine()
     {
+        rb.constraints = RigidbodyConstraints.None;
         var m = hj.motor;
         m.force = 10;
         m.targetVelocity = -10;
