@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GrabScript : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GrabScript : MonoBehaviour
     private void Start()
     {
         pickUpText = GameObject.Find("PickUp"); //this will later be in the canvas' code instead of in grab script
+        pickUpText.SetActive(false);
     }
 
     void Update() {
@@ -34,13 +36,15 @@ public class GrabScript : MonoBehaviour
                         lookObject = hit.transform.gameObject;
                         currLook = true;
                         pickUpText.SetActive(true);
+                        pickUpText.GetComponent<TMP_Text>().SetText("Press E to Grab");
                     }
                 }
                 else
                 {
                     lookObject = null;
                     currLook = false;
-                    pickUpText.SetActive(false);
+                    //pickUpText.SetActive(false);
+                    
                 }
             }
 
@@ -89,7 +93,11 @@ public class GrabScript : MonoBehaviour
         grabRigid.transform.parent = posHold.transform;
         grabbedObject.transform.rotation = posHold.rotation;
         grabbedObject.GetComponent<Collider>().enabled = false;
-        pickUpText.SetActive(false);
+        //pickUpText.SetActive(false);
+
+        //new
+        pickUpText.SetActive(true);
+        pickUpText.GetComponent<TMP_Text>().SetText("Press Q to Drop");
         
     }
 
@@ -110,6 +118,7 @@ public class GrabScript : MonoBehaviour
         parentGrabbedObject = null;
 
         grabbedObject = null;
+        pickUpText.SetActive(false);
 
         
     }
