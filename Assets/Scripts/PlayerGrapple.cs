@@ -126,40 +126,19 @@ public class PlayerGrapple : MonoBehaviour
                     //PLAY SOUND
                     //source.Play();
                     crc.outOfRange = true;
-                    if (crc.hitSomething)
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
-                    }
-                    else
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
-                    }
+                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
                 }
             } else
             {
                 if (Input.GetMouseButtonDown(0) && crc.shooting == false)
                 {
                     crc.outOfRange = true;
-                    if (crc.hitSomething)
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
-                    }
-                    else
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
-                    }
+                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
                 }
                 if (Input.GetMouseButtonUp(0) && crc.shooting == true)
                 {
                     crc.outOfRange = true;
-                    if (crc.hitSomething)
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (crc.hit.point - grappleHeadTransform.position).normalized);
-                    }
-                    else
-                    {
-                        grappleHead.StartMovement(grappleHeadTransform.position, (endPoint - grappleHeadTransform.position).normalized);
-                    }
+                    grappleHead.StartMovement(transform.position + transform.forward * 3, transform.forward);
                 }
             }
 
