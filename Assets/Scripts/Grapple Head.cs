@@ -27,6 +27,7 @@ public class GrappleHead : MonoBehaviour
     private GrabScript grab;
 
     private bool grappleHeadActive;
+    private Coroutine waitingForShoot;
     private Transform grappleHeadTransform;
 
     private bool musicPlaying;
@@ -86,7 +87,7 @@ public class GrappleHead : MonoBehaviour
         //gameObject.SetActive(true);
         grappleHeadActive = true;
         PlaySFX(shoot, false);
-        StartCoroutine(WaitForShootSound());
+        waitingForShoot = StartCoroutine(WaitForShootSound());
         transform.position = startPosition;
         rigidBody.AddForce(direction * SPEED);
         FindObjectOfType<PlayerRopeNode>().StartRope();
@@ -221,6 +222,7 @@ public class GrappleHead : MonoBehaviour
     //Plays the sound, prints stack trace to console if it cannot find the file
     private void PlaySFX(AudioClip clip, bool loop)
     {
+        StopCoroutine(waitingForShoot);
         try
         {
             playerAudio.clip = clip;
