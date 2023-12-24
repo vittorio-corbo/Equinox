@@ -222,7 +222,11 @@ public class GrappleHead : MonoBehaviour
     //Plays the sound, prints stack trace to console if it cannot find the file
     private void PlaySFX(AudioClip clip, bool loop)
     {
-        StopCoroutine(waitingForShoot);
+        if (waitingForShoot != null)
+        {
+            StopCoroutine(waitingForShoot);
+        }
+        
         try
         {
             playerAudio.clip = clip;
