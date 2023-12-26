@@ -51,9 +51,12 @@ public class Reportee : MonoBehaviour
     private IEnumerator FixedText()
     {
         fixedText.SetActive(true);
+        //without empty override
         if (fixedString != ""){ //dont override if you have no new text to add
             fixedText.GetComponent<TextMeshProUGUI>().text = fixedString;
         }
+        //with empty override:
+            //fixedText.GetComponent<TextMeshProUGUI>().text = fixedString;
         yield return new WaitForSeconds(3f);
         fixedText.SetActive(false);
     }
