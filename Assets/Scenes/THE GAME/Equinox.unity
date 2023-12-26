@@ -24481,6 +24481,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 366558596}
     m_Modifications:
     - target: {fileID: 2526126456757846124, guid: 093d0a43ac29a2349aaca5fde1948163, type: 3}
+      propertyPath: reportee
+      value: 
+      objectReference: {fileID: 956330978}
+    - target: {fileID: 2526126456757846124, guid: 093d0a43ac29a2349aaca5fde1948163, type: 3}
       propertyPath: MovingGameObject
       value: 
       objectReference: {fileID: 366558595}
@@ -27587,15 +27591,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.35
+      value: 32.1
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 42.14
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1052.7
+      value: -954.3
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalRotation.w

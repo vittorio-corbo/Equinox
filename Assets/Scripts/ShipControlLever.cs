@@ -6,11 +6,21 @@ public class ShipControlLever : Lever
 {
     [SerializeField] private GameObject MovingGameObject;
     [SerializeField] private Vector3 RotationVector;
+    [SerializeField] private Reportee reportee;
+
+
     public override void LeftRoutine() {
-        MovingGameObject.transform.Rotate(-RotationVector);
+        //if (reportee != null){}
+        if (reportee.allFixed){
+            MovingGameObject.transform.Rotate(-RotationVector);
+            //light up too
+        }
     }
 
     public override void RightRoutine() {
-        MovingGameObject.transform.Rotate(RotationVector);
+        if (reportee.allFixed){
+            MovingGameObject.transform.Rotate(RotationVector);
+            //light up too
+        }
     }
 }
