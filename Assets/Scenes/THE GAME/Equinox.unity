@@ -41300,13 +41300,14 @@ GameObject:
   - component: {fileID: 1466959704}
   - component: {fileID: 1466959703}
   - component: {fileID: 1466959702}
+  - component: {fileID: 1466959705}
   m_Layer: 0
-  m_Name: Antenna_Reportee (1)
+  m_Name: Antenna_Reporteree_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1466959701
 Transform:
   m_ObjectHideFlags: 0
@@ -41359,13 +41360,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions:
-  - {fileID: 82580396}
-  - {fileID: 1858358035}
-  - {fileID: 1651213171}
+  - {fileID: 2143607667}
   allFixed: 0
   fixedString: i wnat to asjdfkl;asj;f
   fixedText: {fileID: 986961861}
   react: 0
+--- !u!114 &1466959705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466959700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548c3d5692ff44e45b6556c6368626c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reportees: []
+  isFixed: 0
 --- !u!1001 &1468617464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41679,7 +41692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions:
-  - {fileID: 2143607667}
+  - {fileID: 1466959705}
   allFixed: 0
   fixedString: woo hoo
   fixedText: {fileID: 986961861}
@@ -57954,7 +57967,7 @@ MonoBehaviour:
   - {fileID: 1858358035}
   - {fileID: 1651213171}
   allFixed: 0
-  fixedString: yaii
+  fixedString: FuseBox fixed
   fixedText: {fileID: 986961861}
   react: 0
 --- !u!114 &2143607667
