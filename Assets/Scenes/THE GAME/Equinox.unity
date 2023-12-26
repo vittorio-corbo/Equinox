@@ -2250,12 +2250,16 @@ MonoBehaviour:
   react: 0
   clipsToPlay:
   - {fileID: 8300000, guid: e507897220ff4ac4d92f41315ee5ab0f, type: 3}
+  - {fileID: 8300000, guid: 16b770a29bc73bd4daa4add833f46dd7, type: 3}
   - {fileID: 8300000, guid: 147644826f9d50a40bfdc6c49f9b3d85, type: 3}
   - {fileID: 8300000, guid: 16b770a29bc73bd4daa4add833f46dd7, type: 3}
+  - {fileID: 8300000, guid: 16b770a29bc73bd4daa4add833f46dd7, type: 3}
   keys:
-  - 00
-  - 01
-  - 10
+  - 0000
+  - 1000
+  - 0001
+  - 0010
+  - 0011
   musicScript: {fileID: 4760709823810827398}
   trigger: {fileID: 0}
 --- !u!1001 &56838658
@@ -45335,7 +45339,7 @@ MonoBehaviour:
   - {fileID: 230884708}
   - {fileID: 1326122435}
   allFixed: 0
-  fixedString: 'akjsdfl;dsak; '
+  fixedString: i love pizza
   fixedText: {fileID: 986961861}
   react: 0
 --- !u!114 &1423562553
@@ -54409,7 +54413,7 @@ MonoBehaviour:
   minions:
   - {fileID: 1423562554}
   allFixed: 0
-  fixedString: its fixed dammit
+  fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
 --- !u!1 &1669475552
