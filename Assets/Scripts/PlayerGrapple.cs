@@ -188,6 +188,7 @@ public class PlayerGrapple : MonoBehaviour
                 joint.xMotion = ConfigurableJointMotion.Locked;
                 joint.yMotion = ConfigurableJointMotion.Locked;
                 joint.zMotion = ConfigurableJointMotion.Locked;
+                grappleForce = 50f;
                 if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
                 {
                     hit.transform.gameObject.GetComponent<GrappleExtend>().ExtendGrapple();
@@ -217,6 +218,7 @@ public class PlayerGrapple : MonoBehaviour
 
         Destroy(GetComponent<ConfigurableJoint>());
         crc.MAXDISTANCE = normalGrappleDist;
+        grappleForce = 30f;
         //change gun material
         grappleGun.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].mainTexture = unGrab.mainTexture;
         PlaySFX(stopHold, false);

@@ -92,7 +92,7 @@ public class GrabScript : MonoBehaviour
         grabRigid.isKinematic = true;
         grabRigid.transform.parent = posHold.transform;
         grabbedObject.transform.rotation = posHold.rotation;
-        grabbedObject.transform.localScale = Vector3.one;
+        //grabbedObject.transform.localScale = Vector3.one;
         grabbedObject.GetComponent<Collider>().enabled = false;
         //pickUpText.SetActive(false);
 
