@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject options;
+
+    public GameObject credits;
     public GameObject main;
     public string StartButtonScene;
     // Start is called before the first frame update
@@ -40,6 +42,18 @@ public class MainMenu : MonoBehaviour
     public void closeOptions()
     {
         options.SetActive(false);
+        main.SetActive(true);
+    }
+
+    public void openCredits()
+    {
+        credits.SetActive(true);
+        main.SetActive(false);
+    }
+
+    public void closeCredits()
+    {
+        credits.SetActive(false);
         main.SetActive(true);
     }
 }

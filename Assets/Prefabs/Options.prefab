@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29fc01b29d0b6e4a88326864b86044b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdToGrapple: 0
   musicVolSlider: {fileID: 9151872447603012155}
   effectVolSlider: {fileID: 6553019298674702026}
   holdGrappleToggle: {fileID: 5211326495268462301}
