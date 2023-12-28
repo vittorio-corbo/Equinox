@@ -15,6 +15,8 @@ public class Reportee : MonoBehaviour
     //For example, Door objects use this when opening
     public bool react;
     // Start is called before the first frame update
+
+    public List<Action> actions;
     public virtual void Start()
     {
         myReporter = GetComponent<Reporter>();
@@ -24,6 +26,14 @@ public class Reportee : MonoBehaviour
         {
             rep.AddReportee(this);
         }
+
+        //Get All Actions attached to gameObject
+        Action[] myActions = GetComponents<Action>();
+        foreach(Action act in myActions)
+        {
+            actions.Add(act);
+        }
+
     }
 
     public virtual void GatherReport()
@@ -45,6 +55,9 @@ public class Reportee : MonoBehaviour
                 myReporter.Fix();
             }
             GetComponent<SaveAndLoad>().Save();
+
+            //Run Actions
+            RunActions();
         }
     }
 
@@ -59,6 +72,14 @@ public class Reportee : MonoBehaviour
             //fixedText.GetComponent<TextMeshProUGUI>().text = fixedString;
         yield return new WaitForSeconds(3f);
         fixedText.SetActive(false);
+    }
+
+    private void RunActions()
+    {
+        foreach (Action act in actions)
+        {
+            act.Triggered();
+        }
     }
 
 }

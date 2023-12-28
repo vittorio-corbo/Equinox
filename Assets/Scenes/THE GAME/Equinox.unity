@@ -269,12 +269,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4787088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000008940697, y: 0.00000008940697, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.3487854, y: -0.4720001, z: 0}
+  m_LocalRotation: {x: -0.00000011048039, y: 0.00000011048039, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.5087785, y: 26.498, z: -116.5}
   m_LocalScale: {x: 0.100000024, y: 0.031249998, z: 1.0277362}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 332496524}
+  m_Father: {fileID: 923461134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4787090
 MonoBehaviour:
@@ -1211,12 +1211,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31701609}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000008940697, y: 0.00000008940697, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.123580225, y: -0.46000057, z: 0.00092860067}
+  m_LocalRotation: {x: -0.00000011048039, y: 0.00000011048039, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.2835733, y: 26.509998, z: -116.49907}
   m_LocalScale: {x: 0.100000024, y: 0.031249998, z: 1.0280293}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 332496524}
+  m_Father: {fileID: 923461134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &31701611
 MonoBehaviour:
@@ -2248,6 +2248,7 @@ MonoBehaviour:
   fixedString: asdf asdf
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: e507897220ff4ac4d92f41315ee5ab0f, type: 3}
   - {fileID: 8300000, guid: 16b770a29bc73bd4daa4add833f46dd7, type: 3}
@@ -4968,6 +4969,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &147476326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8708,6 +8710,7 @@ MonoBehaviour:
   fixedString: aaaa
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!114 &235382640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8738,6 +8741,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   cables: {fileID: 1913877739}
 --- !u!1 &236479553 stripped
 GameObject:
@@ -11134,6 +11138,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: 3a0edf5d93446df4c8396f868ee59d2f, type: 3}
   keys:
@@ -12142,6 +12147,9 @@ GameObject:
   - component: {fileID: 332496530}
   - component: {fileID: 332496532}
   - component: {fileID: 332496531}
+  - component: {fileID: 332496535}
+  - component: {fileID: 332496534}
+  - component: {fileID: 332496536}
   m_Layer: 0
   m_Name: Electric_Panel_East
   m_TagString: Untagged
@@ -12162,8 +12170,7 @@ Transform:
   m_LocalScale: {x: 16, y: 5, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 31701610}
-  - {fileID: 4787089}
+  - {fileID: 923461134}
   m_Father: {fileID: 1891545712}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!65 &332496525
@@ -12318,6 +12325,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &332496534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332496523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d20bf51953660a4c9e1bd4f103f52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions:
+  - {fileID: 1326122435}
+  myReporter: {fileID: 0}
+  allFixed: 0
+  fixedString: 
+  fixedText: {fileID: 986961861}
+  react: 0
+  actions: []
+--- !u!114 &332496535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332496523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db9dcef8bbb54544b0fe6488522c122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions:
+  - {fileID: 1761108761}
+  allFixed: 0
+  fixedString: 
+  fixedText: {fileID: 986961861}
+  react: 0
+  actions: []
+--- !u!114 &332496536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332496523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be86430088ad3dc499cbe51905cd6e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightcable: {fileID: 923461135}
 --- !u!1 &335232101
 GameObject:
   m_ObjectHideFlags: 0
@@ -12408,6 +12467,7 @@ MonoBehaviour:
   fixedString: new button (that it)
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &342962874
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,6 +13533,7 @@ MonoBehaviour:
   fixedString: woohoo
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: 4f8f685d9ff1c2643be5bdba013298e2, type: 3}
   - {fileID: 8300000, guid: caeb39487a15cca47aedf80fa4cec359, type: 3}
@@ -15589,6 +15650,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &460047796
 GameObject:
   m_ObjectHideFlags: 0
@@ -25112,6 +25174,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &780871193
 GameObject:
   m_ObjectHideFlags: 0
@@ -30170,6 +30233,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &923461133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 332496524}
+    m_Modifications:
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 116.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802319
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271245485380543524, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      propertyPath: m_Name
+      value: MotherCable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 31701610}
+    - targetCorrespondingSourceObject: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4787089}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+--- !u!4 &923461134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+  m_PrefabInstance: {fileID: 923461133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &923461135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1615155347879063847, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
+  m_PrefabInstance: {fileID: 923461133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c433fa72e27c6284fa8585b61786df0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &925791802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31769,6 +31911,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &958273283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32078,6 +32221,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &965266450
 GameObject:
   m_ObjectHideFlags: 0
@@ -32363,6 +32507,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: f5abbccfe0f8d1e4391cdec8f15275c4, type: 3}
   keys:
@@ -36372,6 +36517,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &1096288264
 GameObject:
   m_ObjectHideFlags: 0
@@ -37939,6 +38085,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &1149117259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41198,6 +41345,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: 59a94005bb60ec64c8730506b7847134, type: 3}
   keys:
@@ -42444,6 +42592,7 @@ MonoBehaviour:
   fixedString: i wnat to asjdfkl;asj;f
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!114 &1306151068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42547,6 +42696,7 @@ MonoBehaviour:
   fixedString: take button out
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &1307060349
 GameObject:
   m_ObjectHideFlags: 0
@@ -45954,6 +46104,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &1419846171
 GameObject:
   m_ObjectHideFlags: 0
@@ -46133,6 +46284,7 @@ MonoBehaviour:
   fixedString: i love pizza
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!114 &1423562553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48595,6 +48747,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!114 &1466959705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48927,6 +49080,7 @@ MonoBehaviour:
   fixedString: woo hoo
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
   clipsToPlay:
   - {fileID: 8300000, guid: 5bbb0748898ea0e4cb0558ce5f49d96b, type: 3}
   - {fileID: 8300000, guid: 85aa3816ac166d2479c30ebb0a741787, type: 3}
@@ -55285,6 +55439,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1 &1669475552
 GameObject:
   m_ObjectHideFlags: 0
@@ -59595,6 +59750,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &1808034036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61099,6 +61255,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &1848254137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62104,6 +62261,7 @@ MonoBehaviour:
   fixedString: its fixed dammit
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &1913877737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63525,6 +63683,7 @@ MonoBehaviour:
   fixedString: 
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!1001 &1946742711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68974,6 +69133,7 @@ MonoBehaviour:
   fixedString: FuseBox fixed
   fixedText: {fileID: 986961861}
   react: 0
+  actions: []
 --- !u!114 &2143607667
 MonoBehaviour:
   m_ObjectHideFlags: 0
