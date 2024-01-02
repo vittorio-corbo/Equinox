@@ -197,6 +197,10 @@ public class PlayerGrapple : MonoBehaviour
                 {
                     hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
                 }
+                if (hit.transform.gameObject.GetComponent<Rocket_V2>() != null)
+                {
+                    hit.transform.gameObject.GetComponent<Rocket_V2>().StartMovement();
+                }
                 if (hit.transform.gameObject.GetComponent<TurnKinematic>() != null)
                 {
                     hit.transform.gameObject.GetComponent<TurnKinematic>().StopKinematic();
