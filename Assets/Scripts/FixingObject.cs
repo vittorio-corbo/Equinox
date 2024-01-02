@@ -20,6 +20,7 @@ public class FixingObject : MonoBehaviour
         Apendix,
         PowerCore,
         Fuse,
+        EngineCore,
     }
 
     public FixingObjectType type;

@@ -4905,7 +4905,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1455904443159811529, guid: a276b81f92b422e44b498c0a36281251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369413454}
+    - targetCorrespondingSourceObject: {fileID: 1455904443159811529, guid: a276b81f92b422e44b498c0a36281251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 369413453}
   m_SourcePrefab: {fileID: 100100000, guid: a276b81f92b422e44b498c0a36281251, type: 3}
 --- !u!4 &125507614 stripped
 Transform:
@@ -14088,6 +14094,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6655454392438243404, guid: 02b5f873d4872194a8015e5c5df9e28d, type: 3}
   m_PrefabInstance: {fileID: 368425779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &369413450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1455904443159811529, guid: a276b81f92b422e44b498c0a36281251, type: 3}
+  m_PrefabInstance: {fileID: 125507613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &369413453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369413450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44471c17928d19f48a55026c418dade8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 12
+  isGrabbable: 0
+--- !u!114 &369413454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369413450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac0b0ac377be0c479e59e1905d44782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370980730
 GameObject:
   m_ObjectHideFlags: 0
@@ -18486,17 +18523,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: FixableObjectTrigger (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2387406656795881604, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
+      propertyPath: fixingTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387406656795881604, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
+      propertyPath: fixingTypes.Array.data[0]
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5253410429777187222, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5253410429777187222, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.999735
+      value: 8.84
       objectReference: {fileID: 0}
     - target: {fileID: 5253410429777187222, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -90.00003
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5253410429777187222, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34370,9 +34415,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db9dcef8bbb54544b0fe6488522c122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minions: []
+  minions:
+  - {fileID: 986035737}
   allFixed: 0
-  fixedString: 
+  fixedString: right engine good
   fixedText: {fileID: 986961861}
   react: 0
   actions: []
@@ -35491,6 +35537,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 913517483055756726, guid: 4bb146ab046fb6549a330f8367a95b3d, type: 3}
   m_PrefabInstance: {fileID: 982022600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &986035737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2387406656795881604, guid: 103aafe01fa00aa4c9bf94430323d720, type: 3}
+  m_PrefabInstance: {fileID: 510764874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b4c80ca5d939d45a7a42767038f132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &986373928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67547,6 +67604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions:
+  - {fileID: 235382638}
   - {fileID: 235382638}
   allFixed: 0
   fixedString: its fixed dammit
