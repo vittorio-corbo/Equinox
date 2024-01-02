@@ -256,6 +256,7 @@ public class PlayerGrapple : MonoBehaviour
                 }
                 else
                 {
+                    //there is a bug here with bouncy beds
                     if (GetComponent<ConfigurableJoint>().connectedBody.isKinematic)
                     {
                         collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce, grappleHead.transform.position);
