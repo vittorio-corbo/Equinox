@@ -11060,6 +11060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8569542581291593195, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: EndPosition.x
       value: 106.05
@@ -25088,7 +25092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &707796165
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25479,6 +25483,10 @@ PrefabInstance:
     - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: m_Name
       value: Rocket (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8569542581291593195, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: EndPosition.x
@@ -27262,6 +27270,10 @@ PrefabInstance:
     - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: m_Name
       value: Rocket (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8569542581291593195, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: EndPosition.x
@@ -62278,6 +62290,10 @@ PrefabInstance:
     - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: m_Name
       value: Rocket (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270204945497222057, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8569542581291593195, guid: f9d6a465b8179a94fbb200db83278120, type: 3}
       propertyPath: EndPosition.x
