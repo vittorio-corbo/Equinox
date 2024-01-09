@@ -2386,9 +2386,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3471127662091227601, guid: bb84089eaa3c4004f854a90c239bb46c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 59.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597060842671184850, guid: bb84089eaa3c4004f854a90c239bb46c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 140.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8667053267800842889, guid: bb84089eaa3c4004f854a90c239bb46c, type: 3}
       propertyPath: m_Name
       value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667053267800842889, guid: bb84089eaa3c4004f854a90c239bb46c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964732133777857108, guid: bb84089eaa3c4004f854a90c239bb46c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

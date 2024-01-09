@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static FixingObject;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+//cant have this one during building hence its off
+    //using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 //using UnityEngine.Random;
 
 public class Smush : NeedExternalObject
