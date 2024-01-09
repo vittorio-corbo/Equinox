@@ -93,7 +93,8 @@ public class GrabScript : MonoBehaviour
         grabRigid.transform.parent = posHold.transform;
         grabbedObject.transform.rotation = posHold.rotation;
         //grabbedObject.transform.localScale = Vector3.one;
-        grabbedObject.GetComponent<Collider>().enabled = false;
+        turnOffCollider(grabbedObject);
+        
         //pickUpText.SetActive(false);
 
         //new
@@ -102,11 +103,35 @@ public class GrabScript : MonoBehaviour
         
     }
 
+    public void turnOffCollider(GameObject gm)
+    {
+        if (gm.GetComponent<Collider>() != null)
+        {
+            gm.GetComponent<Collider>().enabled = false;
+        }
+        for (int i = 0; i < gm.transform.childCount; ++i)
+        {
+            turnOffCollider(gm.transform.GetChild(i).gameObject);
+        }
+    }
+
+    public void turnOnCollider(GameObject gm)
+    {
+        if (gm.GetComponent<Collider>() != null)
+        {
+            gm.GetComponent<Collider>().enabled = true;
+        }
+        for (int i = 0; i < gm.transform.childCount; ++i)
+        {
+            turnOnCollider(gm.transform.GetChild(i).gameObject);
+        }
+    }
+
     // Drops Object
     // I was trying to get it to drop directly in front of the camera, but I was busy.
     // Can finish later, unless someone else wants to take care of it.
     void dropObject(bool chuck) {
-        grabbedObject.GetComponent<Collider>().enabled = true;
+        StartCoroutine(WaitToReturn(.5f, grabbedObject));
         grabRigid.isKinematic = false;
         grabbedObject.transform.parent = null;
         if (chuck) {
@@ -121,8 +146,12 @@ public class GrabScript : MonoBehaviour
 
         grabbedObject = null;
         pickUpText.SetActive(false);
+    }
 
-        
+    IEnumerator WaitToReturn(float time, GameObject grabbedObject)
+    {
+        yield return new WaitForSeconds(time);
+        turnOnCollider(grabbedObject);
     }
 
     void moveObject() {

@@ -11362,6 +11362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpringButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6748038286444286522, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30356,15 +30360,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 117.4
+      value: -133
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 78.14
+      value: 22.08
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -694.72
+      value: -884
       objectReference: {fileID: 0}
     - target: {fileID: 3242549122361363530, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54249,9 +54253,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3152058456834806171, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
+      propertyPath: cooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3427946146568639534, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
       propertyPath: m_Name
       value: SpringButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748038286444286522, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529313908172487645, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
