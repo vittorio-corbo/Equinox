@@ -19,14 +19,14 @@ public class Button : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
     }
 
-    public void ReAttach(ButtonScript buttonScript)
+    public void ReAttach(ButtonScript buttonScript, RigidbodyConstraints rbConstraints)
     {
         this.buttonScript = buttonScript;
         gameObject.tag = "MoveableObject";
         transform.GetChild(0).gameObject.tag = "MoveableObject";
         transform.GetChild(0).gameObject.GetComponent<BoxCollider>().isTrigger = true;
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        rb.constraints = prevConstraints;
+        rb.constraints = rbConstraints;
     }
 
     public void OnJointBreak(float breakForce)

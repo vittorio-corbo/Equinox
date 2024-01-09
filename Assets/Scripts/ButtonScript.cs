@@ -16,6 +16,10 @@ public class ButtonScript : MonoBehaviour
     float force;
     float breakForce;
 
+    [SerializeField] bool constraintX;
+    [SerializeField] bool constraintY;
+    [SerializeField] bool constraintZ;
+
     [SerializeField] float cooldown;
     bool justLeft = false;
 
@@ -49,7 +53,11 @@ public class ButtonScript : MonoBehaviour
             }
             button.transform.position = buttonPosition;
             button.transform.rotation = buttonRotation;
-            button.ReAttach(this);
+            RigidbodyConstraints rbConstraints = RigidbodyConstraints.FreezeRotation;
+            if (constraintX){rbConstraints |= RigidbodyConstraints.FreezePositionX;}
+            if (constraintY){rbConstraints |= RigidbodyConstraints.FreezePositionY;}
+            if (constraintZ){rbConstraints |= RigidbodyConstraints.FreezePositionZ;}
+            button.ReAttach(this, rbConstraints);
             SpringJoint joint = button.gameObject.AddComponent<SpringJoint>();
             joint.damper = damp;
             joint.minDistance = min;
