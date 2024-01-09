@@ -99,5 +99,6 @@ public class ButtonScript : MonoBehaviour
     {
         button = null;
         buttonDown = false;
+        StartCoroutine(ButtonCooldown());
     }
 }
