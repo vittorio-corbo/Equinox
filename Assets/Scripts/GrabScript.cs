@@ -43,7 +43,7 @@ public class GrabScript : MonoBehaviour
                 {
                     lookObject = null;
                     currLook = false;
-                    //pickUpText.SetActive(false);
+                    pickUpText.SetActive(false);
                     
                 }
             }
