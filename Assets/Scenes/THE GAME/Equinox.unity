@@ -9477,6 +9477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpringButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3427946146568639534, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8989876380826788216, guid: d116b016f290bb84382c1239c2afb4b4, type: 3}
       propertyPath: m_BreakForce
       value: 100
@@ -30476,7 +30480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7049842342309091168, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68527,7 +68531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7049842342309091168, guid: 64c273613d5bda646be4ed8906f483e8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
