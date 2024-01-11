@@ -58,10 +58,4 @@ public class MenuActions : MonoBehaviour
         effectsVolume = effectVolSlider.value;
         PlayerPrefs.SetFloat("EffectVol", effectsVolume);
     }
-
-    public void JEANSTIME()
-    {
-        Debug.Log(PlayerPrefs.GetInt("JEANS"));
-        PlayerPrefs.SetInt("JEANS", PlayerPrefs.GetInt("JEANS") == 1? 0 : 1);
-    }
 }

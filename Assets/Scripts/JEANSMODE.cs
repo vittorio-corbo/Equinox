@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class JEANSMODE : MonoBehaviour
 {
-    [SerializeField] private Material JEANS;
+    [SerializeField] private List<Material> materials;
     private void Start()
     {
-        if (PlayerPrefs.GetInt("JEANS") == 1)
+        if (PlayerPrefs.GetInt("TextureNum") != 0)
         {
-            SetAllMaterials(JEANS);
+            SetAllMaterials(materials[PlayerPrefs.GetInt("TextureNum")]);
         }
     }
 
