@@ -37,11 +37,11 @@ public class ButtonScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(button))
+        if (other.gameObject.Equals(button.gameObject))
         {
             buttonDown = true;
         }
-        if (!justLeft && (other.gameObject.GetComponent<Button>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null) && button == null))
+        else if (!justLeft && (other.GetComponent<SpringJoint>() == null && transform.parent.GetComponent<SpringJoint>() == null) && (other.gameObject.GetComponent<Button>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null) && button == null))
         {
             if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null)
             {
