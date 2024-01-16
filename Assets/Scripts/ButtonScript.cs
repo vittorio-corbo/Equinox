@@ -69,8 +69,9 @@ public class ButtonScript : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.Equals(button))
+        if (other.gameObject.Equals(button.gameObject))
         {
+            print("tristan was right");
             buttonDown = false;
         }
     }
