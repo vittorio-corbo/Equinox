@@ -260,16 +260,18 @@ public class PlayerGrapple : MonoBehaviour
                 }
                 else
                 {
-                    //there is a bug here with bouncy beds
-                    if (GetComponent<ConfigurableJoint>().connectedBody.isKinematic)
+                    
+                    //there is a bug here with bouncy beds (trying to fix)
+                    if ((GetComponent<ConfigurableJoint>() != null) && GetComponent<ConfigurableJoint>().connectedBody.isKinematic)
                     {
                         collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce, grappleHead.transform.position);
                     }
-                    else 
+                    else  
                     {
                         collider.GetComponent<Rigidbody>().AddForceAtPosition(headMoveVector.normalized * -grappleForce / 2, grappleHead.transform.position);
                         rigidbody.AddForce(playerMoveVector.normalized * (grappleForce / 2));
                     }
+                    
                 }
             }
             //WE MOVING
