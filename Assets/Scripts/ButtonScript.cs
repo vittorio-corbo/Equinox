@@ -71,7 +71,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (other.gameObject.Equals(button.gameObject))
         {
-            print("tristan was right");
+            //print("tristan was right");
             buttonDown = false;
         }
     }
