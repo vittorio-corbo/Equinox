@@ -54,12 +54,14 @@ public class GrappleHead : MonoBehaviour
         {
             GetComponent<HeadRopeNode>().UpdateNode();
             GetComponent<HeadRopeNode>().UpdateLine();
+            //GetComponent<Collider>().enabled = true;
         }
         else
         {
             transform.position = grappleHeadTransform.position;
             transform.rotation = player.transform.rotation;
             grapplingHookLine.gameObject.SetActive(false);
+            //GetComponent<Collider>().enabled = false;
 
         }
         if (crc.MAXDISTANCE < (player.transform.position - transform.position).magnitude)

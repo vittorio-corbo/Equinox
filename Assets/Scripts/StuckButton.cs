@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StuckButton : ButtonScript
+public class StuckButton : Button
 {
-    private new void Update()
+    public void Update()
     {
-        buttonDown = true;
-        ButtonOn();
+        if (buttonScript != null){
+            buttonScript.buttonDown = true;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
@@ -34,11 +35,13 @@ public class ButtonScript : MonoBehaviour
         max = spring.maxDistance;
         force = spring.spring;
         breakForce = spring.breakForce;
+
+        button.buttonScript = this;
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if (button != null){
-            if (other.gameObject.Equals(button.gameObject))
+        //if {
+            if (button != null && other.gameObject.Equals(button.gameObject))
             {
                 buttonDown = true;
             }
@@ -108,6 +111,7 @@ public class ButtonScript : MonoBehaviour
 
     public void Break()
     {
+        button.buttonScript = null;
         button = null;
         buttonDown = false;
         StartCoroutine(ButtonCooldown());
