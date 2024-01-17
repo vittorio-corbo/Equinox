@@ -12,10 +12,14 @@ public class LightCables : MonoBehaviour
     //public bool state;
     public void Start()
     {
-        //closedPos = new Vector3(transform.localPosition.x,
-        //    transform.localPosition.y,
-        //    transform.localPosition.z);
-        //base.Start();
+        //Set to unlit color
+        Material newShade = unlitMaterial;
+
+        //Turn to new colour
+        foreach (Transform child in transform)
+        {
+            child.transform.GetComponent<MeshRenderer>().material = newShade;
+        }
     }
 
     void Update()
