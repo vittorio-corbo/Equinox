@@ -37,35 +37,37 @@ public class ButtonScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.Equals(button.gameObject))
-        {
-            buttonDown = true;
-        }
-        else if (!justLeft && (other.GetComponent<SpringJoint>() == null && transform.parent.GetComponent<SpringJoint>() == null) && (other.gameObject.GetComponent<Button>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null) && button == null))
-        {
-            if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null)
+        //if (button != null){
+            if (other.gameObject.Equals(button.gameObject))
             {
-                button = other.gameObject.transform.parent.GetComponent<Button>();
+                buttonDown = true;
             }
-            else
+            else if (!justLeft && (other.GetComponent<SpringJoint>() == null && transform.parent.GetComponent<SpringJoint>() == null) && (other.gameObject.GetComponent<Button>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null) && button == null))
             {
-                button = other.gameObject.GetComponent<Button>();
+                if (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<Button>() != null)
+                {
+                    button = other.gameObject.transform.parent.GetComponent<Button>();
+                }
+                else
+                {
+                    button = other.gameObject.GetComponent<Button>();
+                }
+                button.transform.position = buttonPosition;
+                button.transform.rotation = buttonRotation;
+                RigidbodyConstraints rbConstraints = RigidbodyConstraints.FreezeRotation;
+                if (constraintX){rbConstraints |= RigidbodyConstraints.FreezePositionX;}
+                if (constraintY){rbConstraints |= RigidbodyConstraints.FreezePositionY;}
+                if (constraintZ){rbConstraints |= RigidbodyConstraints.FreezePositionZ;}
+                button.ReAttach(this, rbConstraints);
+                SpringJoint joint = button.gameObject.AddComponent<SpringJoint>();
+                joint.damper = damp;
+                joint.minDistance = min;
+                joint.maxDistance = max;
+                joint.spring = force;
+                joint.breakForce = breakForce;
+                joint.connectedBody = buttonBase.GetComponent<Rigidbody>();
             }
-            button.transform.position = buttonPosition;
-            button.transform.rotation = buttonRotation;
-            RigidbodyConstraints rbConstraints = RigidbodyConstraints.FreezeRotation;
-            if (constraintX){rbConstraints |= RigidbodyConstraints.FreezePositionX;}
-            if (constraintY){rbConstraints |= RigidbodyConstraints.FreezePositionY;}
-            if (constraintZ){rbConstraints |= RigidbodyConstraints.FreezePositionZ;}
-            button.ReAttach(this, rbConstraints);
-            SpringJoint joint = button.gameObject.AddComponent<SpringJoint>();
-            joint.damper = damp;
-            joint.minDistance = min;
-            joint.maxDistance = max;
-            joint.spring = force;
-            joint.breakForce = breakForce;
-            joint.connectedBody = buttonBase.GetComponent<Rigidbody>();
-        }
+        //}
     }
     private void OnTriggerExit(Collider other)
     {
