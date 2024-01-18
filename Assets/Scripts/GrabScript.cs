@@ -140,6 +140,7 @@ public class GrabScript : MonoBehaviour
             grabRigid.AddTorque(turnVector * 1f);
         }
         //reasign to old parent
+        //dumb vitto code breaking stuff here
         grabbedObject.transform.parent = parentGrabbedObject.transform;
         //grabbedObject.transform.localScale = Vector3.one;
         parentGrabbedObject = null;
