@@ -113,7 +113,11 @@ public class GrappleHead : MonoBehaviour
                 if (collision.gameObject.CompareTag("Grabbable")
                     && grab.getObjectGrabbed() == false)
                 {
-
+                    //If collision Enter runs twice when grabbing item it will return
+                    if (parentGrabbedObj != null){
+                        print("there you go you dumb bug");
+                        return;
+                    }
 
                     grabbedObj = collision.gameObject;
                     grabRig = grabbedObj.GetComponent<Rigidbody>();

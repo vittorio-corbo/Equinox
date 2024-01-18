@@ -72,13 +72,11 @@ public class GrabScript : MonoBehaviour
 
     public void grabObject(GameObject grabObj) {
         //Save old parent
-        print("oldparent");
-        print("");
-        Debug.Break();
         
         if (grabObj.transform.parent.gameObject.layer == 7) { //"GrappleHead"
             //If part of grapplehead diasychaing and get its parentvariable
             //parentGrabbedObject = ((GrappleHead) grabObj.transform.parent.gameObject).parentGrabbedObj;
+            //Debug.Break();
             parentGrabbedObject = FindObjectOfType<GrappleHead>().parentGrabbedObj;
             
             //parentGrabbedObject = grabObj.transform.parent.gameObject.parentGrabbedObj;
@@ -103,8 +101,6 @@ public class GrabScript : MonoBehaviour
         //new
         pickUpText.SetActive(true);
         pickUpText.GetComponent<TMP_Text>().SetText("Press Q to Drop");
-        print("grabbing");
-        print(parentGrabbedObject);
     }
 
     public void turnOffCollider(GameObject gm)
