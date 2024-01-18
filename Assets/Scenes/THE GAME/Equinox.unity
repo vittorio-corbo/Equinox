@@ -89852,9 +89852,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4511353530801457099, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
+      propertyPath: minions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511353530801457099, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
       propertyPath: minions.Array.data[0]
       value: 
       objectReference: {fileID: 1466959705}
+    - target: {fileID: 4511353530801457099, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
+      propertyPath: minions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1599750187}
+    - target: {fileID: 4511353530801457099, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
+      propertyPath: minions.Array.data[2]
+      value: 
+      objectReference: {fileID: 775976596}
+    - target: {fileID: 4511353530801457099, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
+      propertyPath: minions.Array.data[3]
+      value: 
+      objectReference: {fileID: 1906244140}
     - target: {fileID: 5729710587871534843, guid: 14e10b2352f7fe24f90398fb619f5926, type: 3}
       propertyPath: m_IsActive
       value: 0
