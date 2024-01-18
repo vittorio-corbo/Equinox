@@ -11,6 +11,8 @@ public class Rocket_V2 : MonoBehaviour
     [SerializeField] private Vector3 StartPosition;
 
     [SerializeField] private float timer;
+
+    [SerializeField] private float force;
     Rigidbody m_Rigidbody;
     public void StartMovement()
     {
@@ -58,7 +60,8 @@ public class Rocket_V2 : MonoBehaviour
             //Vector3 _directionF = m_Rigidbody.rotation * new Vector3(-1, 0, -1);
             //m_Rigidbody.MovePosition(m_Rigidbody.position + (_directionF * speed * Time.fixedDeltaTime));
 
-            m_Rigidbody.AddForce(this.transform.forward * 20f);
+            //m_Rigidbody.AddForce(this.transform.forward * 20f);
+            m_Rigidbody.AddForce(this.transform.forward * force);
             //m_Rigidbody.AddForce(transform.up * 20f);
 
             // // Distance moved equals elapsed time times speed..
