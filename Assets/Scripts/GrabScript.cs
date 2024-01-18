@@ -72,6 +72,9 @@ public class GrabScript : MonoBehaviour
 
     public void grabObject(GameObject grabObj) {
         //Save old parent
+        print("oldparent");
+        print("");
+        Debug.Break();
         
         if (grabObj.transform.parent.gameObject.layer == 7) { //"GrappleHead"
             //If part of grapplehead diasychaing and get its parentvariable
@@ -100,7 +103,8 @@ public class GrabScript : MonoBehaviour
         //new
         pickUpText.SetActive(true);
         pickUpText.GetComponent<TMP_Text>().SetText("Press Q to Drop");
-        
+        print("grabbing");
+        print(parentGrabbedObject);
     }
 
     public void turnOffCollider(GameObject gm)
@@ -131,6 +135,9 @@ public class GrabScript : MonoBehaviour
     // I was trying to get it to drop directly in front of the camera, but I was busy.
     // Can finish later, unless someone else wants to take care of it.
     void dropObject(bool chuck) {
+        print("dropping");
+        print(parentGrabbedObject);
+        //its assigning grappledhead as child
         StartCoroutine(WaitToReturn(.5f, grabbedObject));
         grabRigid.isKinematic = false;
         grabbedObject.transform.parent = null;
