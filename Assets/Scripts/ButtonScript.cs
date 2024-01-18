@@ -71,6 +71,7 @@ public class ButtonScript : MonoBehaviour
                 joint.connectedBody = buttonBase.GetComponent<Rigidbody>();
             }
         //}
+        //Debug.Break();
     }
     private void OnTriggerExit(Collider other)
     {

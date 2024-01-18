@@ -9791,6 +9791,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6353999895170042829, guid: 91c1d841f6e883b4283589587daf9e60, type: 3}
   m_PrefabInstance: {fileID: 536303290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &217918724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4083460666617716012, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
+  m_PrefabInstance: {fileID: 594316093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &217918728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217918724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+  m_Center: {x: 0.0000038146973, y: 0.0000023841858, z: 0.000030517578}
 --- !u!4 &220270839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2929644128202948562, guid: 9aece2a8c27352046a1f6142f711866e, type: 3}
@@ -24091,12 +24117,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4923172562993743351, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       propertyPath: m_BreakForce
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5801687588151784707, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       propertyPath: m_Name
       value: SatelliteButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6703033452107413029, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6aee9df711edbf468ae50facb93b630, type: 2}
     - target: {fileID: 6922650604176061759, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.42548
@@ -24181,6 +24211,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5030089293987251837, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1460533061}
+    - targetCorrespondingSourceObject: {fileID: 4083460666617716012, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 217918728}
     - targetCorrespondingSourceObject: {fileID: 1540837451954493081, guid: 0c51b7931d28c2c4db9a6846877d6a70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 525813127}
