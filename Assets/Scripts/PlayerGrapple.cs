@@ -166,8 +166,8 @@ public class PlayerGrapple : MonoBehaviour
     {
         if (GetComponent<ConfigurableJoint>() == null)
         {
-            HoldSurface();
             holding = true;
+            HoldSurface();//gets unset to false if hold failed
         }
         else
         {
@@ -178,38 +178,39 @@ public class PlayerGrapple : MonoBehaviour
 
     private void HoldSurface() {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 5f, ~LayerMask.GetMask("NotHoldable") & ~LayerMask.GetMask("GrappleHead"))) //Check Mask once more
+        //Check Mask once more
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 5f, ~LayerMask.GetMask("NotHoldable") & ~LayerMask.GetMask("GrappleHead")) && hit.transform.gameObject.GetComponent<Rigidbody>() != null)
         {
-            if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
+            Debug.Log(hit.transform.gameObject);
+            ConfigurableJoint joint = gameObject.AddComponent<ConfigurableJoint>();
+            joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+            joint.xMotion = ConfigurableJointMotion.Locked;
+            joint.yMotion = ConfigurableJointMotion.Locked;
+            joint.zMotion = ConfigurableJointMotion.Locked;
+            grappleForce = 50f;
+            if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
             {
-                Debug.Log(hit.transform.gameObject);
-                ConfigurableJoint joint = gameObject.AddComponent<ConfigurableJoint>();
-                joint.connectedBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-                joint.xMotion = ConfigurableJointMotion.Locked;
-                joint.yMotion = ConfigurableJointMotion.Locked;
-                joint.zMotion = ConfigurableJointMotion.Locked;
-                grappleForce = 50f;
-                if (hit.transform.gameObject.GetComponent<GrappleExtend>() != null)
-                {
-                    hit.transform.gameObject.GetComponent<GrappleExtend>().ExtendGrapple();
-                }
-                if (hit.transform.gameObject.GetComponent<Rocket>() != null)
-                {
-                    hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
-                }
-                if (hit.transform.gameObject.GetComponent<Rocket_V2>() != null)
-                {
-                    hit.transform.gameObject.GetComponent<Rocket_V2>().StartMovement();
-                }
-                if (hit.transform.gameObject.GetComponent<TurnKinematic>() != null)
-                {
-                    hit.transform.gameObject.GetComponent<TurnKinematic>().StopKinematic();
-                }
-                //change gun material
-                grappleGun.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
-                //visualGun.GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
-                PlaySFX(hold, false);
+                hit.transform.gameObject.GetComponent<GrappleExtend>().ExtendGrapple();
             }
+            if (hit.transform.gameObject.GetComponent<Rocket>() != null)
+            {
+                hit.transform.gameObject.GetComponent<Rocket>().StartMovement();
+            }
+            if (hit.transform.gameObject.GetComponent<Rocket_V2>() != null)
+            {
+                hit.transform.gameObject.GetComponent<Rocket_V2>().StartMovement();
+            }
+            if (hit.transform.gameObject.GetComponent<TurnKinematic>() != null)
+            {
+                hit.transform.gameObject.GetComponent<TurnKinematic>().StopKinematic();
+            }
+            //change gun material
+            grappleGun.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
+            //visualGun.GetComponent<MeshRenderer>().materials[0].mainTexture = grab.mainTexture;
+            PlaySFX(hold, false);
+
+        }else{
+            holding = false;
         }
     }
 

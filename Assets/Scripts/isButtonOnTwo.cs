@@ -7,7 +7,7 @@ public class isButtonOnTwo : MonoBehaviour
 {
     [SerializeField] LightCables lightcables;
     [SerializeField] Reportee reporteePre;
-    [SerializeField] ButtonScript buttonScript;
+        [SerializeField] ButtonScript buttonScript;
     [SerializeField] Reportee reportee;
 
     // Start is called before the first frame update
