@@ -100,7 +100,7 @@ public class GrabScript : MonoBehaviour
 
         //new
         pickUpText.SetActive(true);
-        pickUpText.GetComponent<TMP_Text>().SetText("Press Q to Drop");
+        pickUpText.GetComponent<TMP_Text>().SetText("Press Q to Throw");
     }
 
     public void turnOffCollider(GameObject gm)

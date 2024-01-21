@@ -37023,13 +37023,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 248500902429524982, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_text
+      value: Press F to Attach to Surface
+      objectReference: {fileID: 0}
+    - target: {fileID: 878671145117928840, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522744916767470411, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249627594664018499, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 3659145576984521022, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: releaseText
       value: 
       objectReference: {fileID: 1745955225}
+    - target: {fileID: 4301362064108355241, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5235779056296859554, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474194536376841809, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7032278672084809848, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_Pivot.x
@@ -37110,6 +37134,14 @@ PrefabInstance:
     - target: {fileID: 7032278672084809848, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224821898875462477, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912030768880744703, guid: 0a7b0498660e288478b44cf80d7e0d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
