@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         controlImage.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     void Update()
