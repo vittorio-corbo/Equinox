@@ -14,6 +14,7 @@ public class TimerScript : MonoBehaviour
     private void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        Debug.Log("Timer " + PlayerPrefs.GetInt("Timer"));
         if (!PlayerPrefs.HasKey("Timer") || PlayerPrefs.GetInt("Timer") == 0)
         {
             gameObject.SetActive(false);
