@@ -9,7 +9,7 @@ public class MenuActions : MonoBehaviour
     float musicVolume = 0.5f;
     float effectsVolume = 0.5f;
     bool holdToGrapple = false;
-    bool timer = false;
+    public bool timer = false;
 
     public Slider musicVolSlider;
     public Slider effectVolSlider;
@@ -43,6 +43,7 @@ public class MenuActions : MonoBehaviour
         {
             timerToggle.isOn = PlayerPrefs.GetInt("Timer") == 1;
             timer = timerToggle.isOn;
+            Debug.Log("Timer " + PlayerPrefs.GetInt("Timer"));
         }
         musicVolSlider.value = PlayerPrefs.GetFloat("MusicVol");
         effectVolSlider.value = PlayerPrefs.GetFloat("EffectVol");
@@ -73,6 +74,6 @@ public class MenuActions : MonoBehaviour
     public void SetTimer()
     {
         timer = timerToggle.isOn;
-        PlayerPrefs.SetInt("Timer", holdToGrapple ? 1 : 0);
+        PlayerPrefs.SetInt("Timer", timer ? 1 : 0);
     }
 }
